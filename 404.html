@@ -13,10 +13,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="assets/top-logo.webp" type="image/webp"/>
+    <link rel="icon" href="assets/top-logo.webp">
   </head>
   <body>
-    <!-- NAVBAR -->
+    
     <header class="navbar" id="navbar">
       <div class="container navbar__inner">
         <a href="index.html" class="navbar__logo"
@@ -32,13 +32,13 @@
 
     <div class="page-404">
       <div style="position: relative; z-index: 2; text-align: center">
-        <div class="page-404-num" data-reveal="scale">404</div>
-        <h1 class="page-404-title" data-reveal="fade-up">
+        <div class="page-404__num" data-reveal="scale">404</div>
+        <h1 class="page-404__title" data-reveal="fade-up">
           Oops! Page Not Found.
         </h1>
-        <p class="page-404-desc" data-reveal="fade-up" data-reveal-delay="100">
+        <p class="page-404__desc" data-reveal="fade-up" data-reveal-delay="100">
           The page you're looking for has been moved, renamed, or doesn't exist
-          yet. But don't worry — there's plenty more to explore!
+          yet. But don't worry there's plenty more to explore!
         </p>
         <div
           class="d-flex gap-3 justify-content-center flex-wrap"
@@ -49,7 +49,7 @@
             ><i class="fa-solid fa-home"></i> Back to Home</a
           >
           <a
-            href="store.html"
+            href="javascript:history.back()"
             class="btn btn-lg"
             style="
               background: rgba(255, 255, 255, 0.1);
@@ -58,57 +58,127 @@
               backdrop-filter: blur(8px);
             "
           >
-            <i class="fa-solid fa-store"></i> Browse Store
+            <i class="fa-solid fa-arrow-left"></i> Go Back
           </a>
-        </div>
-        <div
-          style="
-            margin-top: 3rem;
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-          "
-        >
-          <a
-            href="about.html"
-            style="
-              color: rgba(255, 255, 255, 0.5);
-              font-size: 0.85rem;
-              text-decoration: underline;
-              text-underline-offset: 3px;
-            "
-            >About Us</a
-          >
-          <a
-            href="contact.html"
-            style="
-              color: rgba(255, 255, 255, 0.5);
-              font-size: 0.85rem;
-              text-decoration: underline;
-              text-underline-offset: 3px;
-            "
-            >Contact Support</a
-          >
-          <a
-            href="blog.html"
-            style="
-              color: rgba(255, 255, 255, 0.5);
-              font-size: 0.85rem;
-              text-decoration: underline;
-              text-underline-offset: 3px;
-            "
-            >Health Blog</a
-          >
         </div>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Navbar init
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
+  }
+
+  
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+      navbar.classList.remove('navbar--hero');
+    } else {
+      navbar.classList.remove('scrolled');
+      navbar.classList.add('navbar--hero');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  
+  const hamburger = document.getElementById('hamburger');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileOverlay.classList.contains('is-open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileOverlay.classList.add('is-open');
+      hamburger.classList.add('is-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    }
+  });
+
+  
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeMobileMenu();
+      closeSearch();
+    }
+  });
+
+  
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 992) {
+      closeMobileMenu();
+    }
+  });
+
+  
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchToggle  = document.getElementById('searchToggle');
+  const searchClose   = document.getElementById('searchClose');
+  const searchInput   = document.getElementById('searchInput');
+
+  searchToggle.addEventListener('click', () => {
+    searchOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    setTimeout(() => searchInput.focus(), 300);
+  });
+  searchClose.addEventListener('click', closeSearch);
+  searchOverlay.addEventListener('click', e => {
+    if (e.target === searchOverlay) closeSearch();
+  });
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      closeSearch();
+      window.location.href = 'store.html';
+    }
+  });
+
+
+
+  });
+
+
+function closeMobileMenu() {
+  document.getElementById('mobileOverlay').classList.remove('is-open');
+  document.getElementById('hamburger').classList.remove('is-open');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+}
+
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('is-open');
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+}
+
+function showToast(msg, icon = 'fa-circle-check') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="fa-solid ${icon}"></i>${msg}`;
+  container.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(16px)'; toast.style.transition = 'all 0.35s'; setTimeout(() => toast.remove(), 400); }, 3500);
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  window.location.href = '404.html';
+}
+</script>
+<script>
+      
       document.getElementById("navbar").classList.add("scrolled");
-      // Scroll reveal
+      
       const revealEls = document.querySelectorAll("[data-reveal]");
       const observer = new IntersectionObserver(
         (entries) =>
@@ -121,11 +191,12 @@
         { threshold: 0.1 },
       );
       revealEls.forEach((el) => observer.observe(el));
-      // Auto-reveal for 404 (it's all visible)
+     
       setTimeout(
         () => revealEls.forEach((el) => el.classList.add("revealed")),
         100,
       );
     </script>
-  </body>
+    </body>
 </html>
+

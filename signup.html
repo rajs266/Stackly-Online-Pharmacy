@@ -6,7 +6,7 @@
   <meta name="description" content="Sign Up for Stackly - Create your free account and start managing your business finances today." />
   <meta name="theme-color" content="#1A6B4A" />
   <title>Sign Up - Stackly</title>
-  <link rel="icon" href="assets/top-logo.webp" type="image/webp" />
+  <link rel="icon" href="assets/top-logo.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,7 @@
     .signup-visual__bg {
       position: absolute;
       inset: 0;
-      background: url('assets/signup_bg.jpg') center/cover no-repeat !important;
+      background: url('assets/signup_bg.webp') center/cover no-repeat !important;
       opacity: 0.8;
       z-index: 0;
     }
@@ -464,7 +464,7 @@
       color: var(--clr-primary);
     }
 
-    /* Hide Edge's native reveal/clear eye icon in password fields */
+    
     input[type="password"]::-ms-reveal,
     input[type="password"]::-ms-clear {
       display: none;
@@ -1072,7 +1072,7 @@
         <div class="terms-group" id="termsGroup">
           <input type="checkbox" id="terms" name="terms" required />
           <label for="terms">
-            I agree to the <a href="contact.html">Terms of Service</a> and <a href="contact.html">Privacy Policy</a>. I consent to Stackly contacting me about my account and services.
+            I agree to the <a href="404.html">Terms of Service</a> and <a href="404.html">Privacy Policy</a>. I consent to Stackly contacting me about my account and services.
           </label>
         </div>
         <span class="signup-form-error" id="termsError" style="display:none;margin-top:-1rem;margin-bottom:1rem;">You must agree to the terms to continue</span>
@@ -1104,7 +1104,291 @@
 
 </div>
 
-<script src="script.js"></script>
+  <script>
 
+document.addEventListener('DOMContentLoaded', () => {
+  
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
+  }
+});
+
+function showSignupToast(msg, type = 'success') {
+  const t = document.getElementById('signupToast');
+  t.textContent = msg;
+  t.className = 'signup-toast signup-toast--' + type + ' show';
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+
+const roleInputs = document.querySelectorAll('input[name="role"]');
+const roleBadge = document.getElementById('roleBadge');
+
+roleInputs.forEach(input => {
+  input.addEventListener('change', () => {
+    const role = input.value;
+    const isAdmin = role === 'admin';
+    roleBadge.className = 'role-badge ' + (isAdmin ? 'role-badge--admin' : 'role-badge--customer');
+    roleBadge.innerHTML = isAdmin 
+      ? '<i class="fa-solid fa-user-shield"></i> Creating account as <strong>Admin</strong>'
+      : '<i class="fa-solid fa-user"></i> Creating account as <strong>Customer</strong>';
+  });
+});
+
+
+document.getElementById('passwordToggle').addEventListener('click', function() {
+  const pw = document.getElementById('password');
+  const icon = this.querySelector('i');
+  if (pw.type === 'password') {
+    pw.type = 'text';
+    icon.className = 'fa-solid fa-eye-slash';
+  } else {
+    pw.type = 'password';
+    icon.className = 'fa-solid fa-eye';
+  }
+});
+
+document.getElementById('confirmToggle').addEventListener('click', function() {
+  const pw = document.getElementById('confirmPassword');
+  const icon = this.querySelector('i');
+  if (pw.type === 'password') {
+    pw.type = 'text';
+    icon.className = 'fa-solid fa-eye-slash';
+  } else {
+    pw.type = 'password';
+    icon.className = 'fa-solid fa-eye';
+  }
+});
+
+
+const passwordInput = document.getElementById('password');
+const passwordStrength = document.getElementById('passwordStrength');
+const strengthFill = document.getElementById('strengthFill');
+const strengthText = document.getElementById('strengthText');
+
+passwordInput.addEventListener('input', function() {
+  const val = this.value;
+  if (!val) {
+    passwordStrength.className = 'password-strength';
+    strengthText.textContent = 'Enter a password';
+    strengthText.className = 'password-strength__text';
+    return;
+  }
+  
+  passwordStrength.className = 'password-strength show';
+  
+  let score = 0;
+  if (val.length >= 8) score++;
+  if (val.length >= 10) score++;
+  if (/[a-z]/.test(val) && /[A-Z]/.test(val)) score++;
+  if (/[0-9]/.test(val)) score++;
+  if (/[^A-Za-z0-9]/.test(val)) score++;
+  
+  if (val.length < 8) {
+    strengthFill.className = 'password-strength__fill weak';
+    strengthText.textContent = 'Weak Password';
+    strengthText.className = 'password-strength__text weak';
+  } else if (score <= 3) {
+    strengthFill.className = 'password-strength__fill medium';
+    strengthText.textContent = 'Medium Strength';
+    strengthText.className = 'password-strength__text medium';
+  } else {
+    strengthFill.className = 'password-strength__fill strong';
+    strengthText.textContent = 'Strong Password';
+    strengthText.className = 'password-strength__text strong';
+  }
+});
+
+
+function validateName(name) {
+  return /^[a-zA-Z\s]+$/.test(name) && name.trim().length >= 1;
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function validatePhone(phone) {
+  return /^[0-9]{10}$/.test(phone.replace(/[\s-+]/g, ''));
+}
+
+function validatePassword(pw) {
+  return pw.length >= 8;
+}
+
+
+function handleSignup(e) {
+  e.preventDefault();
+  
+  const submitBtn = document.getElementById('signupSubmit');
+  
+  const fnameGroup = document.getElementById('fnameGroup');
+  const lnameGroup = document.getElementById('lnameGroup');
+  const emailGroup = document.getElementById('emailGroup');
+  const phoneGroup = document.getElementById('phoneGroup');
+  const passwordGroup = document.getElementById('passwordGroup');
+  const confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+  const termsError = document.getElementById('termsError');
+  
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const termsChecked = document.getElementById('terms').checked;
+  const role = document.querySelector('input[name="role"]:checked').value;
+  
+  let isValid = true;
+  
+  if (!validateName(firstName)) {
+    fnameGroup.classList.add('has-error');
+    isValid = false;
+  } else {
+    fnameGroup.classList.remove('has-error');
+  }
+  
+  if (!validateName(lastName)) {
+    lnameGroup.classList.add('has-error');
+    isValid = false;
+  } else {
+    lnameGroup.classList.remove('has-error');
+  }
+  
+  if (!validateEmail(email)) {
+    emailGroup.classList.add('has-error');
+    isValid = false;
+  } else {
+    emailGroup.classList.remove('has-error');
+  }
+  
+  if (!validatePhone(phone)) {
+    phoneGroup.classList.add('has-error');
+    isValid = false;
+  } else {
+    phoneGroup.classList.remove('has-error');
+  }
+  
+  if (!validatePassword(password)) {
+    passwordGroup.classList.add('has-error');
+    isValid = false;
+  } else {
+    passwordGroup.classList.remove('has-error');
+  }
+  
+  if (confirmPassword !== password || !confirmPassword) {
+    confirmPasswordGroup.classList.add('has-error');
+    isValid = false;
+  } else {
+    confirmPasswordGroup.classList.remove('has-error');
+  }
+  
+  if (!termsChecked) {
+    termsError.style.display = 'block';
+    isValid = false;
+  } else {
+    termsError.style.display = 'none';
+  }
+  
+  if (!isValid) {
+    showSignupToast('Please fix the errors in the form.', 'error');
+    return;
+  }
+  
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  
+  setTimeout(() => {
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+    
+    
+    const fullName = firstName + ' ' + lastName;
+    localStorage.setItem('stackly_user', JSON.stringify({
+      name: fullName,
+      email: email,
+      role: role,
+      loggedIn: false,
+      loginTime: new Date().toISOString()
+    }));
+    
+    showSignupToast('Account created successfully! Redirecting to sign in...', 'success');
+    
+    setTimeout(() => {
+      window.location.href = 'signin.html';
+    }, 1500);
+    
+  }, 1500);
+}
+
+
+document.getElementById('firstName').addEventListener('blur', function() {
+  const group = document.getElementById('fnameGroup');
+  if (this.value.trim() && !validateName(this.value.trim())) {
+    group.classList.add('has-error');
+  } else {
+    group.classList.remove('has-error');
+  }
+});
+
+document.getElementById('lastName').addEventListener('blur', function() {
+  const group = document.getElementById('lnameGroup');
+  if (this.value.trim() && !validateName(this.value.trim())) {
+    group.classList.add('has-error');
+  } else {
+    group.classList.remove('has-error');
+  }
+});
+
+document.getElementById('email').addEventListener('blur', function() {
+  const group = document.getElementById('emailGroup');
+  if (this.value.trim() && !validateEmail(this.value.trim())) {
+    group.classList.add('has-error');
+  } else {
+    group.classList.remove('has-error');
+  }
+});
+
+document.getElementById('phone').addEventListener('blur', function() {
+  const group = document.getElementById('phoneGroup');
+  if (this.value.trim() && !validatePhone(this.value.trim())) {
+    group.classList.add('has-error');
+  } else {
+    group.classList.remove('has-error');
+  }
+});
+
+document.getElementById('password').addEventListener('blur', function() {
+  const group = document.getElementById('passwordGroup');
+  if (this.value && !validatePassword(this.value)) {
+    group.classList.add('has-error');
+  } else {
+    group.classList.remove('has-error');
+  }
+});
+
+document.getElementById('confirmPassword').addEventListener('blur', function() {
+  const group = document.getElementById('confirmPasswordGroup');
+  const passwordVal = document.getElementById('password').value;
+  if (this.value && this.value !== passwordVal) {
+    group.classList.add('has-error');
+  } else {
+    group.classList.remove('has-error');
+  }
+});
+
+document.getElementById('terms').addEventListener('change', function() {
+  const err = document.getElementById('termsError');
+  if (this.checked) {
+    err.style.display = 'none';
+  }
+});
+
+document.querySelectorAll('.signup-form-input').forEach(input => {
+  input.addEventListener('input', function() {
+    this.closest('.signup-form-group').classList.remove('has-error');
+  });
+});
+</script>
 </body>
 </html>

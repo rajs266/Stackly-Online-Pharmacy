@@ -6,29 +6,29 @@
   <meta name="description" content="Stackly Pharmacy — Premium online pharmacy. Medicines, wellness products & healthcare delivered to your door. Salem, Tamil Nadu."/>
   <title>Stackly — Your Trusted Online Pharmacy</title>
 
-  <!-- Preconnect -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 
-  <!-- Fonts -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
 
-  <!-- Bootstrap -->
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-  <!-- Font Awesome -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
-  <!-- AOS -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css"/>
+  
+  <link rel="stylesheet" href="style.css?v=3"/>
 
   <style>
-    /* ── Page-specific overrides & enhancements ── */
+    
 
-    /* ══ HERO VIDEO ══ */
+    
     .hero-video-bg {
       position: absolute;
       inset: 0;
@@ -66,7 +66,7 @@
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 
-    /* ══ FEATURES STRIP ══ */
+    
     .marquee-track {
       display: flex;
       animation: marquee 30s linear infinite;
@@ -77,7 +77,7 @@
       100%{ transform: translateX(-50%); }
     }
 
-    /* ══ CATEGORIES ══ */
+    
     .cat-card {
       display: block;
       background: #fff;
@@ -129,7 +129,7 @@
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
-    /* ══ PRODUCT CARDS ══ */
+    
     .prod-card {
       background: #fff;
       border-radius: 1.25rem;
@@ -167,7 +167,7 @@
     }
     .prod-card:hover .prod-emoji { transform: scale(1.18) rotate(8deg); }
 
-    /* Overlay actions */
+    
     .prod-overlay {
       position: absolute;
       inset: 0;
@@ -200,6 +200,10 @@
     .prod-action-btn:nth-child(2) { --d: 0.10s; }
     .prod-action-btn:nth-child(3) { --d: 0.15s; }
     .prod-action-btn:hover { background: #0a7c5e; color: #fff; }
+    .prod-overlay .prod-action-btn[onclick*="openQuickView"],
+    .prod-overlay .prod-action-btn[aria-label="Quick View"] {
+      display: none !important;
+    }
 
     .prod-badge {
       position: absolute;
@@ -230,14 +234,15 @@
     .prod-stars span { color: #687d94; margin-left: 0.25rem; font-size: 0.7rem; }
     .prod-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 0.55rem; }
     .prod-price {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-family: var(--font-body);
+      font-size: 1.45rem;
       font-weight: 800;
       color: #0a7c5e;
     }
-    .prod-price del { font-size: 0.78rem; color: #687d94; margin-left: 0.3rem; font-family: var(--font-body); font-weight: 400; }
+    .prod-price del { font-size: 0.95rem; color: #687d94; margin-left: 0.3rem; font-family: var(--font-body); font-weight: 400; }
     .prod-cart-btn {
       width: 36px; height: 36px;
+      flex-shrink: 0;
       border-radius: 50%;
       background: #e8f9f4;
       border: none;
@@ -254,7 +259,7 @@
       transform: scale(1.15) rotate(8deg);
     }
 
-    /* ══ FLIP SERVICE CARDS ══ */
+    
     .flip-container {
       perspective: 900px;
       height: 260px;
@@ -305,7 +310,7 @@
     .flip-back-title  { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 0.65rem; font-family: var(--font-display); }
     .flip-back-desc   { font-size: 0.83rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem; }
 
-    /* ══ WHY CHOOSE — GLASS CARDS ══ */
+    
     .why-card {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.12);
@@ -347,7 +352,7 @@
     .why-title { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
     .why-desc  { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
 
-    /* ══ CTA BANNER OVERRIDE ══ */
+    
     .cta-section {
       background: linear-gradient(135deg, #0a7c5e 0%, #065c45 60%, #0d1b2a 100%);
       border-radius: 2rem;
@@ -370,7 +375,7 @@
       line-height: 1;
     }
 
-    /* ══ TESTIMONIAL CARDS ══ */
+    
     .testi-card {
       background: #fff;
       border-radius: 1.25rem;
@@ -407,7 +412,7 @@
     .testi-name { font-size: 0.88rem; font-weight: 700; color: #0d1b2a; }
     .testi-role { font-size: 0.75rem; color: #687d94; }
 
-    /* ══ BLOG CARDS ══ */
+    
     .bl-card {
       background: #fff;
       border-radius: 1.25rem;
@@ -463,7 +468,7 @@
     .bl-meta { font-size: 0.76rem; color: #687d94; display: flex; align-items: center; gap: 0.85rem; }
     .bl-meta i { color: #0a7c5e; }
 
-    /* ══ STAT COUNTER ══ */
+    
     .stat-num-big {
       font-family: var(--font-display);
       font-size: 2.6rem;
@@ -472,14 +477,14 @@
       line-height: 1;
     }
 
-    /* ══ SCROLL-TRIGGERED BG PARALLAX (light) ══ */
+    
     .parallax-bg {
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
     }
 
-    /* ══ SECTION SEPARATOR WAVE ══ */
+    
     .wave-sep {
       display: block;
       width: 100%;
@@ -488,7 +493,7 @@
     }
 .wave-sep svg { display: block; width: calc(100% + 2px); }
 
-    /* ══ RESPONSIVE TWEAKS ══ */
+    
     @media (max-width:991.98px) {
       .hero-3d-scene { display: none; }
       .hfb-1,.hfb-2,.hfb-3 { display: none; }
@@ -499,8 +504,131 @@
       .cta-pill-float { display: none; }
       .flip-container { height: 230px; }
     }
+    @media (max-width: 767.98px) {
+      
+      #products .row {
+        display: flex !important;
+        flex-direction: column !important;
+        margin-inline: 0 !important;
+      }
+      .top-pick-item {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        padding-inline: 0 !important;
+        margin-bottom: 1.25rem !important;
+      }
+      .top-pick-item .prod-card {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        height: 180px !important;
+        padding: 0.5rem !important;
+        transform: none !important;
+        box-shadow: 0 4px 15px rgba(10,124,94,0.06) !important;
+        border-radius: 1rem !important;
+      }
+      .top-pick-item .prod-thumb {
+        width: 110px !important;
+        height: 110px !important;
+        flex-shrink: 0 !important;
+        border-radius: 0.6rem !important;
+        border-right: 1px solid rgba(10,124,94,0.09) !important;
+        aspect-ratio: 1/1 !important;
+      }
+      .top-pick-item .prod-emoji {
+        font-size: 3.5rem !important;
+      }
+      .top-pick-item .prod-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+      }
+      .top-pick-item .prod-body {
+        padding: 0.25rem 0.5rem !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        height: 100% !important;
+        min-width: 0 !important;
+      }
+      .top-pick-item .prod-brand {
+        font-size: 0.72rem !important;
+        margin-bottom: 0.15rem !important;
+      }
+      .top-pick-item .prod-name {
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        line-height: 1.3 !important;
+        margin-bottom: 0.25rem !important;
+        display: block !important;
+        overflow: visible !important;
+        white-space: normal !important;
+      }
+      .top-pick-item .prod-stars {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.4rem !important;
+      }
+      .top-pick-item .prod-price-row {
+        margin-top: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+        gap: 0.25rem !important;
+      }
+      .top-pick-item .prod-price {
+        font-size: 1.6rem !important;
+        white-space: normal !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        line-height: 1 !important;
+      }
+      .top-pick-item .prod-price del {
+        font-size: 1rem !important;
+        margin-left: 0 !important;
+        margin-top: 0.15rem !important;
+      }
+      .top-pick-item .prod-cart-btn {
+        width: 32px !important;
+        height: 32px !important;
+        flex-shrink: 0 !important;
+        background: #0a7c5e !important;
+        color: #ffffff !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 0.85rem !important;
+        box-shadow: 0 4px 10px rgba(10,124,94,0.3) !important;
+        margin-left: 0 !important;
+        margin-right: 0.4rem !important;
+        transition: transform 0.2s !important;
+      }
+      .top-pick-item .prod-cart-btn i {
+        display: inline-block !important;
+        transform: scale(1) !important;
+      }
+      .top-pick-item .prod-overlay {
+        display: none !important;
+      }
+    }
+    @media (min-width: 992px) {
+      .hero-title-nowrap {
+        white-space: nowrap;
+      }
+    }
+    .filter-tabs-container {
+      margin-bottom: 3rem !important;
+    }
+    .top-pick-item.filter-hidden {
+      display: none !important;
+    }
   </style>
-  <link rel="shortcut icon" href="assets/top-logo.webp" type="image/webp"/>
+  <link rel="icon" href="assets/top-logo.webp">
 </head>
 
 <body>
@@ -521,7 +649,16 @@
 <!-- ════════════════════════════════════════════════
      MOBILE FULL-SCREEN OVERLAY MENU
 ════════════════════════════════════════════════ -->
-<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation"> 
+  <div class="mobile-overlay__header">
+    <a href="index.html" class="mobile-overlay__logo" aria-label="Stackly Home">
+      <img src="assets/logo.webp" alt="Stackly"/>
+    </a>
+    <button class="mobile-overlay__close-btn" onclick="closeMobileMenu()" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
   <nav class="mobile-overlay__nav" aria-label="Mobile Navigation">
     <a href="index.html"    class="mobile-overlay__link active" onclick="closeMobileMenu()">Home</a>
     <a href="about.html"    class="mobile-overlay__link" onclick="closeMobileMenu()">About</a>
@@ -544,12 +681,12 @@
 <header class="navbar navbar--hero" id="navbar">
   <div class="container navbar__inner">
 
-    <!-- Logo -->
+    
     <a href="index.html" class="navbar__logo" aria-label="Stackly Home">
       <img src="assets/logo.webp" alt="Stackly" loading="eager"/>
     </a>
 
-    <!-- Desktop Nav -->
+    
     <nav class="navbar__nav" aria-label="Main Navigation">
       <a href="index.html"   class="navbar__link active">Home</a>
       <a href="about.html"   class="navbar__link">About</a>
@@ -558,14 +695,18 @@
       <a href="contact.html" class="navbar__link">Contact</a>
     </nav>
 
-    <!-- Actions -->
+    
     <div class="navbar__actions">
       <button class="navbar__search-btn" id="searchToggle" aria-label="Search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
-      <button class="navbar__cart-btn" aria-label="Cart" onclick="location.href='store.html'">
+      <button class="navbar__wishlist-btn" aria-label="Wishlist" onclick="openWishlist()" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.9);background:transparent;position:relative;">
+        <i class="fa-solid fa-heart"></i>
+        <span class="wishlist-count" style="display:flex;">0</span>
+      </button>
+      <button class="navbar__cart-btn" aria-label="Cart" onclick="openCart()">
         <i class="fa-solid fa-bag-shopping"></i>
-        <span class="cart-count">3</span>
+        <span class="cart-count" id="cartBadge" style="display:none;">0</span>
       </button>
       <a href="signin.html"      class="btn btn-outline btn-sm d-none d-lg-inline-flex">Sign In</a>
       <a href="signup.html"      class="btn btn-primary btn-sm d-none d-lg-inline-flex">Get Started</a>
@@ -581,21 +722,21 @@
 ════════════════════════════════════════════════ -->
 <section class="hero" id="home">
 
-  <!-- Background video -->
+  
   <video class="hero-video-bg" autoplay muted loop playsinline preload="none">
     <source src="assets/hero-bg.mp4" type="video/mp4"/>
   </video>
 
-  <!-- Gradient overlay -->
+  
   <div class="hero-overlay"></div>
 
   <div class="container">
     <div class="row justify-content-center text-center py-5">
 
-      <!-- Centered Copy -->
-      <div class="col-lg-8">
-        <h1 class="hero__title" style="font-size: clamp(1.4rem, 3.5vw, 3.2rem); white-space: nowrap;">
-          BRINGING WELLNESS TO <span class="accent typed-text"></span><span class="cursor">&nbsp;</span>
+       
+      <div class="col-md-10 col-lg-12">
+        <h1 class="hero__title hero-title-nowrap" style="font-size: clamp(1.4rem, 3.5vw, 3.2rem);">
+          BRINGING WELLNESS TO<br class="d-lg-none"/> <span class="accent typed-text"></span><span class="cursor">&nbsp;</span>
         </h1>
         <div style="color:rgba(255,255,255,0.55);font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 700; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); margin-bottom: 2rem;">
           Delivered Instantly
@@ -605,7 +746,7 @@
           Genuine medicines, wellness supplements, and healthcare essentials — prescribed or over-the-counter — delivered to your doorstep in Salem & beyond.
         </p>
 
-        <!-- CTA Buttons -->
+        
         <div class="hero__actions justify-content-center">
           <a href="store.html"      class="btn btn-primary btn-lg">
             <i class="fa-solid fa-store"></i> Shop Now
@@ -614,11 +755,11 @@
             <i class="fa-solid fa-user-plus"></i> Get Started
           </a>
         </div>
-      </div><!-- /col -->
+      </div>
     </div>
   </div>
 
-  <!-- Scroll Down Indicator -->
+  
   <a href="#categories" class="scroll-indicator" aria-label="Scroll down">
     <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
     <span>Scroll</span>
@@ -631,7 +772,7 @@
 ════════════════════════════════════════════════ -->
 <div style="background:linear-gradient(135deg,#0a7c5e,#065c45);padding:0.9rem 0;overflow:hidden;" aria-label="Features">
   <div class="marquee-track" aria-hidden="true">
-    <!-- duplicated for seamless loop -->
+    
     <div style="display:flex;gap:0;width:max-content;">
       <span class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Same-Day Delivery</span>
       <span class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</span>
@@ -665,73 +806,73 @@
     <div class="row g-3 justify-content-center">
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="0">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_medicines.png" class="cat-bg" alt="Medicines">
+          <img src="assets/cat_medicines.webp" class="cat-bg" alt="Medicines">
           <div class="cat-overlay"><span class="cat-label">Medicines</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="60">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_ayurveda.png" class="cat-bg" alt="Ayurveda">
+          <img src="assets/cat_ayurveda.webp" class="cat-bg" alt="Ayurveda">
           <div class="cat-overlay"><span class="cat-label">Ayurveda</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="120">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_skincare.png" class="cat-bg" alt="Skincare">
+          <img src="assets/cat_skincare.webp" class="cat-bg" alt="Skincare">
           <div class="cat-overlay"><span class="cat-label">Skincare</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="180">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_nutrition.png" class="cat-bg" alt="Nutrition">
+          <img src="assets/cat_nutrition.webp" class="cat-bg" alt="Nutrition">
           <div class="cat-overlay"><span class="cat-label">Nutrition</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="240">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_diagnostics.png" class="cat-bg" alt="Diagnostics">
+          <img src="assets/cat_diagnostics.webp" class="cat-bg" alt="Diagnostics">
           <div class="cat-overlay"><span class="cat-label">Diagnostics</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="300">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_babycare.png" class="cat-bg" alt="Baby Care">
+          <img src="assets/cat_babycare.webp" class="cat-bg" alt="Baby Care">
           <div class="cat-overlay"><span class="cat-label">Baby Care</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="60">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_heart.png" class="cat-bg" alt="Heart Health">
+          <img src="assets/cat_heart.webp" class="cat-bg" alt="Heart Health">
           <div class="cat-overlay"><span class="cat-label">Heart Health</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="120">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_brain.png" class="cat-bg" alt="Mental Wellness">
+          <img src="assets/cat_brain.webp" class="cat-bg" alt="Mental Wellness">
           <div class="cat-overlay"><span class="cat-label">Mental Wellness</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="180">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_dental.png" class="cat-bg" alt="Dental">
+          <img src="assets/cat_dental.webp" class="cat-bg" alt="Dental">
           <div class="cat-overlay"><span class="cat-label">Dental</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="240">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_eyecare.png" class="cat-bg" alt="Eye Care">
+          <img src="assets/cat_eyecare.webp" class="cat-bg" alt="Eye Care">
           <div class="cat-overlay"><span class="cat-label">Eye Care</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="300">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_firstaid.png" class="cat-bg" alt="First Aid">
+          <img src="assets/cat_firstaid.webp" class="cat-bg" alt="First Aid">
           <div class="cat-overlay"><span class="cat-label">First Aid</span></div>
         </a>
       </div>
       <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="360">
         <a href="store.html" class="cat-card">
-          <img src="assets/cat_vaccine.png" class="cat-bg" alt="Vaccines">
+          <img src="assets/cat_vaccine.webp" class="cat-bg" alt="Vaccines">
           <div class="cat-overlay"><span class="cat-label">Vaccines</span></div>
         </a>
       </div>
@@ -752,8 +893,8 @@
       <a href="store.html" class="btn btn-outline">View All <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
-    <!-- Filter tabs -->
-    <div class="d-flex gap-2 flex-wrap mb-4" data-aos="fade-up">
+    
+    <div class="d-flex gap-2 flex-wrap mb-4 filter-tabs-container" data-aos="fade-up">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="medicines">Medicines</button>
       <button class="filter-btn" data-filter="vitamins">Vitamins</button>
@@ -762,15 +903,13 @@
     </div>
 
     <div class="row g-4">
-      <!-- Product 1 -->
+      
       <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="vitamins" data-aos="fade-up" data-aos-delay="0">
         <div class="prod-card">
           <div class="prod-thumb">
-            <img src="assets/img_vitamin.png" class="prod-img" alt="Vitamin D3 + K2 Capsules">
+            <img src="assets/prod_pills.webp" class="prod-img" alt="Vitamin D3 + K2 Capsules">
             <div class="prod-overlay">
-              <button class="prod-action-btn" title="Quick View" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
-              <button class="prod-action-btn" title="Wishlist" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-              <button class="prod-action-btn" title="Compare" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              <button class="prod-action-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
             <span class="prod-badge sale">-20%</span>
           </div>
@@ -783,21 +922,19 @@
             </div>
             <div class="prod-price-row">
               <span class="prod-price">₹349 <del>₹430</del></span>
-              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="prod-cart-btn" onclick="addToCart('Vitamin D3 + K2 Capsules', 'Sun Pharma', 349, 'assets/prod_pills.webp')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Product 2 -->
+      
       <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="ayurveda" data-aos="fade-up" data-aos-delay="80">
         <div class="prod-card">
           <div class="prod-thumb">
-            <img src="assets/img_ashwagandha.png" class="prod-img" alt="Ashwagandha Stress Relief">
+            <img src="assets/prod_pills.webp" class="prod-img" alt="Ashwagandha Stress Relief">
             <div class="prod-overlay">
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              <button class="prod-action-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
             <span class="prod-badge new">New</span>
           </div>
@@ -810,21 +947,19 @@
             </div>
             <div class="prod-price-row">
               <span class="prod-price">₹279</span>
-              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="prod-cart-btn" onclick="addToCart('Ashwagandha Stress Relief', 'Himalaya', 279, 'assets/prod_pills.webp')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Product 3 -->
+      
       <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="skincare" data-aos="fade-up" data-aos-delay="160">
         <div class="prod-card">
           <div class="prod-thumb">
-            <img src="assets/img_skincare.png" class="prod-img" alt="Moisturising Cream SPF 50">
+            <img src="assets/prod_cream.webp" class="prod-img" alt="Moisturising Cream SPF 50">
             <div class="prod-overlay">
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              <button class="prod-action-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
             <span class="prod-badge sale">-15%</span>
           </div>
@@ -837,21 +972,19 @@
             </div>
             <div class="prod-price-row">
               <span class="prod-price">₹520 <del>₹610</del></span>
-              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="prod-cart-btn" onclick="addToCart('Moisturising Cream SPF 50', 'CeraVe', 520, 'assets/prod_cream.webp')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Product 4 -->
+      
       <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="medicines" data-aos="fade-up" data-aos-delay="240">
         <div class="prod-card">
           <div class="prod-thumb">
-            <img src="assets/img_paracetamol.png" class="prod-img" alt="Paracetamol 500mg Tablets">
+            <img src="assets/prod_pills.webp" class="prod-img" alt="Paracetamol 500mg Tablets">
             <div class="prod-overlay">
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              <button class="prod-action-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
           </div>
           <div class="prod-body">
@@ -863,21 +996,19 @@
             </div>
             <div class="prod-price-row">
               <span class="prod-price">₹45</span>
-              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="prod-cart-btn" onclick="addToCart('Paracetamol 500mg Tablets', 'GSK', 45, 'assets/prod_pills.webp')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Product 5 -->
+      
       <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="vitamins" data-aos="fade-up" data-aos-delay="0">
         <div class="prod-card">
           <div class="prod-thumb">
-            <img src="assets/img_omega3.png" class="prod-img" alt="Omega-3 Fish Oil 1000mg">
+            <img src="assets/prod_pills.webp" class="prod-img" alt="Omega-3 Fish Oil 1000mg">
             <div class="prod-overlay">
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              <button class="prod-action-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
             <span class="prod-badge">RX</span>
           </div>
@@ -890,21 +1021,19 @@
             </div>
             <div class="prod-price-row">
               <span class="prod-price">₹449</span>
-              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="prod-cart-btn" onclick="addToCart('Omega-3 Fish Oil 1000mg', 'Cipla', 449, 'assets/prod_pills.webp')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Product 6 -->
+      
       <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="skincare" data-aos="fade-up" data-aos-delay="80">
         <div class="prod-card">
           <div class="prod-thumb">
-            <img src="assets/img_serum.png" class="prod-img" alt="Hydrating Face Serum">
+            <img src="assets/prod_cream.webp" class="prod-img" alt="Hydrating Face Serum">
             <div class="prod-overlay">
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              <button class="prod-action-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
             <span class="prod-badge new">New</span>
           </div>
@@ -917,21 +1046,19 @@
             </div>
             <div class="prod-price-row">
               <span class="prod-price">₹650</span>
-              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="prod-cart-btn" onclick="addToCart('Hydrating Face Serum', 'Olay', 650, 'assets/prod_cream.webp')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Product 7 -->
+      
       <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="ayurveda" data-aos="fade-up" data-aos-delay="160">
         <div class="prod-card">
           <div class="prod-thumb">
-            <img src="assets/img_brahmi.png" class="prod-img" alt="Brahmi Brain Wellness">
+            <img src="assets/prod_pills.webp" class="prod-img" alt="Brahmi Brain Wellness">
             <div class="prod-overlay">
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              <button class="prod-action-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
             <span class="prod-badge sale">-25%</span>
           </div>
@@ -944,21 +1071,19 @@
             </div>
             <div class="prod-price-row">
               <span class="prod-price">₹199 <del>₹250</del></span>
-              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="prod-cart-btn" onclick="addToCart('Brahmi Brain Wellness', 'Patanjali', 199, 'assets/prod_pills.webp')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Product 8 -->
+      
       <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="medicines" data-aos="fade-up" data-aos-delay="240">
         <div class="prod-card">
           <div class="prod-thumb">
-            <img src="assets/img_paracetamol.png" class="prod-img" alt="Allergy Relief Cetirizine">
+            <img src="assets/prod_pills.webp" class="prod-img" alt="Allergy Relief Cetirizine">
             <div class="prod-overlay">
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
-              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              <button class="prod-action-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
             </div>
           </div>
           <div class="prod-body">
@@ -970,7 +1095,7 @@
             </div>
             <div class="prod-price-row">
               <span class="prod-price">₹85</span>
-              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              <button class="prod-cart-btn" onclick="addToCart('Allergy Relief Cetirizine', 'Cipla', 85, 'assets/prod_pills.webp')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
@@ -989,7 +1114,7 @@
      WHY CHOOSE STACKLY — dark bg + glass cards
 ════════════════════════════════════════════════ -->
 <section class="section" style="background:var(--clr-dark);position:relative;overflow:hidden;">
-  <!-- Background mesh -->
+  
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 15% 50%,rgba(10,124,94,0.2) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 85% 30%,rgba(0,212,160,0.1) 0%,transparent 55%);pointer-events:none;"></div>
 
   <div class="container" style="position:relative;z-index:2;">
@@ -1031,7 +1156,7 @@
     </div>
   </div>
 
-  <!-- Top wave -->
+  
   <div class="wave-sep" aria-hidden="true" style="position:absolute;top:0;left:0;width:100%;">
     <svg viewBox="0 0 1440 55" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="height:50px;">
       <path d="M0,20 C480,55 960,-10 1440,20 L1440,0 L0,0 Z" fill="#f0f6f4"/>
@@ -1174,7 +1299,7 @@
           </a>
         </div>
       </div>
-      <div class="cta-pill-float" aria-hidden="true" style="right: 5%; top: 40%; font-size: 0; pointer-events: none;"><img src="assets/capsule.png" alt="" style="width: 140px; height: 140px; opacity: 0.12; transform: rotate(25deg);"></div>
+      <div class="cta-pill-float" aria-hidden="true" style="right: 5%; top: 40%; font-size: 0; pointer-events: none;"><img src="assets/prod_pills.webp" alt="" style="width: 140px; height: 140px; opacity: 0.12; transform: rotate(25deg);"></div>
     </div>
   </div>
 </section>
@@ -1255,7 +1380,7 @@
     <div class="row g-4">
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
         <a href="blog.html" class="bl-card">
-          <div class="bl-thumb"><img src="assets/blog_medicines_summer.png" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Medicines"></div>
+          <div class="bl-thumb"><img src="assets/blog_medicines_summer.webp" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Medicines"></div>
           <div class="bl-body">
             <span class="bl-cat">Medicines</span>
             <div class="bl-title">How to Store Your Medicines Correctly This Summer</div>
@@ -1268,7 +1393,7 @@
       </div>
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <a href="blog.html" class="bl-card">
-          <div class="bl-thumb"><img src="assets/blog_ayurveda_immunity.png" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Ayurveda"></div>
+          <div class="bl-thumb"><img src="assets/blog_ayurveda_immunity.webp" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Ayurveda"></div>
           <div class="bl-body">
             <span class="bl-cat">Ayurveda</span>
             <div class="bl-title">5 Ayurvedic Herbs That Actually Work for Immunity</div>
@@ -1281,7 +1406,7 @@
       </div>
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
         <a href="blog.html" class="bl-card">
-          <div class="bl-thumb"><img src="assets/blog_blood_pressure.png" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Blood Pressure"></div>
+          <div class="bl-thumb"><img src="assets/blog_blood_pressure.webp" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Blood Pressure"></div>
           <div class="bl-body">
             <span class="bl-cat">Wellness</span>
             <div class="bl-title">Understanding Blood Pressure: What Your Numbers Mean</div>
@@ -1325,7 +1450,7 @@
   <div class="container">
     <div class="footer__grid">
 
-      <!-- Brand -->
+      
       <div class="footer__brand">
         <a href="index.html" class="footer__logo">
           <img src="assets/logo.webp" alt="Stackly"/>
@@ -1340,7 +1465,7 @@
         </div>
       </div>
 
-      <!-- Quick Links -->
+      
       <div>
         <div class="footer__col-title">Quick Links</div>
         <ul class="footer__links">
@@ -1353,20 +1478,20 @@
         </ul>
       </div>
 
-      <!-- Services -->
+      
       <div>
         <div class="footer__col-title">Services</div>
         <ul class="footer__links">
-          <li><a href="store.html"  class="footer__link">Prescription Refills</a></li>
-          <li><a href="store.html"  class="footer__link">Home Test Kits</a></li>
-          <li><a href="contact.html" class="footer__link">Doctor Consultation</a></li>
-          <li><a href="store.html"  class="footer__link">Auto Refill Plans</a></li>
-          <li><a href="store.html"  class="footer__link">Wellness Packages</a></li>
+          <li><a href="404.html"  class="footer__link">Prescription Refills</a></li>
+          <li><a href="404.html"  class="footer__link">Home Test Kits</a></li>
+          <li><a href="404.html" class="footer__link">Doctor Consultation</a></li>
+          <li><a href="404.html"  class="footer__link">Auto Refill Plans</a></li>
+          <li><a href="404.html"  class="footer__link">Wellness Packages</a></li>
           <li><a href="404.html"    class="footer__link">Bulk Orders</a></li>
         </ul>
       </div>
 
-      <!-- Address & Newsletter -->
+      
       <div>
         <div class="footer__col-title">Find Us</div>
         <div class="footer__address-item">
@@ -1393,7 +1518,7 @@
         </form>
       </div>
 
-    </div><!-- /footer__grid -->
+    </div>
   </div>
 
   <div class="container">
@@ -1410,32 +1535,40 @@
   </div>
 </footer>
 
-<!-- Back to top -->
+
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <i class="fa-solid fa-chevron-up"></i>
 </button>
 
-<!-- Toast container -->
+
 <div class="toast-container" id="toastContainer"></div>
 
 <!-- ════════════════════════════════════════════
      SCRIPTS
 ════════════════════════════════════════════ -->
-<!-- Bootstrap JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-<!-- AOS -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
 
+
 <script>
-/* ── DOMContentLoaded ── */
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── AOS Init ── */
+  
   if (typeof AOS !== 'undefined') {
-    AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
+    AOS.init({ 
+      duration: 700, 
+      once: true, 
+      offset: 60, 
+      easing: 'ease-out-cubic',
+      disable: 'mobile'
+    });
   }
 
-  /* ── Navbar scroll behaviour ── */
+  
   const navbar = document.getElementById('navbar');
   const onScroll = () => {
     if (window.scrollY > 50) {
@@ -1449,7 +1582,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ── Hamburger + Full-screen overlay ── */
+  
   const hamburger = document.getElementById('hamburger');
   const mobileOverlay = document.getElementById('mobileOverlay');
 
@@ -1462,10 +1595,11 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.add('is-open');
       hamburger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
   });
 
-  /* Close on ESC */
+  
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       closeMobileMenu();
@@ -1473,7 +1607,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Search overlay ── */
+  
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 992) {
+      closeMobileMenu();
+    }
+  });
+
+  
   const searchOverlay = document.getElementById('searchOverlay');
   const searchToggle  = document.getElementById('searchToggle');
   const searchClose   = document.getElementById('searchClose');
@@ -1482,6 +1623,7 @@ document.addEventListener('DOMContentLoaded', () => {
   searchToggle.addEventListener('click', () => {
     searchOverlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     setTimeout(() => searchInput.focus(), 300);
   });
   searchClose.addEventListener('click', closeSearch);
@@ -1497,7 +1639,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  /* ── Product filter tabs ── */
+  
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1505,15 +1647,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const filterValue = btn.getAttribute('data-filter');
       document.querySelectorAll('.top-pick-item').forEach(item => {
         if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-          item.style.display = 'block';
+          item.classList.remove('filter-hidden');
         } else {
-          item.style.display = 'none';
+          item.classList.add('filter-hidden');
         }
       });
+      
+      if (typeof AOS !== 'undefined') {
+        setTimeout(() => AOS.refresh(), 50);
+      }
     });
   });
 
-  /* ── Counter animation ── */
+  
   const counters = document.querySelectorAll('.counter');
   const countObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1535,14 +1681,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   counters.forEach(c => countObserver.observe(c));
 
-  /* ── Back to top ── */
+  
   const btt = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     btt.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
   btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* ── Scroll-triggered animations (supplement AOS) ── */
+  
   const animEls = document.querySelectorAll('.anim-fade-up,.anim-fade-left,.anim-fade-right,.anim-scale,.anim-flip');
   if (animEls.length) {
     const animObserver = new IntersectionObserver(entries => {
@@ -1551,14 +1697,14 @@ document.addEventListener('DOMContentLoaded', () => {
     animEls.forEach(el => animObserver.observe(el));
   }
 
-  /* ── Navbar active link ── */
+  
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.navbar__link').forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href') === currentPage) link.classList.add('active');
   });
 
-  /* ── Typewriter Effect ── */
+  
   const words = ["FRIENDS", "FAMILY", "RELATIVES", "EVERYONE"];
   let wordIndex = 0;
   let charIndex = 0;
@@ -1591,17 +1737,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-/* ── Global helpers ── */
+
 function closeMobileMenu() {
   document.getElementById('mobileOverlay').classList.remove('is-open');
   document.getElementById('hamburger').classList.remove('is-open');
   document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 }
 
 function closeSearch() {
   document.getElementById('searchOverlay').classList.remove('is-open');
   document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 }
 
 function showToast(msg, icon = 'fa-circle-check') {
@@ -1615,9 +1763,11 @@ function showToast(msg, icon = 'fa-circle-check') {
 
 function handleNewsletter(e) {
   e.preventDefault();
-  showToast('Subscribed successfully! 🎉', 'fa-circle-check');
-  e.target.reset();
+  window.location.href = '404.html';
 }
+
 </script>
+  <script src="cart.js?v=4"></script>
 </body>
 </html>
+

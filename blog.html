@@ -6,25 +6,25 @@
   <meta name="description" content="Stackly Health Blog — Expert tips on medicines, Ayurveda, nutrition, skincare &amp; wellness. Salem, Tamil Nadu."/>
   <title>Health Blog — Stackly Pharmacy</title>
 
-  <!-- Preconnect -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 
-  <!-- Fonts -->
+  
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800&display=swap"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
 
-  <!-- Bootstrap -->
+  
   <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-  <!-- Font Awesome -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
-  <!-- AOS -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
 
-  <!-- Shared style.css -->
+  
   <link rel="stylesheet" href="style.css"/>
 
   <style>
@@ -32,12 +32,15 @@
        BLOG-SPECIFIC STYLES
     ══════════════════════════════════════════════ */
 
-    /* ── Blog Page Header ── */
+    
     .blog-page-header {
-      background: linear-gradient(135deg, #0d1b2a 0%, #0a7c5e 60%, #065c45 100%);
-      padding: 6.5rem 0 2.5rem;
+      background-image: linear-gradient(to right, rgba(13,27,42,0.85), rgba(13,27,42,0.4)), url('assets/hero_blog.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 9rem 0 4rem;
       position: relative;
       overflow: hidden;
+      min-height: 450px;
     }
     .blog-page-header::before {
       content: '';
@@ -50,7 +53,7 @@
     }
     .blog-page-header__inner { position: relative; z-index: 2; }
 
-    /* ── Blog Toolbar ── */
+    
     .blog-toolbar {
       background: #fff;
       border-bottom: 1px solid rgba(10,124,94,0.1);
@@ -107,7 +110,7 @@
       margin-left: auto;
     }
 
-    /* ── Category Pills ── */
+    
     .cat-filter-bar {
       display: flex;
       gap: 0.5rem;
@@ -139,7 +142,7 @@
       border-color: #0a7c5e;
     }
 
-    /* ── Featured Post (big card) ── */
+    
     .featured-post {
       position: relative;
       border-radius: 1.75rem;
@@ -244,7 +247,7 @@
       flex-shrink: 0;
     }
 
-    /* ── Blog Card ── */
+    
     .bl-card {
       background: #fff;
       border-radius: 1.25rem;
@@ -265,14 +268,22 @@
     }
     .bl-thumb {
       overflow: hidden;
-      background: linear-gradient(135deg, #e8f9f4, #d0f0e8);
+      background: #f4f7f6;
       height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 5rem;
       position: relative;
       flex-shrink: 0;
+    }
+    .bl-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .bl-card:hover .bl-card-img {
+      transform: scale(1.08);
     }
     .bl-thumb-emoji {
       transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
@@ -337,7 +348,7 @@
     }
     .bl-card:hover .bl-read-more { gap: 0.55rem; }
 
-    /* ── Sidebar widgets ── */
+    
     .blog-sidebar { position: sticky; top: 130px; }
     .sidebar-widget {
       background: #fff;
@@ -357,7 +368,7 @@
     }
     .sidebar-widget__title i { color: #0a7c5e; }
 
-    /* Popular posts in sidebar */
+    
     .popular-post-item {
       display: flex;
       gap: 0.85rem;
@@ -389,7 +400,7 @@
     .popular-post-item:hover .popular-post-title { color: #0a7c5e; }
     .popular-post-date { font-size: 0.73rem; color: #687d94; }
 
-    /* Tags cloud */
+    
     .tags-cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .tag-item {
       padding: 0.3rem 0.8rem;
@@ -404,7 +415,7 @@
     }
     .tag-item:hover { background: #0a7c5e; color: #fff; border-color: #0a7c5e; }
 
-    /* Newsletter sidebar */
+    
     .newsletter-widget {
       background: linear-gradient(135deg, #0a7c5e, #00d4a0);
       border-radius: 1.25rem;
@@ -444,7 +455,7 @@
     .newsletter-form-mini input::placeholder { color: rgba(255,255,255,0.65); }
     .newsletter-form-mini input:focus { border-color: rgba(255,255,255,0.8); }
 
-    /* ── Article Read Modal ── */
+    
     .article-modal-backdrop {
       position: fixed; inset: 0;
       background: rgba(13,27,42,0.72);
@@ -553,7 +564,7 @@
     }
     .am-cta p { color: #fff; font-size: 0.9rem; font-weight: 600; margin: 0; flex: 1; }
 
-    /* ── Pagination ── */
+    
     .pagination-wrap {
       display: flex;
       align-items: center;
@@ -582,7 +593,7 @@
       border-color: #0a7c5e;
     }
 
-    /* ── Toast ── */
+    
     .toast-container {
       position: fixed;
       bottom: 1.5rem;
@@ -612,7 +623,7 @@
     .toast i { color: #00d4a0; }
     @keyframes toastIn { from { opacity:0; transform:translateY(20px) scale(0.9); } to { opacity:1; transform:none; } }
 
-    /* ── Back to top ── */
+    
     .back-to-top {
       position: fixed;
       bottom: 2rem; right: 1.5rem;
@@ -632,13 +643,21 @@
     .back-to-top.visible { opacity: 1; pointer-events: all; }
     .back-to-top:hover { transform: scale(1.12) translateY(-3px); }
 
-    /* ── Responsive ── */
+    
     @media (max-width: 991.98px) {
       .blog-sidebar-col { display: none; }
       .blog-content-col { flex: 0 0 100%; max-width: 100%; }
     }
     @media (max-width: 767.98px) {
-      .blog-page-header { padding: 5.5rem 0 1.75rem; }
+      .blog-page-header {
+      background-image: linear-gradient(to right, rgba(13,27,42,0.85), rgba(13,27,42,0.4)), url('assets/hero_blog.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 9rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 450px;
+    }
       .blog-toolbar { top: 58px; }
       .blog-toolbar__inner { gap: 0.5rem; }
       .blog-toolbar__search { max-width: 100%; min-width: 0; flex: 1 1 100%; order: 3; }
@@ -653,7 +672,7 @@
       .featured-post__excerpt { display: none; }
     }
 
-    /* Marquee reuse */
+    
     .marquee-track { display:flex; animation:marquee 30s linear infinite; width:max-content; }
     @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
   </style>
@@ -680,6 +699,15 @@
      MOBILE FULL-SCREEN OVERLAY MENU  (reusable)
 ════════════════════════════════════════════ -->
 <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-overlay__header">
+    <a href="index.html" class="mobile-overlay__logo" aria-label="Stackly Home">
+      <img src="assets/logo.webp" alt="Stackly"/>
+    </a>
+    <button class="mobile-overlay__close-btn" onclick="closeMobileMenu()" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
   <nav class="mobile-overlay__nav" aria-label="Mobile Navigation">
     <a href="index.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">Home</a>
     <a href="about.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">About</a>
@@ -715,10 +743,12 @@
     </nav>
 
     <div class="navbar__actions">
-      <button class="navbar__search-btn" id="searchToggle" aria-label="Search">
-        <i class="fa-solid fa-magnifying-glass"></i>
+
+      <button class="navbar__wishlist-btn" aria-label="Wishlist" onclick="openWishlist()" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.9);background:transparent;position:relative;">
+        <i class="fa-solid fa-heart"></i>
+        <span class="wishlist-count" style="display:flex;">0</span>
       </button>
-      <button class="navbar__cart-btn" aria-label="Cart" onclick="location.href='store.html'">
+      <button class="navbar__cart-btn" aria-label="Cart" onclick="openCart()">
         <i class="fa-solid fa-bag-shopping"></i>
         <span class="cart-count">0</span>
       </button>
@@ -799,39 +829,36 @@
   <div class="container">
     <div class="blog-toolbar__inner">
       <div class="blog-toolbar__search">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="blogSearchInput" placeholder="Search articles…" autocomplete="off" aria-label="Search articles"/>
+        <input type="text" id="blogSearchInput" placeholder="Search articles…" autocomplete="off" aria-label="Search articles" style="padding-left: 1.2rem;"/>
       </div>
+      <button class="cat-pill" onclick="resetFilters()" style="background:#e8f9f4;color:#0a7c5e;font-weight:600;padding:0.6rem 1.25rem;border-radius:9999px;border:none;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:0.4rem;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(10,124,94,0.1)';" onmouseout="this.style.transform='none';this.style.boxShadow='none';">
+        <i class="fa-solid fa-rotate-left"></i> Clear Filters
+      </button>
       <span class="results-count" id="resultsCount">Showing 12 articles</span>
     </div>
 
-    <!-- Category pills -->
+    
     <div class="cat-filter-bar mt-2" role="group" aria-label="Filter by category">
       <button class="cat-pill active" data-cat="all" onclick="filterCat(this,'all')">
         <i class="fa-solid fa-border-all"></i> All
       </button>
       <button class="cat-pill" data-cat="medicines" onclick="filterCat(this,'medicines')">
-        <img src="assets/capsule.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 4px;"> Medicines
+        💊 Medicines
       </button>
       <button class="cat-pill" data-cat="ayurveda" onclick="filterCat(this,'ayurveda')">
-        <img src="assets/prod_ayurveda.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 4px;"> Ayurveda
+        🌿 Ayurveda
       </button>
       <button class="cat-pill" data-cat="nutrition" onclick="filterCat(this,'nutrition')">
-        <img src="assets/cat_nutrition.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 4px;"> Nutrition
+        🥗 Nutrition
       </button>
       <button class="cat-pill" data-cat="skincare" onclick="filterCat(this,'skincare')">
-        <img src="assets/cat_skincare.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 4px;"> Skincare
+        ✨ Skincare
       </button>
       <button class="cat-pill" data-cat="wellness" onclick="filterCat(this,'wellness')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="url(#accentGrad)" stroke-width="2" style="width: 16px; height: 16px; margin-right: 4px;">
-          <path d="M4.82 7.26A7.5 7.5 0 0 0 12 14.5a7.5 7.5 0 0 0 7.18-7.24"/>
-          <path d="M12 14.5v5a2.5 2.5 0 0 0 5 0v-.5"/>
-          <path d="M20 3h-2v4h2zM6 3H4v4h2z"/>
-          <circle cx="17" cy="19" r="2" fill="#00d4a0"/>
-        </svg> Wellness
+        ❤️ Wellness
       </button>
       <button class="cat-pill" data-cat="fitness" onclick="filterCat(this,'fitness')">
-        <img src="assets/prod_protein.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 4px;"> Fitness
+        💪 Fitness
       </button>
     </div>
   </div>
@@ -844,20 +871,20 @@
 <div class="container" style="padding-top:2rem;padding-bottom:3rem;">
   <div class="row g-4">
 
-    <!-- ── MAIN CONTENT ── -->
+    
     <div class="col-lg-8 blog-content-col">
 
-      <!-- Featured Post -->
+      
       <div class="featured-post mb-4" data-aos="fade-up"
            onclick="openArticle(0)"
            aria-label="Read featured article">
         <div class="featured-post__thumb">
-          <img src="assets/capsule.png" class="bl-card-img" alt="" style="width: 140px; height: 140px; object-fit: contain; position: relative; z-index: 1;">
+          <img src="assets/blog_medicines_summer.webp" class="bl-card-img" alt="Medicines in Summer">
         </div>
         <div class="featured-post__overlay">
           <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;">
             <span class="featured-label"><i class="fa-solid fa-star"></i> Featured</span>
-            <span class="featured-post__cat">Medicines</span>
+            <span class="featured-post__cat">💊 Medicines</span>
           </div>
           <h2 class="featured-post__title">How to Store Your Medicines Correctly This Summer</h2>
           <p class="featured-post__excerpt">With temperatures soaring above 40°C, improper storage can silently reduce the potency of your medications. Here's everything you need to know.</p>
@@ -873,18 +900,18 @@
         </div>
       </div>
 
-      <!-- Blog Cards Grid -->
+      
       <div class="row g-3" id="blogGrid">
 
-        <!-- Article 1 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="ayurveda" data-aos="fade-up" data-aos-delay="0">
           <div class="bl-card" onclick="openArticle(1)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#e8f9f4,#c8eed8);">
-              <img src="assets/prod_ayurveda.png" class="bl-card-img" alt="Ayurveda">
+            <div class="bl-thumb">
+              <img src="assets/blog_ayurveda_immunity.webp" class="bl-card-img" alt="Ayurveda">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Ayurveda</span>
+              <span class="bl-cat">🌿 Ayurveda</span>
               <div class="bl-title">5 Ayurvedic Herbs That Actually Work for Immunity</div>
               <p class="bl-excerpt">We reviewed clinical studies to find the five herbs that genuinely deliver on immunity claims.</p>
               <div class="bl-meta">
@@ -896,17 +923,15 @@
           </div>
         </div>
 
-        <!-- Article 2 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="wellness" data-aos="fade-up" data-aos-delay="60">
           <div class="bl-card" onclick="openArticle(2)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">
-              <svg class="bl-card-img" viewBox="0 0 24 24" fill="none" stroke="url(#accentGrad)" stroke-width="2" style="width: 70px; height: 70px;">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-              </svg>
+            <div class="bl-thumb">
+              <img src="assets/blog_blood_pressure.webp" class="bl-card-img" alt="Wellness">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Wellness</span>
+              <span class="bl-cat">❤️ Wellness</span>
               <div class="bl-title">Understanding Blood Pressure: What Your Numbers Mean</div>
               <p class="bl-excerpt">Almost 1 in 3 adults in India has hypertension — but fewer than half know it.</p>
               <div class="bl-meta">
@@ -918,15 +943,15 @@
           </div>
         </div>
 
-        <!-- Article 3 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="nutrition" data-aos="fade-up" data-aos-delay="120">
           <div class="bl-card" onclick="openArticle(3)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">
-              <img src="assets/cat_nutrition.png" class="bl-card-img" alt="Nutrition">
+            <div class="bl-thumb">
+              <img src="assets/blog_iron_deficiency_1781259315603.webp" class="bl-card-img" alt="Nutrition">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Nutrition</span>
+              <span class="bl-cat">🥗 Nutrition</span>
               <div class="bl-title">The Iron Deficiency Guide for Indian Women</div>
               <p class="bl-excerpt">Fatigue is often dismissed as stress when the real culprit is low iron. Here's what to do.</p>
               <div class="bl-meta">
@@ -938,15 +963,15 @@
           </div>
         </div>
 
-        <!-- Article 4 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="skincare" data-aos="fade-up" data-aos-delay="0">
           <div class="bl-card" onclick="openArticle(4)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#fff8e1,#ffecb3);">
-              <img src="assets/prod_skincare.png" class="bl-card-img" alt="Skincare">
+            <div class="bl-thumb">
+              <img src="assets/blog_sunscreen_1781259326329.webp" class="bl-card-img" alt="Skincare">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Skincare</span>
+              <span class="bl-cat">✨ Skincare</span>
               <div class="bl-title">Sunscreen in India: Why SPF 50 Is the Minimum</div>
               <p class="bl-excerpt">India's UV index stays high year-round. Here's the science behind choosing the right SPF.</p>
               <div class="bl-meta">
@@ -958,15 +983,15 @@
           </div>
         </div>
 
-        <!-- Article 5 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="medicines" data-aos="fade-up" data-aos-delay="60">
           <div class="bl-card" onclick="openArticle(5)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb);">
-              <img src="assets/capsule.png" class="bl-card-img" alt="Medicines">
+            <div class="bl-thumb">
+              <img src="assets/blog_generic_medicines_1781259339793.webp" class="bl-card-img" alt="Medicines">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Medicines</span>
+              <span class="bl-cat">💊 Medicines</span>
               <div class="bl-title">Generic vs. Branded Medicines: The Truth</div>
               <p class="bl-excerpt">Are generics inferior? Our pharmacists break down the facts — including when it matters.</p>
               <div class="bl-meta">
@@ -978,15 +1003,15 @@
           </div>
         </div>
 
-        <!-- Article 6 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="fitness" data-aos="fade-up" data-aos-delay="120">
           <div class="bl-card" onclick="openArticle(6)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">
-              <img src="assets/prod_protein.png" class="bl-card-img" alt="Fitness">
+            <div class="bl-thumb">
+              <img src="assets/blog_creatine_1781259352353.webp" class="bl-card-img" alt="Fitness">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Fitness</span>
+              <span class="bl-cat">💪 Fitness</span>
               <div class="bl-title">Creatine: The Most Researched Supplement Explained</div>
               <p class="bl-excerpt">500+ studies, massive myths. Our pharmacist breaks down what the science actually says.</p>
               <div class="bl-meta">
@@ -998,15 +1023,15 @@
           </div>
         </div>
 
-        <!-- Article 7 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="wellness" data-aos="fade-up" data-aos-delay="0">
           <div class="bl-card" onclick="openArticle(7)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#e8eaf6,#c5cae9);">
-              <img src="assets/prod_firstaid.png" class="bl-card-img" alt="Wellness">
+            <div class="bl-thumb">
+              <img src="assets/blog_diabetes_1781259363425.webp" class="bl-card-img" alt="Wellness">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Wellness</span>
+              <span class="bl-cat">❤️ Wellness</span>
               <div class="bl-title">Diabetes Management: Daily Habits That Make a Difference</div>
               <p class="bl-excerpt">Daily habits matter as much as medicine. Here are the evidence-backed ones to adopt.</p>
               <div class="bl-meta">
@@ -1018,15 +1043,15 @@
           </div>
         </div>
 
-        <!-- Article 8 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="nutrition" data-aos="fade-up" data-aos-delay="60">
           <div class="bl-card" onclick="openArticle(8)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);">
-              <img src="assets/cat_nutrition.png" class="bl-card-img" alt="Nutrition">
+            <div class="bl-thumb">
+              <img src="assets/blog_vegetarian_protein_1781259375015.webp" class="bl-card-img" alt="Nutrition">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Nutrition</span>
+              <span class="bl-cat">🥗 Nutrition</span>
               <div class="bl-title">Protein for Vegetarians: Getting Enough on an Indian Diet</div>
               <p class="bl-excerpt">The best vegetarian protein sources and how to combine them for complete nutrition.</p>
               <div class="bl-meta">
@@ -1038,15 +1063,15 @@
           </div>
         </div>
 
-        <!-- Article 9 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="medicines" data-aos="fade-up" data-aos-delay="120">
           <div class="bl-card" onclick="openArticle(9)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">
-              <img src="assets/pill.png" class="bl-card-img" alt="Medicines">
+            <div class="bl-thumb">
+              <img src="assets/blog_antibiotics_1781259388114.webp" class="bl-card-img" alt="Medicines">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Medicines</span>
+              <span class="bl-cat">💊 Medicines</span>
               <div class="bl-title">Antibiotic Resistance: Why You Should Never Self-Medicate</div>
               <p class="bl-excerpt">India is one of the world's largest antibiotic consumers. Here's why that's a crisis.</p>
               <div class="bl-meta">
@@ -1058,15 +1083,15 @@
           </div>
         </div>
 
-        <!-- Article 10 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="ayurveda" data-aos="fade-up" data-aos-delay="0">
           <div class="bl-card" onclick="openArticle(10)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#e8f5e9,#dcedc8);">
-              <img src="assets/cat_vitamin.png" class="bl-card-img" alt="Ayurveda">
+            <div class="bl-thumb">
+              <img src="assets/blog_triphala_1781259401028.webp" class="bl-card-img" alt="Ayurveda">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Ayurveda</span>
+              <span class="bl-cat">🌿 Ayurveda</span>
               <div class="bl-title">Triphala: Ancient Remedy, Modern Evidence</div>
               <p class="bl-excerpt">Modern clinical trials are validating what Ayurveda has known for centuries about this formulation.</p>
               <div class="bl-meta">
@@ -1078,15 +1103,15 @@
           </div>
         </div>
 
-        <!-- Article 11 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="skincare" data-aos="fade-up" data-aos-delay="60">
           <div class="bl-card" onclick="openArticle(11)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#fdf3e3,#fde8cc);">
-              <img src="assets/cat_skincare.png" class="bl-card-img" alt="Skincare">
+            <div class="bl-thumb">
+              <img src="assets/blog_skincare_routine_1781259414951.webp" class="bl-card-img" alt="Skincare">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Skincare</span>
+              <span class="bl-cat">✨ Skincare</span>
               <div class="bl-title">Building a Minimal Skincare Routine for Indian Skin</div>
               <p class="bl-excerpt">A 3-step routine done consistently beats a 10-step one done irregularly. Here's the framework.</p>
               <div class="bl-meta">
@@ -1098,15 +1123,15 @@
           </div>
         </div>
 
-        <!-- Article 12 -->
+        
         <div class="col-sm-6 col-md-4 blog-col" data-cat="fitness" data-aos="fade-up" data-aos-delay="120">
           <div class="bl-card" onclick="openArticle(12)"
             aria-label="Read article">
-            <div class="bl-thumb" style="background:linear-gradient(135deg,#e8eaf6,#c5cae9);">
-              <img src="assets/pill.png" class="bl-card-img" alt="Fitness">
+            <div class="bl-thumb">
+              <img src="assets/blog_sleep_recovery_1781259425923.webp" class="bl-card-img" alt="Fitness">
             </div>
             <div class="bl-body">
-              <span class="bl-cat">Fitness</span>
+              <span class="bl-cat">💪 Fitness</span>
               <div class="bl-title">Sleep &amp; Recovery: The Underrated Performance Hack</div>
               <p class="bl-excerpt">Sleep is the most potent performance enhancer available — and it is free. Here's the science.</p>
               <div class="bl-meta">
@@ -1118,9 +1143,9 @@
           </div>
         </div>
 
-      </div><!-- /blog grid -->
+      </div>
 
-      <!-- No results -->
+      
       <div id="noResults" style="display:none;text-align:center;padding:3rem 0;">
         <div style="font-size:4rem;margin-bottom:1rem;">🔍</div>
         <h3 style="font-family:var(--font-display);font-weight:700;color:#0d1b2a;margin-bottom:0.5rem;">No articles found</h3>
@@ -1128,24 +1153,24 @@
         <button class="btn btn-primary mt-3" onclick="resetFilters()"><i class="fa-solid fa-rotate-left"></i> Reset Filters</button>
       </div>
 
-      <!-- Pagination -->
+      
       <nav class="pagination-wrap" aria-label="Pagination">
-        <a href="blog.html" class="pag-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></a>
-        <a href="blog.html" class="pag-btn active" aria-current="page">1</a>
-        <a href="blog.html" class="pag-btn">2</a>
-        <a href="blog.html" class="pag-btn">3</a>
-        <span class="pag-btn" style="cursor:default;pointer-events:none;">…</span>
-        <a href="blog.html" class="pag-btn">6</a>
-        <a href="blog.html" class="pag-btn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></a>
+        <a href="404.html" class="pag-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></a>
+        <a href="404.html" class="pag-btn active" aria-current="page">1</a>
+        <a href="404.html" class="pag-btn">2</a>
+        <a href="404.html" class="pag-btn">3</a>
+        <a href="404.html" class="pag-btn" style="cursor:default;">...</a>
+        <a href="404.html" class="pag-btn">6</a>
+        <a href="404.html" class="pag-btn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></a>
       </nav>
 
-    </div><!-- /blog content col -->
+    </div>
 
-    <!-- ── SIDEBAR ── -->
+    
     <div class="col-lg-4 blog-sidebar-col">
       <aside class="blog-sidebar" aria-label="Blog sidebar">
 
-        <!-- Newsletter -->
+        
         <div class="newsletter-widget">
           <i class="fa-solid fa-envelope-open-text" style="font-size:2rem;color:#fff;opacity:0.9;margin-bottom:0.65rem;display:block;"></i>
           <h5>Get Weekly Health Tips</h5>
@@ -1158,12 +1183,12 @@
           </form>
         </div>
 
-        <!-- Popular Posts -->
+        
         <div class="sidebar-widget">
           <div class="sidebar-widget__title"><i class="fa-solid fa-fire"></i> Popular Articles</div>
           <div>
             <div class="popular-post-item" onclick="openArticle(0)">
-              <div class="popular-post-thumb"><img src="assets/capsule.png" style="width:28px;height:28px;object-fit:contain;" alt=""></div>
+              <div class="popular-post-thumb"><img src="assets/blog_medicines_summer.webp" style="width:100%;height:100%;object-fit:cover;border-radius:0.65rem;" alt=""></div>
               <div>
                 <div class="popular-post-title">How to Store Your Medicines Correctly This Summer</div>
                 <div class="popular-post-date"><i class="fa-regular fa-eye" style="color:#0a7c5e;font-size:0.7rem;"></i> 1.4K views · June 5</div>
@@ -1171,9 +1196,7 @@
             </div>
             <div class="popular-post-item" onclick="openArticle(2)">
               <div class="popular-post-thumb">
-                <svg viewBox="0 0 24 24" fill="none" stroke="url(#accentGrad)" stroke-width="2" style="width:28px;height:28px;">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>
+                <img src="assets/blog_blood_pressure.webp" style="width:100%;height:100%;object-fit:cover;border-radius:0.65rem;" alt="">
               </div>
               <div>
                 <div class="popular-post-title">Understanding Blood Pressure: What Your Numbers Mean</div>
@@ -1181,14 +1204,14 @@
               </div>
             </div>
             <div class="popular-post-item" onclick="openArticle(9)">
-              <div class="popular-post-thumb"><img src="assets/pill.png" style="width:28px;height:28px;object-fit:contain;" alt=""></div>
+              <div class="popular-post-thumb"><img src="assets/blog_antibiotics_1781259388114.webp" style="width:100%;height:100%;object-fit:cover;border-radius:0.65rem;" alt=""></div>
               <div>
                 <div class="popular-post-title">Antibiotic Resistance: Why You Should Never Self-Medicate</div>
                 <div class="popular-post-date"><i class="fa-regular fa-eye" style="color:#0a7c5e;font-size:0.7rem;"></i> 980 views · March 15</div>
               </div>
             </div>
             <div class="popular-post-item" onclick="openArticle(1)">
-              <div class="popular-post-thumb"><img src="assets/prod_ayurveda.png" style="width:28px;height:28px;object-fit:contain;" alt=""></div>
+              <div class="popular-post-thumb"><img src="assets/blog_ayurveda_immunity.webp" style="width:100%;height:100%;object-fit:cover;border-radius:0.65rem;" alt=""></div>
               <div>
                 <div class="popular-post-title">5 Ayurvedic Herbs That Actually Work for Immunity</div>
                 <div class="popular-post-date"><i class="fa-regular fa-eye" style="color:#0a7c5e;font-size:0.7rem;"></i> 856 views · May 28</div>
@@ -1197,45 +1220,38 @@
           </div>
         </div>
 
-        <!-- Categories widget -->
+        
         <div class="sidebar-widget">
           <div class="sidebar-widget__title"><i class="fa-solid fa-folder-open"></i> Categories</div>
           <div style="display:flex;flex-direction:column;gap:0.5rem;">
             <div onclick="filterCatSidebar('medicines')" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0.45rem 0;border-bottom:1px solid rgba(10,124,94,0.07);transition:color 0.2s;" class="sidebar-cat-item">
-              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;"><img src="assets/capsule.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 6px;"> Medicines</span>
+              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;">💊 Medicines</span>
               <span style="font-size:0.74rem;background:#e8f9f4;color:#0a7c5e;padding:0.1rem 0.5rem;border-radius:9999px;font-weight:700;">3</span>
             </div>
             <div onclick="filterCatSidebar('ayurveda')" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0.45rem 0;border-bottom:1px solid rgba(10,124,94,0.07);transition:color 0.2s;" class="sidebar-cat-item">
-              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;"><img src="assets/prod_ayurveda.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 6px;"> Ayurveda</span>
+              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;">🌿 Ayurveda</span>
               <span style="font-size:0.74rem;background:#e8f9f4;color:#0a7c5e;padding:0.1rem 0.5rem;border-radius:9999px;font-weight:700;">2</span>
             </div>
             <div onclick="filterCatSidebar('nutrition')" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0.45rem 0;border-bottom:1px solid rgba(10,124,94,0.07);transition:color 0.2s;" class="sidebar-cat-item">
-              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;"><img src="assets/cat_nutrition.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 6px;"> Nutrition</span>
+              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;">🥗 Nutrition</span>
               <span style="font-size:0.74rem;background:#e8f9f4;color:#0a7c5e;padding:0.1rem 0.5rem;border-radius:9999px;font-weight:700;">2</span>
             </div>
             <div onclick="filterCatSidebar('skincare')" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0.45rem 0;border-bottom:1px solid rgba(10,124,94,0.07);transition:color 0.2s;" class="sidebar-cat-item">
-              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;"><img src="assets/cat_skincare.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 6px;"> Skincare</span>
+              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;">✨ Skincare</span>
               <span style="font-size:0.74rem;background:#e8f9f4;color:#0a7c5e;padding:0.1rem 0.5rem;border-radius:9999px;font-weight:700;">2</span>
             </div>
             <div onclick="filterCatSidebar('wellness')" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0.45rem 0;border-bottom:1px solid rgba(10,124,94,0.07);transition:color 0.2s;" class="sidebar-cat-item">
-              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="url(#accentGrad)" stroke-width="2" style="width: 16px; height: 16px; margin-right: 6px;">
-                  <path d="M4.82 7.26A7.5 7.5 0 0 0 12 14.5a7.5 7.5 0 0 0 7.18-7.24"/>
-                  <path d="M12 14.5v5a2.5 2.5 0 0 0 5 0v-.5"/>
-                  <path d="M20 3h-2v4h2zM6 3H4v4h2z"/>
-                  <circle cx="17" cy="19" r="2" fill="#00d4a0"/>
-                </svg> Wellness
-              </span>
+              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;">❤️ Wellness</span>
               <span style="font-size:0.74rem;background:#e8f9f4;color:#0a7c5e;padding:0.1rem 0.5rem;border-radius:9999px;font-weight:700;">2</span>
             </div>
             <div onclick="filterCatSidebar('fitness')" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0.45rem 0;transition:color 0.2s;" class="sidebar-cat-item">
-              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;"><img src="assets/prod_protein.png" alt="" style="width: 16px; height: 16px; object-fit: contain; margin-right: 6px;"> Fitness</span>
+              <span style="font-size:0.88rem;font-weight:600;color:#2e4057;display:flex;align-items:center;">💪 Fitness</span>
               <span style="font-size:0.74rem;background:#e8f9f4;color:#0a7c5e;padding:0.1rem 0.5rem;border-radius:9999px;font-weight:700;">2</span>
             </div>
           </div>
         </div>
 
-        <!-- Tags -->
+        
         <div class="sidebar-widget">
           <div class="sidebar-widget__title"><i class="fa-solid fa-tags"></i> Popular Tags</div>
           <div class="tags-cloud">
@@ -1254,7 +1270,7 @@
           </div>
         </div>
 
-        <!-- Shop CTA -->
+        
         <div style="background:linear-gradient(135deg,#0d1b2a,#0a7c5e);border-radius:1.25rem;padding:1.5rem;text-align:center;">
           <i class="fa-solid fa-store" style="font-size:1.8rem;color:#00d4a0;margin-bottom:0.65rem;display:block;"></i>
           <div style="font-family:var(--font-display);font-weight:800;color:#fff;font-size:1rem;margin-bottom:0.4rem;">Browse Our Store</div>
@@ -1265,10 +1281,10 @@
         </div>
 
       </aside>
-    </div><!-- /sidebar col -->
+    </div>
 
-  </div><!-- /row -->
-</div><!-- /container -->
+  </div>
+</div>
 </main>
 
 <!-- ════════════════════════════════════════════
@@ -1307,11 +1323,11 @@
       <div>
         <div class="footer__col-title">Services</div>
         <ul class="footer__links">
-          <li><a href="store.html"   class="footer__link">Prescription Refills</a></li>
-          <li><a href="store.html"   class="footer__link">Home Test Kits</a></li>
-          <li><a href="contact.html" class="footer__link">Doctor Consultation</a></li>
-          <li><a href="store.html"   class="footer__link">Auto Refill Plans</a></li>
-          <li><a href="store.html"   class="footer__link">Wellness Packages</a></li>
+          <li><a href="404.html"   class="footer__link">Prescription Refills</a></li>
+          <li><a href="404.html"   class="footer__link">Home Test Kits</a></li>
+          <li><a href="404.html" class="footer__link">Doctor Consultation</a></li>
+          <li><a href="404.html"   class="footer__link">Auto Refill Plans</a></li>
+          <li><a href="404.html"   class="footer__link">Wellness Packages</a></li>
           <li><a href="404.html"     class="footer__link">Bulk Orders</a></li>
         </ul>
       </div>
@@ -1358,12 +1374,12 @@
   </div>
 </footer>
 
-<!-- Back to top -->
+
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <i class="fa-solid fa-chevron-up"></i>
 </button>
 
-<!-- Toast container -->
+
 <div class="toast-container" id="toastContainer"></div>
 
 <!-- ════════════════════════════════════════════
@@ -1404,7 +1420,7 @@ const articlesData = [
   {
     title: "How to Store Your Medicines Correctly This Summer",
     cat: "Medicines",
-    image: "assets/capsule.png",
+    image: "assets/blog_medicines_summer.webp",
     authorName: "Dr. Priya Ramesh",
     authorInitials: "PR",
     date: "June 5, 2026",
@@ -1414,7 +1430,7 @@ const articlesData = [
   {
     title: "5 Ayurvedic Herbs That Actually Work for Immunity",
     cat: "Ayurveda",
-    image: "assets/prod_ayurveda.png",
+    image: "assets/blog_ayurveda_immunity.webp",
     authorName: "Karthik Velu",
     authorInitials: "KV",
     date: "May 28, 2026",
@@ -1424,7 +1440,7 @@ const articlesData = [
   {
     title: "Understanding Blood Pressure: What Your Numbers Mean",
     cat: "Wellness",
-    image: `<svg class="bl-card-img" viewBox="0 0 24 24" fill="none" stroke="url(#accentGrad)" stroke-width="2" style="width: 70px; height: 70px;"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+    image: "assets/blog_blood_pressure.webp",
     authorName: "Dr. Meena Subramanian",
     authorInitials: "MS",
     date: "May 18, 2026",
@@ -1434,7 +1450,7 @@ const articlesData = [
   {
     title: "The Iron Deficiency Guide for Indian Women",
     cat: "Nutrition",
-    image: "assets/cat_nutrition.png",
+    image: "assets/blog_iron_deficiency_1781259315603.webp",
     authorName: "Dr. Priya Ramesh",
     authorInitials: "PR",
     date: "May 10, 2026",
@@ -1444,7 +1460,7 @@ const articlesData = [
   {
     title: "Sunscreen in India: Why SPF 50 Is the Minimum",
     cat: "Skincare",
-    image: "assets/prod_skincare.png",
+    image: "assets/blog_sunscreen_1781259326329.webp",
     authorName: "Kavitha Nair",
     authorInitials: "KN",
     date: "April 29, 2026",
@@ -1454,7 +1470,7 @@ const articlesData = [
   {
     title: "Generic vs. Branded Medicines: The Truth",
     cat: "Medicines",
-    image: "assets/capsule.png",
+    image: "assets/blog_generic_medicines_1781259339793.webp",
     authorName: "Dr. Meena Subramanian",
     authorInitials: "MS",
     date: "April 20, 2026",
@@ -1464,7 +1480,7 @@ const articlesData = [
   {
     title: "Creatine: The Most Researched Supplement Explained",
     cat: "Fitness",
-    image: "assets/prod_protein.png",
+    image: "assets/blog_creatine_1781259352353.webp",
     authorName: "Karthik Velu",
     authorInitials: "KV",
     date: "April 12, 2026",
@@ -1474,7 +1490,7 @@ const articlesData = [
   {
     title: "Diabetes Management: Daily Habits That Make a Difference",
     cat: "Wellness",
-    image: "assets/prod_firstaid.png",
+    image: "assets/blog_diabetes_1781259363425.webp",
     authorName: "Dr. Priya Ramesh",
     authorInitials: "PR",
     date: "April 5, 2026",
@@ -1484,7 +1500,7 @@ const articlesData = [
   {
     title: "Protein for Vegetarians: Getting Enough on an Indian Diet",
     cat: "Nutrition",
-    image: "assets/cat_nutrition.png",
+    image: "assets/blog_vegetarian_protein_1781259375015.webp",
     authorName: "Karthik Velu",
     authorInitials: "KV",
     date: "March 28, 2026",
@@ -1494,7 +1510,7 @@ const articlesData = [
   {
     title: "Antibiotic Resistance: Why You Should Never Self-Medicate",
     cat: "Medicines",
-    image: "assets/pill.png",
+    image: "assets/blog_antibiotics_1781259388114.webp",
     authorName: "Dr. Meena Subramanian",
     authorInitials: "MS",
     date: "March 15, 2026",
@@ -1504,7 +1520,7 @@ const articlesData = [
   {
     title: "Triphala: Ancient Remedy, Modern Evidence",
     cat: "Ayurveda",
-    image: "assets/cat_vitamin.png",
+    image: "assets/blog_triphala_1781259401028.webp",
     authorName: "Karthik Velu",
     authorInitials: "KV",
     date: "March 8, 2026",
@@ -1514,7 +1530,7 @@ const articlesData = [
   {
     title: "Building a Minimal Skincare Routine for Indian Skin",
     cat: "Skincare",
-    image: "assets/cat_skincare.png",
+    image: "assets/blog_skincare_routine_1781259414951.webp",
     authorName: "Kavitha Nair",
     authorInitials: "KN",
     date: "February 22, 2026",
@@ -1524,7 +1540,7 @@ const articlesData = [
   {
     title: "Sleep & Recovery: The Underrated Performance Hack",
     cat: "Fitness",
-    image: "assets/pill.png",
+    image: "assets/blog_sleep_recovery_1781259425923.webp",
     authorName: "Dr. Priya Ramesh",
     authorInitials: "PR",
     date: "February 14, 2026",
@@ -1535,14 +1551,14 @@ const articlesData = [
 
 let currentCat = 'all';
 
-/* ── DOMContentLoaded ── */
+
 document.addEventListener('DOMContentLoaded', () => {
 
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 600, once: true, offset: 40, easing: 'ease-out-cubic' });
   }
 
-  /* Navbar scroll */
+  
   const navbar = document.getElementById('navbar');
   const onScroll = () => {
     navbar.classList.toggle('scrolled', window.scrollY > 10);
@@ -1550,7 +1566,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Hamburger */
+  
   const hamburger = document.getElementById('hamburger');
   const mobileOverlay = document.getElementById('mobileOverlay');
   hamburger.addEventListener('click', () => {
@@ -1561,31 +1577,40 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.add('is-open');
       hamburger.setAttribute('aria-expanded','true');
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
   });
 
-  /* ESC */
+  
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { closeMobileMenu(); closeSearch(); closeArticleModal(); }
   });
 
-  /* Search overlay */
+  
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 992) {
+      closeMobileMenu();
+    }
+  });
+
+  
   const searchOverlay = document.getElementById('searchOverlay');
   const searchToggle  = document.getElementById('searchToggle');
   const searchCloseBtn = document.getElementById('searchClose');
   const searchInputEl  = document.getElementById('searchInput');
-  searchToggle.addEventListener('click', () => {
+  searchToggle?.addEventListener('click', () => {
     searchOverlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     setTimeout(() => searchInputEl.focus(), 300);
   });
-  searchCloseBtn.addEventListener('click', closeSearch);
-  searchOverlay.addEventListener('click', e => { if (e.target === searchOverlay) closeSearch(); });
-  searchInputEl.addEventListener('keydown', e => {
+  searchCloseBtn?.addEventListener('click', closeSearch);
+  searchOverlay?.addEventListener('click', e => { if (e.target === searchOverlay) closeSearch(); });
+  searchInputEl?.addEventListener('keydown', e => {
     if (e.key === 'Enter') { closeSearch(); applySearch(searchInputEl.value); }
   });
 
-  /* Blog inline search */
+  
   const blogSearch = document.getElementById('blogSearchInput');
   let st;
   blogSearch.addEventListener('input', () => {
@@ -1593,40 +1618,42 @@ document.addEventListener('DOMContentLoaded', () => {
     st = setTimeout(() => applySearch(blogSearch.value), 300);
   });
 
-  /* Back to top */
+  
   const btt = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     btt.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
   btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* Active nav */
+  
   document.querySelectorAll('.navbar__link').forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href') === 'blog.html') link.classList.add('active');
   });
 
-  /* Sidebar cat hover */
+  
   document.querySelectorAll('.sidebar-cat-item').forEach(el => {
     el.addEventListener('mouseenter', () => el.querySelector('span').style.color = '#0a7c5e');
     el.addEventListener('mouseleave', () => el.querySelector('span').style.color = '#2e4057');
   });
 
-  updateResultsCount();
+  applyFilters();
 });
 
-/* ══ HELPERS ══ */
+
 
 function closeMobileMenu() {
   document.getElementById('mobileOverlay').classList.remove('is-open');
   document.getElementById('hamburger').classList.remove('is-open');
   document.getElementById('hamburger').setAttribute('aria-expanded','false');
   document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 }
 
 function closeSearch() {
   document.getElementById('searchOverlay').classList.remove('is-open');
   document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 }
 
 function showToast(msg, icon = 'fa-circle-check') {
@@ -1645,16 +1672,19 @@ function showToast(msg, icon = 'fa-circle-check') {
 
 function handleNewsletter(e) {
   e.preventDefault();
-  showToast('Subscribed successfully! 🎉','fa-circle-check');
-  e.target.reset();
+  window.location.href = '404.html';
 }
 
-/* ══ CATEGORY FILTER ══ */
+
+
+let blogCurrentPage = 1;
+const blogItemsPerPage = 6;
 
 function filterCat(btn, cat) {
   currentCat = cat;
   document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
+  blogCurrentPage = 1;
   applyFilters();
 }
 
@@ -1663,6 +1693,7 @@ function filterCatSidebar(cat) {
   document.querySelectorAll('.cat-pill').forEach(p => {
     p.classList.toggle('active', p.dataset.cat === cat);
   });
+  blogCurrentPage = 1;
   applyFilters();
   window.scrollTo({ top: document.getElementById('blogGrid').offsetTop - 140, behavior: 'smooth' });
 }
@@ -1671,26 +1702,34 @@ function searchTag(term) {
   document.getElementById('blogSearchInput').value = term;
   currentCat = 'all';
   document.querySelectorAll('.cat-pill').forEach(p => p.classList.toggle('active', p.dataset.cat === 'all'));
+  blogCurrentPage = 1;
   applyFilters(term);
   window.scrollTo({ top: document.getElementById('blogGrid').offsetTop - 140, behavior: 'smooth' });
 }
 
 function applySearch(term) {
+  blogCurrentPage = 1;
   applyFilters(term);
 }
 
 function applyFilters(searchTerm) {
   const term = (searchTerm || document.getElementById('blogSearchInput').value || '').toLowerCase().trim();
-  const cols = document.querySelectorAll('.blog-col');
+  const cols = Array.from(document.querySelectorAll('.blog-col'));
   let shown = 0;
+  
   cols.forEach(col => {
     const cat = col.dataset.cat || '';
     const text = col.textContent.toLowerCase();
     const catMatch = currentCat === 'all' || cat === currentCat;
     const searchMatch = !term || text.includes(term);
-    col.style.display = catMatch && searchMatch ? '' : 'none';
-    if (catMatch && searchMatch) shown++;
+    if (catMatch && searchMatch) {
+      col.style.display = '';
+      shown++;
+    } else {
+      col.style.display = 'none';
+    }
   });
+
   document.getElementById('noResults').style.display = shown === 0 ? 'block' : 'none';
   updateResultsCount(shown);
 }
@@ -1699,9 +1738,8 @@ function resetFilters() {
   currentCat = 'all';
   document.querySelectorAll('.cat-pill').forEach(p => p.classList.toggle('active', p.dataset.cat === 'all'));
   document.getElementById('blogSearchInput').value = '';
-  document.querySelectorAll('.blog-col').forEach(c => c.style.display = '');
-  document.getElementById('noResults').style.display = 'none';
-  updateResultsCount();
+  blogCurrentPage = 1;
+  applyFilters();
 }
 
 function updateResultsCount(count) {
@@ -1709,7 +1747,8 @@ function updateResultsCount(count) {
   document.getElementById('resultsCount').textContent = `Showing ${n} article${n !== 1 ? 's' : ''}`;
 }
 
-/* ══ ARTICLE MODAL ══ */
+
+
 
 function openArticle(index) {
   const art = articlesData[index];
@@ -1718,7 +1757,7 @@ function openArticle(index) {
   if (art.image.startsWith('<svg') || art.image.includes('svg')) {
     thumbEl.innerHTML = art.image;
   } else {
-    thumbEl.innerHTML = `<img src="${art.image}" class="bl-card-img" style="width:120px;height:120px;object-fit:contain;" alt="${art.title}">`;
+    thumbEl.innerHTML = `<img src="${art.image}" class="bl-card-img" style="width:100%;height:100%;object-fit:cover;" alt="${art.title}">`;
   }
   document.getElementById('amCat').textContent = art.cat;
   document.getElementById('amTitle').textContent = art.title;
@@ -1732,6 +1771,7 @@ function openArticle(index) {
   document.getElementById('amContent').innerHTML = art.content;
   document.getElementById('articleBackdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
   document.getElementById('articleModal').scrollTop = 0;
 }
 
@@ -1739,8 +1779,10 @@ function closeArticleModal(e) {
   if (!e || e.target === document.getElementById('articleBackdrop') || e.currentTarget.classList.contains('am-close')) {
     document.getElementById('articleBackdrop').classList.remove('open');
     document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 }
 </script>
+  <script src="cart.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <meta name="description" content="Sign In to Stackly Pharmacy" />
   <meta name="theme-color" content="#0a7c5e" />
   <title>Sign In - Stackly</title>
-  <link rel="icon" href="assets/top-logo.webp" type="image/webp" />
+  <link rel="icon" href="assets/top-logo.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,7 +38,7 @@
     .signin-visual__bg {
       position: absolute;
       inset: 0;
-      background: url('assets/signin_bg.jpg') center/cover no-repeat !important;
+      background: url('assets/signin_bg.webp') center/cover no-repeat !important;
       opacity: 0.8;
       z-index: 0;
     }
@@ -417,7 +417,7 @@
       color: var(--clr-primary);
     }
 
-    /* Hide Edge's native reveal/clear eye icon in password fields */
+    
     input[type="password"]::-ms-reveal,
     input[type="password"]::-ms-clear {
       display: none;
@@ -934,6 +934,15 @@
 
 <script>
 
+document.addEventListener('DOMContentLoaded', () => {
+
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
+  }
+});
+</script>
+<script>
+
 function showSigninToast(msg, type = 'success') {
   const t = document.getElementById('signinToast');
   t.textContent = msg;
@@ -1109,5 +1118,5 @@ document.querySelectorAll('.signin-form-input').forEach(input => {
 });
 </script>
 
-</body>
+  </body>
 </html>

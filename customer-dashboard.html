@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="assets/top-logo.webp">
   <link rel="apple-touch-icon" href="assets/logo.webp">
   <title>My Account — Stackly Pharmacy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -708,14 +707,18 @@
       .coupons-grid::-webkit-scrollbar-track { background:var(--border-light); border-radius:10px; }
       .coupons-grid::-webkit-scrollbar-thumb { background:var(--primary); border-radius:10px; }
       .coupons-grid > .coupon-card { min-width:190px; flex:0 0 auto; }
-      .order-card { flex-direction:column; text-align:center; }
+      .order-card { flex-wrap:wrap; padding:12px; gap:10px; }
       .order-card:hover { transform:none; }
-      .order-img, .order-img-placeholder { width:100%; height:140px; flex-shrink:unset; }
-      .res-item { flex-wrap:nowrap; }
+      .order-img, .order-img-placeholder { width:60px; height:60px; flex-shrink:0; border-radius:var(--radius-sm); }
+      .order-details { width:calc(100% - 75px); }
+      .order-card > div:last-child { width:100%; flex-direction:row !important; align-items:center !important; justify-content:space-between; border-top:1px solid var(--border-light); padding-top:10px; margin-top:2px; }
+      .res-item { flex-wrap:wrap; padding:12px; gap:10px; align-items:center; position:relative; }
       .res-item:hover { transform:none; }
-      .res-details { flex:1; min-width:0; overflow:hidden; }
-      .res-details h4 { white-space:normal; word-break:break-word; }
-      .res-badge { flex-shrink:0; white-space:nowrap; }
+      .res-details { width:calc(100% - 60px); min-width:0; overflow:hidden; }
+      .res-details h4 { font-size:0.85rem; white-space:normal; word-break:break-word; margin-bottom:4px; padding-right:0; }
+      .res-details p { font-size:0.75rem; }
+      .res-date { width:48px; height:48px; }
+      .res-item > span.res-badge { position:static; margin-left:58px; margin-top:2px; font-size:0.7rem; padding:4px 10px; border-radius:12px; display:inline-block; }
       .profile-card { padding:20px 16px; }
       .profile-avatar { width:72px; height:72px; font-size:2rem; }
       .reward-tiers { gap:6px; }
@@ -805,7 +808,6 @@
 </head>
 <body>
 
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <div class="toast-popup" id="toastPopup">
@@ -828,7 +830,7 @@
       
       <div class="sidebar-section">
         <div class="sidebar-section-title">My Account</div>
-        <a href="dashboard-guest.html" class="sidebar-link active" onclick="showSection('dashboardHome', event)">
+        <a href="customer-dashboard.html" class="sidebar-link active" onclick="showSection('dashboardHome', event)">
           <span class="sidebar-link-icon">🏠</span>
           <span class="sidebar-link-text">Dashboard</span>
         </a>
@@ -923,10 +925,10 @@
 
         <div class="welcome-banner animate-in">
           <h2 id="welcomeText">Welcome Back! 👋</h2>
-          <p>Ready to optimize your financial compliance? Access your tax reports, manage invoices, or book a consultation with our expert CA team.</p>
+          <p>Ready to optimize your wellness? Access your medical records, manage orders, or book a consultation with our expert doctor team.</p>
           <div class="welcome-banner-btns">
             <a href="404.html" class="btn btn-dark">💼 View Services</a>
-            <a href="404.html" class="btn btn-outline" onclick="show404Modal()">📅 Book CA Consultation</a>
+            <a href="404.html" class="btn btn-outline" onclick="show404Modal()">📅 Book Doctor Consultation</a>
           </div>
         </div>
 
@@ -949,7 +951,7 @@
             </div>
             <div class="profile-meta-item">
               <div class="profile-meta-value">₹16.5k</div>
-              <div class="profile-meta-label">Invested</div>
+              <div class="profile-meta-label">Spent</div>
             </div>
           </div>
           <div class="profile-badge">⭐ Silver Partner</div>
@@ -969,7 +971,7 @@
           <div class="stat-card animate-in delay-3">
             <div class="stat-card-icon teal">💰</div>
             <div class="stat-card-value">₹16,498</div>
-            <div class="stat-card-label">Total Invested</div>
+            <div class="stat-card-label">Total Spent</div>
           </div>
           <div class="stat-card animate-in delay-4">
             <div class="stat-card-icon emerald">🎁</div>
@@ -987,10 +989,10 @@
             </div>
 
             <div class="order-card">
-              <img src="assets/img_omega3.png" class="order-img" alt="OTC Medications" />
+              <img src="assets/img_omega3.webp" class="order-img" alt="OTC Medications" />
               <div class="order-details">
-                <div class="order-name">GST Quarterly Filing</div>
-                <div class="order-meta">Vitamins & Supplements • 28 May 2026 • #INV-2847</div>
+                <div class="order-name">Quarterly Medicine Refill</div>
+                <div class="order-meta">Vitamins & Supplements • 28 May 2026 • #ORD-2847</div>
                 <span class="order-status status-confirmed"><span class="status-dot"></span>Filed</span>
               </div>
               <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
@@ -1000,10 +1002,10 @@
             </div>
 
             <div class="order-card">
-              <img src="assets/img_skincare.png" class="order-img" alt="Pain Relief Meds" />
+              <img src="assets/img_skincare.webp" class="order-img" alt="Pain Relief Meds" />
               <div class="order-details">
-                <div class="order-name">Income Tax Return (ITR-1)</div>
-                <div class="order-meta">AY 2026-27 • 22 May 2026 • #INV-2801</div>
+                <div class="order-name">Chronic Care Refill</div>
+                <div class="order-meta">AY 2026-27 • 22 May 2026 • #ORD-2801</div>
                 <span class="order-status status-confirmed"><span class="status-dot"></span>Filed</span>
               </div>
               <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
@@ -1013,10 +1015,10 @@
             </div>
 
             <div class="order-card">
-              <img src="assets/img_serum.png" class="order-img" alt="Daily Supplements" />
+              <img src="assets/img_serum.webp" class="order-img" alt="Daily Supplements" />
               <div class="order-details">
-                <div class="order-name">Annual Financial Audit</div>
-                <div class="order-meta">FY 2025-26 • 15 May 2026 • #INV-2766</div>
+                <div class="order-name">Annual Health Checkup</div>
+                <div class="order-meta">FY 2025-26 • 15 May 2026 • #ORD-2766</div>
                 <span class="order-status status-pending"><span class="status-dot"></span>In Progress</span>
               </div>
               <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
@@ -1029,12 +1031,12 @@
               <div class="insight-panel dark">
                 <div>
                   <div class="insight-kicker">This Month</div>
-                  <div class="insight-title">3 active financial tasks</div>
-                  <p class="insight-text">Your usual services are Medicine orderss, ITR returns, and payroll compliances. Fast renewal is ready.</p>
+                  <div class="insight-title">3 active health orders</div>
+                  <p class="insight-text">Your usual services are Medicine orderss, lab tests, and vitamins supply. Fast renewal is ready.</p>
                 </div>
                 <div class="insight-stat-row">
                   <div class="insight-stat"><strong>12</strong><span>Total services</span></div>
-                  <div class="insight-stat"><strong>₹16,498</strong><span>Total invested</span></div>
+                  <div class="insight-stat"><strong>₹16,498</strong><span>Total spent</span></div>
                   <div class="insight-stat"><strong>48 hrs</strong><span>Avg turnaround</span></div>
                   <div class="insight-stat"><strong>450</strong><span>Credits</span></div>
                 </div>
@@ -1055,7 +1057,7 @@
               </div>
               <div class="res-details">
                 <h4>Q1 Doctor Consultation 💼</h4>
-                <p>3:00 PM • Video Consultation • CA Rajesh Kumar</p>
+                <p>3:00 PM • Video Consultation • Dr. Rajesh Kumar</p>
               </div>
               <span class="res-badge confirmed">Confirmed</span>
             </div>
@@ -1067,7 +1069,7 @@
               </div>
               <div class="res-details">
                 <h4>Prescription Refill Request 📊</h4>
-                <p>11:00 AM • Office Meeting • CA Priya Sundaram</p>
+                <p>11:00 AM • Office Meeting • Dr. Priya Sundaram</p>
               </div>
               <span class="res-badge upcoming">Scheduled</span>
             </div>
@@ -1079,7 +1081,7 @@
               </div>
               <div class="res-details">
                 <h4>Corporate Ayurvedic Care Advisory 🏢</h4>
-                <p>4:30 PM • Video Consultation • CA Arun Venkatesh</p>
+                <p>4:30 PM • Video Consultation • Dr. Arun Venkatesh</p>
               </div>
               <span class="res-badge upcoming">Scheduled</span>
             </div>
@@ -1089,13 +1091,13 @@
                 <div>
                   <div class="insight-kicker">Next Session</div>
                   <div class="insight-title">15 Jun, 3:00 PM</div>
-                  <p class="insight-text">Video link is confirmed. Prepared your P&L statements and previous tax reports for CA review.</p>
+                  <p class="insight-text">Video link is confirmed. Prepared your medical records and previous test reports for doctor review.</p>
                 </div>
                 <div class="insight-stat-row">
                   <div class="insight-stat"><strong>3</strong><span>Upcoming</span></div>
                   <div class="insight-stat"><strong>45 min</strong><span>Avg duration</span></div>
                   <div class="insight-stat"><strong>Video</strong><span>Preferred</span></div>
-                  <div class="insight-stat"><strong>Tax Plan</strong><span>Primary Goal</span></div>
+                  <div class="insight-stat"><strong>Health Plan</strong><span>Primary Goal</span></div>
                 </div>
               </div>
             </div>
@@ -1110,11 +1112,11 @@
           <div class="fav-grid">
             <div class="fav-item" onclick="show404()">
               <div style="overflow:hidden; height:120px;">
-                <img src="assets/img_omega3.png" class="fav-item-img" alt="OTC Medications" />
+                <img src="assets/img_omega3.webp" class="fav-item-img" alt="OTC Medications" />
               </div>
               <div class="fav-item-body">
-                <div class="fav-item-name">GST Return Filing</div>
-                <div class="fav-item-desc">Quarterly or monthly filing for business compliance. Fast processing and zero error guarantee.</div>
+                <div class="fav-item-name">First Aid Kit Bundle</div>
+                <div class="fav-item-desc">Quarterly or monthly health checkups. Fast service and excellent care guarantee.</div>
                 <div class="fav-item-footer">
                   <div class="fav-item-price">₹999/mo</div>
                   <span class="fav-heart">❤️</span>
@@ -1123,11 +1125,11 @@
             </div>
             <div class="fav-item" onclick="show404()">
               <div style="overflow:hidden; height:120px;">
-                <img src="assets/img_skincare.png" class="fav-item-img" alt="Pain Relief Meds" />
+                <img src="assets/img_skincare.webp" class="fav-item-img" alt="Pain Relief Meds" />
               </div>
               <div class="fav-item-body">
-                <div class="fav-item-name">Income Tax Return (ITR)</div>
-                <div class="fav-item-desc">Salary, business income, capital gains filing. Accurate tax computation by expert CAs.</div>
+                <div class="fav-item-name">Vitamins Care Pack</div>
+                <div class="fav-item-desc">Regular checks, wellness tracking, diet advice. Accurate health check by expert doctors.</div>
                 <div class="fav-item-footer">
                   <div class="fav-item-price">₹1,499</div>
                   <span class="fav-heart">❤️</span>
@@ -1136,11 +1138,11 @@
             </div>
             <div class="fav-item" onclick="show404()">
               <div style="overflow:hidden; height:120px;">
-                <img src="assets/blog_blood_pressure.png" class="fav-item-img" alt="Chronic Care Meds" />
+                <img src="assets/blog_blood_pressure.webp" class="fav-item-img" alt="Chronic Care Meds" />
               </div>
               <div class="fav-item-body">
-                <div class="fav-item-name">TDS Return Filing</div>
-                <div class="fav-item-desc">Form 24Q, 26Q quarterly filings. Avoid interest penalties with timely submissions.</div>
+                <div class="fav-item-name">Diabetes Care Kit</div>
+                <div class="fav-item-desc">Monthly and quarterly refills. Avoid interest penalties with timely submissions.</div>
                 <div class="fav-item-footer">
                   <div class="fav-item-price">₹1,299</div>
                   <span class="fav-heart">❤️</span>
@@ -1149,11 +1151,11 @@
             </div>
             <div class="fav-item" onclick="show404()">
               <div style="overflow:hidden; height:120px;">
-                <img src="assets/blog_ayurveda_immunity.png" class="fav-item-img" alt="Dermatology Products" />
+                <img src="assets/blog_ayurveda_immunity.webp" class="fav-item-img" alt="Dermatology Products" />
               </div>
               <div class="fav-item-body">
-                <div class="fav-item-name">Private Limited Ayurvedic Care</div>
-                <div class="fav-item-desc">Name approval, DSC, DIN, MOA/AOA, Certificate of Ayurvedic Care, PAN & TAN.</div>
+                <div class="fav-item-name">Premium Ayurvedic Care</div>
+                <div class="fav-item-desc">Herbal supplements, immunity boosters, natural and organic ingredients.</div>
                 <div class="fav-item-footer">
                   <div class="fav-item-price">₹6,999</div>
                   <span class="fav-heart">❤️</span>
@@ -1162,11 +1164,11 @@
             </div>
             <div class="fav-item" onclick="show404()">
               <div style="overflow:hidden; height:120px;">
-                <img src="assets/img_omega3.png" class="fav-item-img" alt="First Aid Kits" />
+                <img src="assets/img_omega3.webp" class="fav-item-img" alt="First Aid Kits" />
               </div>
               <div class="fav-item-body">
-                <div class="fav-item-name">Annual Audit Support</div>
-                <div class="fav-item-desc">Statutory audit, tax audit preparation, financial statements compilation.</div>
+                <div class="fav-item-name">Heart Health Supplements</div>
+                <div class="fav-item-desc">Comprehensive cardiovascular support, omega-3, and blood pressure management.</div>
                 <div class="fav-item-footer">
                   <div class="fav-item-price">₹9,999</div>
                   <span class="fav-heart">❤️</span>
@@ -1175,11 +1177,11 @@
             </div>
             <div class="fav-item" onclick="show404()">
               <div style="overflow:hidden; height:120px;">
-                <img src="assets/blog_medicines_summer.png" class="fav-item-img" alt="Baby Care" />
+                <img src="assets/blog_medicines_summer.webp" class="fav-item-img" alt="Baby Care" />
               </div>
               <div class="fav-item-body">
-                <div class="fav-item-name">Baby Care Registration</div>
-                <div class="fav-item-desc">Brand name protection, trademark search, application filing, and status tracking.</div>
+                <div class="fav-item-name">Baby Care Kit</div>
+                <div class="fav-item-desc">Gentle baby lotion, diaper rash cream, tear-free shampoo, and baby powder.</div>
                 <div class="fav-item-footer">
                   <div class="fav-item-price">₹2,999</div>
                   <span class="fav-heart">❤️</span>
@@ -1193,7 +1195,7 @@
           
           <div class="reward-card animate-in">
             <div class="reward-card-title">🎯 Your Partner Rewards Progress</div>
-            <div class="reward-card-text">You're 65% of the way to Gold Partner status! Continue subscribing and filing returns to unlock priority CA support, discounted audit services, and free tax advisory sessions.</div>
+            <div class="reward-card-text">You're 65% of the way to Gold Partner status! Continue ordering and maintaining plans to unlock priority doctor support, discounted lab services, and free health advisory sessions.</div>
             <div class="reward-progress">
               <div class="reward-progress-bar" id="rewardProgressBar"></div>
             </div>
@@ -1291,7 +1293,7 @@
               <div class="loyalty-hist-item">
                 <div class="loyalty-hist-icon earn">⬆️</div>
                 <div class="loyalty-hist-body">
-                  <div class="loyalty-hist-title">Earned — GST Return Filing</div>
+                  <div class="loyalty-hist-title">Earned — First Aid Kit Bundle</div>
                   <div class="loyalty-hist-date">28 May 2026</div>
                 </div>
                 <div class="loyalty-hist-pts positive">+50 pts</div>
@@ -1299,7 +1301,7 @@
               <div class="loyalty-hist-item">
                 <div class="loyalty-hist-icon earn">⬆️</div>
                 <div class="loyalty-hist-body">
-                  <div class="loyalty-hist-title">Earned — ITR Filing</div>
+                  <div class="loyalty-hist-title">Earned — Prescription Refill</div>
                   <div class="loyalty-hist-date">22 May 2026</div>
                 </div>
                 <div class="loyalty-hist-pts positive">+45 pts</div>
@@ -1307,7 +1309,7 @@
               <div class="loyalty-hist-item">
                 <div class="loyalty-hist-icon redeem">⬇️</div>
                 <div class="loyalty-hist-body">
-                  <div class="loyalty-hist-title">Redeemed — ₹50 Consultant Credit</div>
+                  <div class="loyalty-hist-title">Redeemed — ₹50 Pharmacy Store Credit</div>
                   <div class="loyalty-hist-date">10 May 2026</div>
                 </div>
                 <div class="loyalty-hist-pts negative">−100 pts</div>
@@ -1315,7 +1317,7 @@
               <div class="loyalty-hist-item">
                 <div class="loyalty-hist-icon earn">⬆️</div>
                 <div class="loyalty-hist-body">
-                  <div class="loyalty-hist-title">Bonus — Client Anniversary Reward</div>
+                  <div class="loyalty-hist-title">Bonus — Member Anniversary Reward</div>
                   <div class="loyalty-hist-date">01 May 2026</div>
                 </div>
                 <div class="loyalty-hist-pts positive">+100 pts</div>
@@ -1332,27 +1334,27 @@
           <div class="offers-grid">
             <div class="offer-card" style="background:linear-gradient(135deg,var(--primary),var(--primary-light) 70%,var(--accent));">
               <div class="offer-card-discount">20% OFF</div>
-              <div class="offer-card-desc">On your next GST Return filing! Ensure error-free and timely submissions.</div>
+              <div class="offer-card-desc">On your next Health Supplement Order! Ensure error-free and timely submissions.</div>
               <div class="offer-code">Code: STACK20</div>
               <div class="offer-expiry">Valid till 30 Jun 2026</div>
               <span class="offer-emoji">📊</span>
             </div>
             <div class="offer-card" style="background:linear-gradient(135deg,var(--dark),var(--dark2));">
               <div class="offer-card-discount">FREE CONSULT</div>
-              <div class="offer-card-desc">With any annual filing plan! Get expert advice on corporate tax planning.</div>
+              <div class="offer-card-desc">With any health subscription plan! Get expert advice on family health and wellness.</div>
               <div class="offer-code">Code: EXPERT</div>
               <div class="offer-expiry">Valid till 15 Jul 2026</div>
               <span class="offer-emoji">💼</span>
             </div>
             <div class="offer-card" style="background:linear-gradient(135deg,#9C27B0,#673AB7);">
               <div class="offer-card-discount">₹500 OFF</div>
-              <div class="offer-card-desc">On Startup Ayurvedic Care services! Fast company registration.</div>
+              <div class="offer-card-desc">On General Ayurvedic Care! Fast delivery.</div>
               <div class="offer-code">Code: STARTUP500</div>
               <div class="offer-expiry">Valid on weekdays</div>
               <span class="offer-emoji">🏢</span>
             </div>
             <div class="offer-card" style="background:linear-gradient(135deg,#FF6B35,#FF9800);">
-              <div class="offer-card-discount">FREE PAN & TAN</div>
+              <div class="offer-card-discount">FREE DELIVERY</div>
               <div class="offer-card-desc">With Dermatology Products services! Get immediate application processing.</div>
               <div class="offer-code">Code: PANREG</div>
               <div class="offer-expiry">Valid till 31 Dec 2026</div>
@@ -1368,20 +1370,20 @@
           <div class="coupons-grid">
             <div class="coupon-card">
               <div class="coupon-value">₹250 OFF</div>
-              <div class="coupon-desc">Min. invoice ₹1,499 — new user special!</div>
+              <div class="coupon-desc">Min. order ₹1,499 — new user special!</div>
               <div class="coupon-code">WELCOME250</div>
               <div class="coupon-expiry">Expires 30 Jun 2026</div>
             </div>
             <div class="coupon-card" style="border-color:var(--secondary);">
               <div class="coupon-value" style="color:var(--secondary);">FREE DSC</div>
-              <div class="coupon-desc">Free Digital Signature with any Annual GST plan</div>
+              <div class="coupon-desc">Free Digital Signature with any Annual Health Plan</div>
               <div class="coupon-code" style="background:rgba(255,179,0,0.1);color:#9A6700;">FREEDSC</div>
               <div class="coupon-expiry">Valid till 30 Jun 2026</div>
             </div>
             <div class="coupon-card" style="border-color:var(--accent2);">
-              <div class="coupon-value" style="color:var(--accent2);">50% OFF TDS</div>
-              <div class="coupon-desc">50% OFF on your second Chronic Care Meds transaction</div>
-              <div class="coupon-code" style="background:rgba(0,201,167,0.1);color:var(--accent2);">TDSHALF</div>
+              <div class="coupon-value" style="color:var(--accent2);">50% OFF MEDS</div>
+              <div class="coupon-desc">50% OFF on your second Chronic Care Meds order</div>
+              <div class="coupon-code" style="background:rgba(0,201,167,0.1);color:var(--accent2);">MEDSHALF</div>
               <div class="coupon-expiry">Valid till 31 Jul 2026</div>
             </div>
           </div>
@@ -1396,7 +1398,7 @@
             <div class="notif-item">
               <span class="notif-icon">📄</span>
               <div class="notif-body">
-                <div class="notif-text">Your GST Return #INV-2847 has been successfully filed with the GST portal!</div>
+                <div class="notif-text">Your Medicine Order #ORD-2847 has been successfully shipped!</div>
                 <div class="notif-time">2 minutes ago</div>
               </div>
               <div class="notif-unread"></div>
@@ -1404,7 +1406,7 @@
             <div class="notif-item gold">
               <span class="notif-icon">⭐</span>
               <div class="notif-body">
-                <div class="notif-text">You earned 50 loyalty points from your last GST invoice payment!</div>
+                <div class="notif-text">You earned 50 loyalty points from your last order payment!</div>
                 <div class="notif-time">1 hour ago</div>
               </div>
               <div class="notif-unread" style="background:var(--secondary);"></div>
@@ -1412,7 +1414,7 @@
             <div class="notif-item teal">
               <span class="notif-icon">🎁</span>
               <div class="notif-body">
-                <div class="notif-text">New offer: 20% OFF on your next corporate tax planning consultation!</div>
+                <div class="notif-text">New offer: 20% OFF on your next family health and wellness consultation!</div>
                 <div class="notif-time">3 hours ago</div>
               </div>
               <div class="notif-unread" style="background:var(--accent2);"></div>
@@ -1427,7 +1429,7 @@
             <div class="notif-item gold">
               <span class="notif-icon">🏆</span>
               <div class="notif-body">
-                <div class="notif-text">You're 65% to Gold Partner status! 150 more points to unlock priority CA support.</div>
+                <div class="notif-text">You're 65% to Gold Partner status! 150 more points to unlock priority doctor support.</div>
                 <div class="notif-time">2 days ago</div>
               </div>
             </div>
@@ -1495,7 +1497,7 @@
                 <div class="settings-panel">
                   <div class="settings-panel-title">🔔 Preferences</div>
                   <div class="settings-option">
-                    <div><b>Filing & Invoice updates</b><span>SMS and email alerts</span></div>
+                    <div><b>Order updates</b><span>SMS and email alerts</span></div>
                     <button type="button" class="settings-toggle" aria-label="Order and Prescription updates"></button>
                   </div>
                   <div class="settings-option">
@@ -1516,7 +1518,7 @@
                   <div class="mini-list">
                     <div class="mini-list-item"><b>Consultation Mode</b><span>Video Call</span></div>
                     <div class="mini-list-item"><b>Payment Mode</b><span>UPI / NetBanking</span></div>
-                    <div class="mini-list-item"><b>Filing Frequency</b><span>Quarterly (QRMP)</span></div>
+                    <div class="mini-list-item"><b>Order Frequency</b><span>Quarterly</span></div>
                     <div class="mini-list-item"><b>Business Type</b><span>Proprietorship</span></div>
                   </div>
                 </div>
@@ -1535,6 +1537,121 @@
 </div>
 
 <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
+  }
+
+  
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    if (!navbar) return;
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+      navbar.classList.remove('navbar--hero');
+    } else {
+      navbar.classList.remove('scrolled');
+      navbar.classList.add('navbar--hero');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  
+  const hamburger = document.getElementById('hamburger');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileOverlay.classList.contains('is-open');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileOverlay.classList.add('is-open');
+        hamburger.classList.add('is-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      }
+    });
+  }
+
+  
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeMobileMenu();
+      closeSearch();
+    }
+  });
+
+  
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 992) {
+      closeMobileMenu();
+    }
+  });
+  
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchToggle  = document.getElementById('searchToggle');
+  const searchClose   = document.getElementById('searchClose');
+  const searchInput   = document.getElementById('searchInput');
+
+  if (searchToggle && searchOverlay && searchClose && searchInput) {
+    searchToggle.addEventListener('click', () => {
+      searchOverlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      setTimeout(() => searchInput.focus(), 300);
+    });
+    searchClose.addEventListener('click', closeSearch);
+    searchOverlay.addEventListener('click', e => {
+      if (e.target === searchOverlay) closeSearch();
+    });
+    searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        closeSearch();
+        window.location.href = 'store.html';
+      }
+    });
+  }
+});
+
+
+
+function closeMobileMenu() {
+  document.getElementById('mobileOverlay').classList.remove('is-open');
+  document.getElementById('hamburger').classList.remove('is-open');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+}
+
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('is-open');
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+}
+
+function showToast(msg, icon = 'fa-circle-check') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="fa-solid ${icon}"></i>${msg}`;
+  container.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(16px)'; toast.style.transition = 'all 0.35s'; setTimeout(() => toast.remove(), 400); }, 3500);
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  window.location.href = '404.html';
+}
+
+</script>
+
+<script>
+
 
 window.addEventListener('DOMContentLoaded', () => {
   const session = localStorage.getItem('stackly_user') || sessionStorage.getItem('stackly_user');
@@ -1589,7 +1706,7 @@ function showSection(sectionId, event) {
     });
     if (twoCol) {
       twoCol.style.display = '';
-      twoCol.style.gridTemplateColumns = '1fr 1fr';
+      twoCol.style.gridTemplateColumns = '';
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setActiveLink(event);
@@ -1791,8 +1908,8 @@ document.addEventListener('click', e => {
   const href = link.getAttribute('href') || '';
   if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
   const targetUrl = new URL(href, window.location.href);
-  const isDash = targetUrl.pathname.endsWith('/dashboard-guest.html') ||
-                 targetUrl.pathname.endsWith('/dashboard-admin.html');
+  const isDash = targetUrl.pathname.endsWith('/customer-dashboard.html') ||
+                 targetUrl.pathname.endsWith('/admin-dashboard.html');
   const isSafe = targetUrl.pathname.endsWith('/404.html') ||
                  targetUrl.pathname.endsWith('/signin.html');
   if (!isDash && !isSafe) {
@@ -1800,7 +1917,7 @@ document.addEventListener('click', e => {
     sessionStorage.removeItem('stackly_user');
   }
 });
-</script>
 
+</script>
 </body>
 </html>

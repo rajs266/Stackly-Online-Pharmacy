@@ -1,7 +1,3 @@
-/* =============================================================================
-   STORE-FILTERS.JS — Stackly Pharmacy
-   Real-time filtering: Category, Price, Brand, Star Rating, Search, Sort
-   ============================================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
   const products     = document.querySelectorAll('.prod-col');
@@ -15,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const listViewBtn  = document.getElementById('listViewBtn');
   const productsGrid = document.getElementById('productsGrid');
 
-  // ── State ──
+  
   let activeCat   = 'all';
-  let maxPrice    = 5000;
+  let maxPrice    = 1000;
   let searchQuery = '';
   let brands      = [];
   let minRating   = 0;
 
-  // ── Category Tab Filter ──
+  
   document.querySelectorAll('#catFilterWrap .filter-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('#catFilterWrap .filter-tab').forEach(t => t.classList.remove('active'));
@@ -32,18 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Price Range Slider ──
+  
   if (priceSlider) {
     priceSlider.addEventListener('input', () => {
       maxPrice = parseInt(priceSlider.value, 10);
-      const pct = (maxPrice / 5000) * 100;
+      const pct = (maxPrice / 1000) * 100;
       priceSlider.style.setProperty('--val', pct + '%');
       if (priceMax) priceMax.textContent = '₹' + maxPrice.toLocaleString('en-IN');
       filterProducts();
     });
   }
 
-  // ── Brand Checkboxes ──
+  
   document.querySelectorAll('.brand-cb').forEach(cb => {
     cb.addEventListener('change', () => {
       brands = Array.from(document.querySelectorAll('.brand-cb:checked')).map(c => c.value.toLowerCase());
@@ -51,12 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Rating Filter ──
+  
   document.querySelectorAll('.rating-filter-item').forEach(item => {
     item.addEventListener('click', () => {
       document.querySelectorAll('.rating-filter-item').forEach(r => r.classList.remove('active'));
       if (minRating === parseInt(item.dataset.rating)) {
-        minRating = 0; // toggle off
+        minRating = 0; 
       } else {
         item.classList.add('active');
         minRating = parseInt(item.dataset.rating);
@@ -65,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Search Input ──
+  
   if (storeSearch) {
     storeSearch.addEventListener('input', () => {
       searchQuery = storeSearch.value.trim().toLowerCase();
@@ -73,12 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Sort ──
+  
   if (sortSelect) {
     sortSelect.addEventListener('change', () => sortProducts(sortSelect.value));
   }
 
-  // ── View Toggle (Grid / List) ──
+  
   if (gridViewBtn && listViewBtn && productsGrid) {
     gridViewBtn.addEventListener('click', () => {
       gridViewBtn.classList.add('active');
@@ -98,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Core Filter Function ──
+  
   function filterProducts() {
     let count = 0;
     products.forEach(prod => {
@@ -119,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (show) {
         prod.style.display = '';
         count++;
-        // Animate in
+        
         prod.style.opacity = '0';
         prod.style.transform = 'translateY(12px)';
         requestAnimationFrame(() => {
@@ -132,6 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    if (typeof AOS !== 'undefined') {
+      setTimeout(() => AOS.refresh(), 50);
+    }
+
     if (prodCount) prodCount.textContent = count;
     if (noResults) {
       noResults.classList.toggle('show', count === 0);
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ── Sort Function ──
+  
   function sortProducts(mode) {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
@@ -154,10 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
     cols.forEach(col => grid.appendChild(col));
   }
 
-  // ── Global Reset Function ──
+  
   window.resetFilters = () => {
     activeCat = 'all';
-    maxPrice = 5000;
+    maxPrice = 1000;
     searchQuery = '';
     brands = [];
     minRating = 0;
@@ -166,8 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const allTab = document.querySelector('#catFilterWrap .filter-tab[data-cat="all"]');
     if (allTab) allTab.classList.add('active');
 
-    if (priceSlider) { priceSlider.value = 5000; priceSlider.style.setProperty('--val', '100%'); }
-    if (priceMax) priceMax.textContent = '₹5,000';
+    if (priceSlider) { priceSlider.value = 1000; priceSlider.style.setProperty('--val', '100%'); }
+    if (priceMax) priceMax.textContent = '₹1,000';
     if (storeSearch) storeSearch.value = '';
 
     document.querySelectorAll('.brand-cb').forEach(cb => cb.checked = false);
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('All filters cleared', 'fa-rotate-left');
   };
 
-  // ── Read URL params (e.g. store.html?cat=vitamins) ──
+  
   const params = new URLSearchParams(window.location.search);
   const urlCat = params.get('cat');
   if (urlCat) {
@@ -189,6 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initial filter run
+  
   filterProducts();
 });

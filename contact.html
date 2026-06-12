@@ -6,35 +6,37 @@
   <meta name="description" content="Contact Stackly Pharmacy — Reach us for medicine orders, prescription uploads, doctor consultations or general enquiries. Salem, Tamil Nadu."/>
   <title>Contact Us — Stackly Pharmacy</title>
 
-  <!-- Preconnect -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 
-  <!-- Fonts -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
 
-  <!-- Bootstrap -->
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-  <!-- Font Awesome -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
-  <!-- AOS -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
 
-  <!-- Main CSS -->
+  
   <link rel="stylesheet" href="style.css"/>
 
   <style>
-    /* ══ CONTACT PAGE — SPECIFIC STYLES ══ */
+    
 
-    /* ── Page Header (same as about.html) ── */
+    
     .page-header {
-      background: var(--grad-dark);
-      padding-block: 6rem 3rem;
+      background-image: linear-gradient(to right, rgba(13,27,42,0.85), rgba(13,27,42,0.4)), url('assets/hero_contact.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 9rem 0 4rem;
       position: relative;
       overflow: hidden;
-      text-align: center;
+      min-height: 450px;
     }
     .page-header::before {
       content: '';
@@ -113,7 +115,7 @@
     .breadcrumb a:hover { color: var(--clr-accent); }
     .breadcrumb i { font-size: 0.65rem; }
 
-    /* ── Contact Info Cards ── */
+    
     .contact-info-card {
       background: var(--clr-white);
       border-radius: var(--r-lg);
@@ -172,7 +174,7 @@
       margin-top: 0.2rem;
     }
 
-    /* ── Contact Form ── */
+    
     .contact-form-wrap {
       background: var(--clr-white);
       border-radius: var(--r-xl);
@@ -207,11 +209,11 @@
     textarea.form-control { resize: vertical; min-height: 130px; }
     select.form-control { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23687d94' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
 
-    /* ── Form row ── */
+    
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 575.98px) { .form-row { grid-template-columns: 1fr; } }
 
-    /* ── Map wrap ── */
+    
     .map-wrap {
       border-radius: var(--r-xl);
       overflow: hidden;
@@ -226,7 +228,7 @@
       border: none;
       display: block;
     }
-    /* Placeholder when iframe not loaded */
+    
     .map-placeholder {
       position: absolute;
       inset: 0;
@@ -242,7 +244,7 @@
     .map-placeholder__text { font-size: 0.9rem; color: var(--clr-grey); font-weight: 600; }
     .map-wrap iframe { position: relative; z-index: 1; }
 
-    /* ── Quick Contact Buttons ── */
+    
     .quick-contact-btn {
       display: flex;
       align-items: center;
@@ -292,7 +294,7 @@
     }
     .quick-contact-btn:hover .qcb-arrow { opacity: 1; transform: translateX(0); }
 
-    /* ── Why Contact Section (dark) ── */
+    
     .why-contact-section {
       background: var(--grad-dark);
       position: relative;
@@ -350,7 +352,7 @@
     .why-contact-title { font-size: 0.95rem; font-weight: 700; color: var(--clr-white); margin-bottom: 0.4rem; }
     .why-contact-desc  { font-size: 0.82rem; color: rgba(255,255,255,0.58); line-height: 1.65; }
 
-    /* ── Hours Table ── */
+    
     .hours-table {
       width: 100%;
       border-collapse: separate;
@@ -396,7 +398,7 @@
       animation: pulse 1.5s ease-in-out infinite;
     }
 
-    /* ── CTA band (same as about) ── */
+    
     .cta-band {
       background: linear-gradient(135deg, #0a7c5e 0%, #065c45 60%, #0d1b2a 100%);
       border-radius: var(--r-xl);
@@ -422,15 +424,61 @@
       pointer-events: none;
     }
 
-    /* ── Responsive ── */
+    
     @media (max-width: 767.98px) {
+      .navbar__actions {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1001;
+      }
+      .navbar__cart-btn,
+      .hamburger {
+        display: flex !important;
+        flex-shrink: 0;
+        color: rgba(255,255,255,0.9) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      .navbar__cart-btn {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .hamburger {
+        width: 28px !important;
+        height: 20px !important;
+      }
+      .hamburger span {
+        display: block !important;
+        background: #ffffff !important;
+      }
+      
+      .navbar--hero .navbar__cart-btn,
+      .navbar--hero .hamburger {
+        display: flex !important;
+      }
+      .navbar__wishlist-btn {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
       .contact-form-wrap { padding: 1.75rem 1.25rem; }
       .map-wrap { height: 260px; }
       .cta-band { padding: 2.5rem 1.5rem; text-align: center; }
       .cta-band::after { display: none; }
     }
     @media (max-width: 480px) {
-      .page-header { padding-block: 5rem 2.5rem; }
+      .page-header {
+      background-image: linear-gradient(to right, rgba(13,27,42,0.85), rgba(13,27,42,0.4)), url('assets/hero_contact.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 9rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 450px;
+    }
     }
   </style>
   <link rel="shortcut icon" href="assets/top-logo.webp" type="image/webp"/>
@@ -456,6 +504,15 @@
      MOBILE OVERLAY MENU  (reusable component)
 ════════════════════════════════════════════════ -->
 <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-overlay__header">
+    <a href="index.html" class="mobile-overlay__logo" aria-label="Stackly Home">
+      <img src="assets/logo.webp" alt="Stackly"/>
+    </a>
+    <button class="mobile-overlay__close-btn" onclick="closeMobileMenu()" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
   <nav class="mobile-overlay__nav" aria-label="Mobile Navigation">
     <a href="index.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">Home</a>
     <a href="about.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">About</a>
@@ -494,9 +551,13 @@
       <button class="navbar__search-btn" id="searchToggle" aria-label="Search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
-      <button class="navbar__cart-btn" aria-label="Cart" onclick="location.href='store.html'">
+      <button class="navbar__wishlist-btn" aria-label="Wishlist" onclick="openWishlist()" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.9);background:transparent;position:relative;">
+        <i class="fa-solid fa-heart"></i>
+        <span class="wishlist-count" style="display:flex;">0</span>
+      </button>
+      <button class="navbar__cart-btn" aria-label="Cart" onclick="openCart()">
         <i class="fa-solid fa-bag-shopping"></i>
-        <span class="cart-count">3</span>
+        <span class="cart-count" id="cartBadge" style="display:none;">0</span>
       </button>
       <a href="signin.html"      class="btn btn-outline btn-sm d-none d-lg-inline-flex">Sign In</a>
       <a href="signup.html"      class="btn btn-primary btn-sm d-none d-lg-inline-flex">Get Started</a>
@@ -573,9 +634,9 @@
     </div>
 
     <div class="row g-4">
-      <!-- Phone -->
+      
       <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
-        <a href="tel:+919876543210" class="contact-info-card">
+        <a href="404.html" class="contact-info-card">
           <div class="contact-info-card__icon" style="background:#e8f9f4;color:#0a7c5e;">
             <i class="fa-solid fa-phone"></i>
           </div>
@@ -586,9 +647,9 @@
           </div>
         </a>
       </div>
-      <!-- WhatsApp -->
+      
       <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
-        <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="contact-info-card">
+        <a href="404.html" class="contact-info-card">
           <div class="contact-info-card__icon" style="background:rgba(37,211,102,0.1);color:#25d366;">
             <i class="fa-brands fa-whatsapp"></i>
           </div>
@@ -599,9 +660,9 @@
           </div>
         </a>
       </div>
-      <!-- Email -->
+      
       <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
-        <a href="mailto:hello@stackly.in" class="contact-info-card">
+        <a href="404.html" class="contact-info-card">
           <div class="contact-info-card__icon" style="background:#e8f9f4;color:#0a7c5e;">
             <i class="fa-solid fa-envelope"></i>
           </div>
@@ -612,9 +673,9 @@
           </div>
         </a>
       </div>
-      <!-- Location -->
+      
       <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
-        <a href="https://maps.google.com/?q=MMR+Complex+Salem+Tamil+Nadu" target="_blank" rel="noopener" class="contact-info-card">
+        <a href="404.html" class="contact-info-card">
           <div class="contact-info-card__icon" style="background:#e8f9f4;color:#0a7c5e;">
             <i class="fa-solid fa-location-dot"></i>
           </div>
@@ -636,7 +697,7 @@
   <div class="container">
     <div class="row g-5 align-items-start">
 
-      <!-- ── Left: Form ── -->
+      
       <div class="col-lg-7" data-aos="fade-right">
         <div class="contact-form-wrap">
           <span class="eyebrow mb-3 d-inline-flex">Send a Message</span>
@@ -649,28 +710,32 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="fname">First Name <span style="color:#f05a5a">*</span></label>
-                <input type="text" id="fname" class="form-control" placeholder="Arjun" required autocomplete="given-name"/>
+                <input type="text" id="fname" class="form-control" placeholder="Arjun" autocomplete="given-name" oninput="clearError('fname')"/>
+                <span id="fname-error" style="display:none; color:#f05a5a; font-size:0.78rem; margin-top:0.25rem;">First name is required and should contain only alphabets.</span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="lname">Last Name</label>
-                <input type="text" id="lname" class="form-control" placeholder="Selvam" autocomplete="family-name"/>
+                <input type="text" id="lname" class="form-control" placeholder="Selvam" autocomplete="family-name" oninput="clearError('lname')"/>
+                <span id="lname-error" style="display:none; color:#f05a5a; font-size:0.78rem; margin-top:0.25rem;">Last name should contain only alphabets.</span>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="email">Email Address <span style="color:#f05a5a">*</span></label>
-                <input type="email" id="email" class="form-control" placeholder="arjun@email.com" required autocomplete="email"/>
+                <input type="email" id="email" class="form-control" placeholder="arjun@email.com" autocomplete="email" oninput="clearError('email')"/>
+                <span id="email-error" style="display:none; color:#f05a5a; font-size:0.78rem; margin-top:0.25rem;">Please enter a valid email address.</span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="phone">Phone Number</label>
-                <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210" autocomplete="tel"/>
+                <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210" autocomplete="tel" oninput="clearError('phone')"/>
+                <span id="phone-error" style="display:none; color:#f05a5a; font-size:0.78rem; margin-top:0.25rem;">Please enter a valid phone number.</span>
               </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="subject">Subject <span style="color:#f05a5a">*</span></label>
-              <select id="subject" class="form-control" required>
+              <select id="subject" class="form-control" onchange="clearError('subject')">
                 <option value="" disabled selected>Choose a topic…</option>
                 <option value="order">Order / Delivery Status</option>
                 <option value="prescription">Prescription Upload</option>
@@ -680,25 +745,27 @@
                 <option value="feedback">Feedback or Complaint</option>
                 <option value="other">Other</option>
               </select>
+              <span id="subject-error" style="display:none; color:#f05a5a; font-size:0.78rem; margin-top:0.25rem;">Please select a subject.</span>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="message">Message <span style="color:#f05a5a">*</span></label>
-              <textarea id="message" class="form-control" placeholder="Describe your query in detail — the more context, the faster we can help…" required rows="5"></textarea>
+              <textarea id="message" class="form-control" placeholder="Describe your query in detail — the more context, the faster we can help…" rows="5" oninput="clearError('message')"></textarea>
+              <span id="message-error" style="display:none; color:#f05a5a; font-size:0.78rem; margin-top:0.25rem;">Please write your message.</span>
             </div>
 
-            <!-- File upload hint -->
+            
             <div style="background:var(--clr-accent2);border-radius:var(--r-md);padding:0.9rem 1rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;font-size:0.84rem;color:var(--clr-primary);">
               <i class="fa-solid fa-paperclip"></i>
-              <span>Have a prescription? Send it via <a href="https://wa.me/919876543210" target="_blank" rel="noopener" style="color:var(--clr-primary);font-weight:700;text-decoration:underline;">WhatsApp</a> for fastest processing.</span>
+              <span>Have a prescription? Send it via <a href="404.html" class="text-gradient" rel="noopener" style="color:var(--clr-primary);font-weight:700;text-decoration:underline;">WhatsApp</a> for fastest processing.</span>
             </div>
 
-            <button type="button" class="btn btn-primary w-100" onclick="handleContactForm()" style="font-size:1rem;padding:0.95rem;">
+            <button type="button" class="btn btn-primary w-100" onclick="handleContactForm(event)" style="font-size:1rem;padding:0.95rem;">
               <i class="fa-solid fa-paper-plane"></i> Send Message
             </button>
           </div>
 
-          <!-- Success state (hidden by default) -->
+          
           <div id="formSuccess" style="display:none;text-align:center;padding:2rem 1rem;">
             <div style="font-size:3.5rem;margin-bottom:1rem;">✅</div>
             <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:800;color:var(--clr-dark);margin-bottom:0.5rem;">Message Sent!</h3>
@@ -708,15 +775,15 @@
         </div>
       </div>
 
-      <!-- ── Right: Sidebar ── -->
+      
       <div class="col-lg-5" data-aos="fade-left">
 
-        <!-- Quick contact channels -->
+        
         <div class="mb-4">
           <h3 style="font-size:1rem;font-weight:700;color:var(--clr-dark);margin-bottom:1rem;">Quick Contact</h3>
           <div style="display:flex;flex-direction:column;gap:0.65rem;">
 
-            <a href="tel:+919876543210" class="quick-contact-btn">
+            <a href="404.html" class="quick-contact-btn">
               <div class="quick-contact-btn__icon" style="background:#e8f9f4;">
                 <i class="fa-solid fa-phone" style="color:#0a7c5e;"></i>
               </div>
@@ -727,7 +794,7 @@
               <i class="fa-solid fa-arrow-right qcb-arrow"></i>
             </a>
 
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="quick-contact-btn">
+            <a href="404.html" class="quick-contact-btn">
               <div class="quick-contact-btn__icon" style="background:rgba(37,211,102,0.1);">
                 <i class="fa-brands fa-whatsapp" style="color:#25d366;font-size:1.3rem;"></i>
               </div>
@@ -738,7 +805,7 @@
               <i class="fa-solid fa-arrow-right qcb-arrow"></i>
             </a>
 
-            <a href="mailto:hello@stackly.in" class="quick-contact-btn">
+            <a href="404.html" class="quick-contact-btn">
               <div class="quick-contact-btn__icon" style="background:#e8f9f4;">
                 <i class="fa-solid fa-envelope" style="color:#0a7c5e;"></i>
               </div>
@@ -752,7 +819,7 @@
           </div>
         </div>
 
-        <!-- Opening Hours -->
+        
         <div class="contact-form-wrap" style="margin-bottom:1.25rem;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;">
             <h3 style="font-size:0.95rem;font-weight:700;color:var(--clr-dark);margin:0;">Opening Hours</h3>
@@ -776,7 +843,7 @@
           </p>
         </div>
 
-        <!-- Social links -->
+        
         <div class="contact-form-wrap" style="padding:1.25rem 1.5rem;">
           <h3 style="font-size:0.95rem;font-weight:700;color:var(--clr-dark);margin-bottom:1rem;">Follow Us</h3>
           <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
@@ -784,7 +851,7 @@
             <a href="404.html" class="footer__social-link" aria-label="Instagram" style="background:rgba(10,124,94,0.08);color:var(--clr-primary);"><i class="fa-brands fa-instagram"></i></a>
             <a href="404.html" class="footer__social-link" aria-label="Twitter/X" style="background:rgba(10,124,94,0.08);color:var(--clr-primary);"><i class="fa-brands fa-x-twitter"></i></a>
             <a href="404.html" class="footer__social-link" aria-label="YouTube" style="background:rgba(10,124,94,0.08);color:var(--clr-primary);"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp" style="background:rgba(37,211,102,0.1);color:#25d366;"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="404.html" class="footer__social-link" aria-label="LinkedIn" rel="noopener" class="footer__social-link" aria-label="WhatsApp" style="background:rgba(37,211,102,0.1);color:#25d366;"><i class="fa-brands fa-whatsapp"></i></a>
           </div>
         </div>
 
@@ -808,7 +875,7 @@
     </div>
 
     <div class="map-wrap" data-aos="zoom-in">
-      <!-- Map placeholder visual — iframe works only with real embed key -->
+      
       <div class="map-placeholder">
         <div class="map-placeholder__icon">🗺️</div>
         <div class="map-placeholder__text">MMR Complex, Salem, Tamil Nadu 636008</div>
@@ -822,7 +889,7 @@
       </iframe>
     </div>
 
-    <!-- Directions CTA -->
+    
     <div class="text-center mt-4" data-aos="fade-up">
       <a href="https://maps.google.com/?q=MMR+Complex+Chinna+Thirupathi+Salem+Tamil+Nadu+636008" target="_blank" rel="noopener" class="btn btn-primary">
         <i class="fa-solid fa-diamond-turn-right"></i> Get Directions
@@ -956,11 +1023,11 @@
       <div>
         <div class="footer__col-title">Services</div>
         <ul class="footer__links">
-          <li><a href="store.html"   class="footer__link">Prescription Refills</a></li>
-          <li><a href="store.html"   class="footer__link">Home Test Kits</a></li>
-          <li><a href="contact.html" class="footer__link">Doctor Consultation</a></li>
-          <li><a href="store.html"   class="footer__link">Auto Refill Plans</a></li>
-          <li><a href="store.html"   class="footer__link">Wellness Packages</a></li>
+          <li><a href="404.html"   class="footer__link">Prescription Refills</a></li>
+          <li><a href="404.html"   class="footer__link">Home Test Kits</a></li>
+          <li><a href="404.html" class="footer__link">Doctor Consultation</a></li>
+          <li><a href="404.html"   class="footer__link">Auto Refill Plans</a></li>
+          <li><a href="404.html"   class="footer__link">Wellness Packages</a></li>
           <li><a href="404.html"     class="footer__link">Bulk Orders</a></li>
         </ul>
       </div>
@@ -1007,12 +1074,12 @@
   </div>
 </footer>
 
-<!-- Back to top -->
+
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <i class="fa-solid fa-chevron-up"></i>
 </button>
 
-<!-- Toast container -->
+
 <div class="toast-container" id="toastContainer"></div>
 
 <!-- ════════════════════════════════════════════════
@@ -1024,12 +1091,12 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── AOS Init ── */
+  
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
   }
 
-  /* ── Navbar scroll ── */
+  
   const navbar = document.getElementById('navbar');
   const onScroll = () => {
     if (window.scrollY > 50) {
@@ -1043,9 +1110,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ── Hamburger ── */
+  
   const hamburger = document.getElementById('hamburger');
   const mobileOverlay = document.getElementById('mobileOverlay');
+
 
   hamburger.addEventListener('click', () => {
     const isOpen = mobileOverlay.classList.contains('is-open');
@@ -1056,15 +1124,23 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.add('is-open');
       hamburger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
   });
 
-  /* ESC */
+  
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { closeMobileMenu(); closeSearch(); }
   });
 
-  /* ── Search overlay ── */
+  
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 992) {
+      closeMobileMenu();
+    }
+  });
+
+  
   const searchOverlay = document.getElementById('searchOverlay');
   const searchToggle  = document.getElementById('searchToggle');
   const searchClose   = document.getElementById('searchClose');
@@ -1073,6 +1149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   searchToggle.addEventListener('click', () => {
     searchOverlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     setTimeout(() => searchInput.focus(), 300);
   });
   searchClose.addEventListener('click', closeSearch);
@@ -1083,14 +1160,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') { closeSearch(); window.location.href = 'store.html'; }
   });
 
-  /* ── Back to top ── */
+  
   const btt = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     btt.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
   btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* ── Scroll animations ── */
+  
   const animEls = document.querySelectorAll('.anim-fade-up,.anim-fade-left,.anim-fade-right,.anim-scale,.anim-flip');
   if (animEls.length) {
     const animObserver = new IntersectionObserver(entries => {
@@ -1099,14 +1176,14 @@ document.addEventListener('DOMContentLoaded', () => {
     animEls.forEach(el => animObserver.observe(el));
   }
 
-  /* ── Active nav link ── */
+  
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.navbar__link').forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href') === currentPage) link.classList.add('active');
   });
 
-  /* ── Highlight today in hours table ── */
+  
   const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const todayName = days[new Date().getDay()];
   document.querySelectorAll('.hours-table tr').forEach(row => {
@@ -1119,16 +1196,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ── Global helpers ── */
+
 function closeMobileMenu() {
   document.getElementById('mobileOverlay').classList.remove('is-open');
   document.getElementById('hamburger').classList.remove('is-open');
   document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 }
 function closeSearch() {
   document.getElementById('searchOverlay').classList.remove('is-open');
   document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 }
 function showToast(msg, icon = 'fa-circle-check') {
   const container = document.getElementById('toastContainer');
@@ -1145,28 +1224,61 @@ function showToast(msg, icon = 'fa-circle-check') {
 }
 function handleNewsletter(e) {
   e.preventDefault();
-  showToast('Subscribed successfully! 🎉', 'fa-circle-check');
-  e.target.reset();
+  window.location.href = '404.html';
 }
 
-/* ── Contact Form ── */
-function handleContactForm() {
+
+function handleContactForm(e) {
+  if (e) e.preventDefault();
+
   const fname   = document.getElementById('fname').value.trim();
+  const lname   = document.getElementById('lname').value.trim();
   const email   = document.getElementById('email').value.trim();
+  const phone   = document.getElementById('phone').value.trim();
   const subject = document.getElementById('subject').value;
   const message = document.getElementById('message').value.trim();
 
-  if (!fname) { showToast('Please enter your first name.', 'fa-circle-exclamation'); return; }
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    showToast('Please enter a valid email address.', 'fa-circle-exclamation'); return;
-  }
-  if (!subject) { showToast('Please select a subject.', 'fa-circle-exclamation'); return; }
-  if (!message) { showToast('Please write your message.', 'fa-circle-exclamation'); return; }
+  const nameRegex = /^[A-Za-z\s]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^\+?[\d\s-]{10,15}$/;
 
-  // Show success state
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('formSuccess').style.display  = 'block';
-  showToast('Message sent! We\'ll reply within 15 minutes.', 'fa-circle-check');
+  let isValid = true;
+
+  if (!fname || !nameRegex.test(fname)) {
+    document.getElementById('fname-error').style.display = 'block';
+    isValid = false;
+  }
+  if (lname && !nameRegex.test(lname)) {
+    document.getElementById('lname-error').style.display = 'block';
+    isValid = false;
+  }
+  if (!email || !emailRegex.test(email)) {
+    document.getElementById('email-error').style.display = 'block';
+    isValid = false;
+  }
+  if (phone && !phoneRegex.test(phone)) {
+    document.getElementById('phone-error').style.display = 'block';
+    isValid = false;
+  }
+  if (!subject) {
+    document.getElementById('subject-error').style.display = 'block';
+    isValid = false;
+  }
+  if (!message) {
+    document.getElementById('message-error').style.display = 'block';
+    isValid = false;
+  }
+
+  if (isValid) {
+    window.location.href = '404.html';
+  } else {
+    showToast('Please check the form for errors.', 'fa-circle-exclamation');
+  }
+}
+
+function clearError(fieldId) {
+  const errorSpan = document.getElementById(fieldId + '-error');
+  if (errorSpan) errorSpan.style.display = 'none';
 }
 
 function resetForm() {
@@ -1180,5 +1292,6 @@ function resetForm() {
   document.getElementById('message').value  = '';
 }
 </script>
+  <script src="cart.js"></script>
 </body>
 </html>

@@ -6,35 +6,37 @@
   <meta name="description" content="About Stackly — Trusted online pharmacy since 2018. Learn about our mission, team, and commitment to your health in Salem, Tamil Nadu."/>
   <title>About Us — Stackly Pharmacy</title>
 
-  <!-- Preconnect -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 
-  <!-- Fonts -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
 
-  <!-- Bootstrap -->
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-  <!-- Font Awesome -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
-  <!-- AOS -->
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
 
-  <!-- Main CSS -->
+  
   <link rel="stylesheet" href="style.css"/>
 
   <style>
-    /* ══ ABOUT PAGE — SPECIFIC STYLES ══ */
+    
 
-    /* Page Header (shared across inner pages) */
+    
     .page-header {
-      background: var(--grad-dark);
-      padding-block: 6rem 3rem;
+      background-image: linear-gradient(to right, rgba(13,27,42,0.85), rgba(13,27,42,0.4)), url('assets/hero_about.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 9rem 0 4rem;
       position: relative;
       overflow: hidden;
-      text-align: center;
+      min-height: 450px;
     }
     .page-header::before {
       content: '';
@@ -109,14 +111,13 @@
     .breadcrumb a:hover { color: var(--clr-accent); }
     .breadcrumb i { font-size: 0.65rem; }
 
-    /* ══ STORY SECTION ══ */
+    
     .about-story-img {
       position: relative;
       border-radius: var(--r-xl);
-      overflow: hidden;
       box-shadow: var(--shadow-xl);
       background: linear-gradient(135deg, #e8f9f4, #d0f0e8);
-      min-height: 440px;
+      min-height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -164,7 +165,7 @@
       50%    { transform: translateY(-8px) scale(1.02); }
     }
 
-    /* ══ MISSION / VALUES ══ */
+    
     .mission-card {
       background: var(--clr-white);
       border-radius: var(--r-lg);
@@ -208,7 +209,7 @@
       line-height: 1.7;
     }
 
-    /* ══ WHY CHOOSE US (dark bg) ══ */
+    
     .why-section {
       background: var(--grad-dark);
       position: relative;
@@ -266,7 +267,7 @@
     .why-title { font-size: 0.95rem; font-weight: 700; color: var(--clr-white); margin-bottom: 0.4rem; }
     .why-desc  { font-size: 0.82rem; color: rgba(255,255,255,0.58); line-height: 1.65; }
 
-    /* ══ TEAM CARDS ══ */
+    
     .team-card {
       background: var(--clr-white);
       border-radius: var(--r-lg);
@@ -330,10 +331,10 @@
     .team-card__role { font-size: 0.78rem; color: var(--clr-primary); font-weight: 600; }
     .team-card__bio  { font-size: 0.78rem; color: var(--clr-grey); margin-top: 0.4rem; line-height: 1.55; }
 
-    /* ══ STATS COUNTER ══ */
+    
     .stat-card {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 1.5rem 0.5rem;
       background: var(--clr-white);
       border-radius: var(--r-lg);
       border: 1px solid rgba(10,124,94,0.09);
@@ -351,8 +352,8 @@
     }
     .stat-card:hover .stat-card__icon { transform: scale(1.2) rotateY(180deg); }
     .stat-card__num {
-      font-family: var(--font-display);
-      font-size: 2.4rem;
+      font-family: var(--font-body);
+      font-size: 1.85rem;
       font-weight: 800;
       color: var(--clr-dark);
       line-height: 1;
@@ -361,15 +362,15 @@
     .stat-card__num .accent { color: var(--clr-primary); }
     .stat-card__label { font-size: 0.82rem; color: var(--clr-grey); font-weight: 600; }
 
-    /* ══ TIMELINE ══ */
+    
     .timeline {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 40px;
     }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 0.55rem;
+      left: 19px;
       top: 0;
       bottom: 0;
       width: 2px;
@@ -381,10 +382,20 @@
       padding-bottom: 2rem;
     }
     .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item:last-child::after {
+      content: '';
+      position: absolute;
+      left: -21px;
+      width: 2px;
+      top: calc(0.35rem + 14px);
+      bottom: -2px;
+      background: var(--clr-white);
+    }
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -1.65rem;
+      left: -30px;
+      left: -27px;
       top: 0.35rem;
       width: 14px;
       height: 14px;
@@ -422,7 +433,7 @@
       line-height: 1.6;
     }
 
-    /* ══ FAQ ACCORDION ══ */
+    
     .accordion-item {
       border: 1px solid rgba(10,124,94,0.12);
       border-radius: var(--r-md);
@@ -481,7 +492,7 @@
       line-height: 1.7;
     }
 
-    /* ══ CTA BAND ══ */
+    
     .cta-band {
       background: linear-gradient(135deg, #0a7c5e 0%, #065c45 60%, #0d1b2a 100%);
       border-radius: var(--r-xl);
@@ -506,32 +517,32 @@
       pointer-events: none;
     }
     @media (max-width: 767.98px) {
+
       .cta-band { padding: 2.5rem 1.5rem; text-align: center; }
       .cta-band::after { display: none; }
-      /* Hide floating badges with negative offsets — prevent right-side overflow on mobile */
-      .about-bf-years, .about-bf-cust { display: none; }
-      .about-story-img { min-height: 280px; overflow: hidden; }
-      .timeline { padding-left: 1.5rem; }
-      /* Make story image section not overflow */
+      
+      .about-bf-years { bottom: 1rem; left: 0.5rem; }
+      .about-bf-cust { top: 1rem; right: 0.5rem; }
+      .about-badge-float { padding: 0.6rem 0.8rem; gap: 0.4rem; }
+      .about-badge-float .num { font-size: 1.1rem; }
+      .about-badge-float .lbl { font-size: 0.65rem; }
+      .about-badge-float i { font-size: 0.9rem; }
+      .about-story-img { min-height: 400px; }
+      
       .about-story-img { max-width: 100%; }
-      /* Prevent any absolute positioned element from bleeding out */
+      
       .page-header__particle { pointer-events: none; }
     }
-    /* Overflow guard for all screens */
-    .about-story-img,
-    .page-header { overflow: hidden; }
-    @media (max-width: 480px) {
-      .page-header { padding-block: 5rem 2.5rem; }
-    }
+    
+    .why-section,
+    body { overflow-x: hidden; }
   </style>
-  <link rel="shortcut icon" href="assets/top-logo.webp" type="image/webp"/>
+  <link rel="icon" href="assets/top-logo.webp">
 </head>
 
 <body>
 
-<!-- ════════════════════════════════════════════════
-     SEARCH OVERLAY  (reusable component)
-════════════════════════════════════════════════ -->
+
 <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
   <div class="search-overlay__inner">
     <div class="search-overlay__input-wrap">
@@ -543,10 +554,17 @@
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════════
-     MOBILE OVERLAY MENU  (reusable component)
-════════════════════════════════════════════════ -->
+
 <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-overlay__header">
+    <a href="index.html" class="mobile-overlay__logo" aria-label="Stackly Home">
+      <img src="assets/logo.webp" alt="Stackly"/>
+    </a>
+    <button class="mobile-overlay__close-btn" onclick="closeMobileMenu()" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
   <nav class="mobile-overlay__nav" aria-label="Mobile Navigation">
     <a href="index.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">Home</a>
     <a href="about.html"   class="mobile-overlay__link active" onclick="closeMobileMenu()">About</a>
@@ -563,18 +581,16 @@
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════════
-     NAVBAR  (reusable component)
-════════════════════════════════════════════════ -->
+
 <header class="navbar navbar--hero" id="navbar">
   <div class="container navbar__inner">
 
-    <!-- Logo -->
+    
     <a href="index.html" class="navbar__logo" aria-label="Stackly Home">
       <img src="assets/logo.webp" alt="Stackly" loading="eager"/>
     </a>
 
-    <!-- Desktop Nav -->
+    
     <nav class="navbar__nav" aria-label="Main Navigation">
       <a href="index.html"   class="navbar__link">Home</a>
       <a href="about.html"   class="navbar__link active">About</a>
@@ -583,14 +599,18 @@
       <a href="contact.html" class="navbar__link">Contact</a>
     </nav>
 
-    <!-- Actions -->
+    
     <div class="navbar__actions">
       <button class="navbar__search-btn" id="searchToggle" aria-label="Search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
-      <button class="navbar__cart-btn" aria-label="Cart" onclick="location.href='store.html'">
+      <button class="navbar__wishlist-btn" aria-label="Wishlist" onclick="openWishlist()" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.9);background:transparent;position:relative;">
+        <i class="fa-solid fa-heart"></i>
+        <span class="wishlist-count" style="display:flex;">0</span>
+      </button>
+      <button class="navbar__cart-btn" aria-label="Cart" onclick="openCart()">
         <i class="fa-solid fa-bag-shopping"></i>
-        <span class="cart-count">3</span>
+        <span class="cart-count" id="cartBadge" style="display:none;">0</span>
       </button>
       <a href="signin.html"      class="btn btn-outline btn-sm d-none d-lg-inline-flex">Sign In</a>
       <a href="signup.html"      class="btn btn-primary btn-sm d-none d-lg-inline-flex">Get Started</a>
@@ -601,11 +621,9 @@
   </div>
 </header>
 
-<!-- ════════════════════════════════════════════════
-     PAGE HEADER
-════════════════════════════════════════════════ -->
+
 <section class="page-header">
-  <!-- Floating particles -->
+  
   <div class="page-header__particles" aria-hidden="true">
     <div class="page-header__particle" style="width:70px;height:70px;top:15%;left:8%;--duration:7s;--delay:0s;"></div>
     <div class="page-header__particle" style="width:45px;height:45px;top:65%;left:5%;--duration:5s;--delay:-2s;"></div>
@@ -631,9 +649,7 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     FEATURES MARQUEE STRIP  (reusable component)
-════════════════════════════════════════════════ -->
+
 <div class="features-strip" aria-hidden="true">
   <div class="features-strip__inner">
     <div class="features-strip__track">
@@ -645,7 +661,7 @@
       <div class="features-strip__item"><i class="fa-solid fa-tag"></i> Best Price Guarantee</div>
       <div class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurvedic & Wellness</div>
       <div class="features-strip__item"><i class="fa-solid fa-star"></i> 4.9 Customer Rating</div>
-      <!-- Duplicate for seamless loop -->
+      
       <div class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</div>
       <div class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Fast Home Delivery</div>
       <div class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</div>
@@ -658,18 +674,16 @@
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════════
-     OUR STORY
-════════════════════════════════════════════════ -->
+
 <section class="section" id="story">
   <div class="container">
     <div class="row align-items-center g-5">
 
-      <!-- Visual -->
+      
       <div class="col-lg-5" data-aos="fade-right">
         <div class="about-story-img">
-          <div class="about-story-img__inner">🏥</div>
-          <!-- Floating badges -->
+          <img src="assets/hero_about.webp" alt="Who We Are" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; border-radius: var(--r-xl);" />
+          
           <div class="about-badge-float about-bf-years">
             <div>
               <span class="num">8+</span>
@@ -686,7 +700,7 @@
         </div>
       </div>
 
-      <!-- Copy -->
+      
       <div class="col-lg-7" data-aos="fade-left">
         <span class="eyebrow">Who We Are</span>
         <h2 class="section-title mt-3 mb-3">
@@ -700,7 +714,7 @@
           Every order we fulfil represents a person who trusts us with their health. That responsibility drives everything we do — from sourcing only genuine, temperature-controlled medicines to ensuring our pharmacists are available round the clock to answer your questions.
         </p>
 
-        <!-- Values list -->
+        
         <div class="values-list mb-4">
           <div class="value-item" data-aos="fade-up" data-aos-delay="0">
             <div class="value-item__icon"><i class="fa-solid fa-shield-heart"></i></div>
@@ -739,9 +753,7 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     STATS COUNTER
-════════════════════════════════════════════════ -->
+
 <section class="section bg-light">
   <div class="container">
     <div class="text-center mb-5" data-aos="fade-up">
@@ -749,7 +761,7 @@
       <h2 class="section-title mt-3">Our <span class="text-gradient">Impact</span></h2>
     </div>
     <div class="row g-4">
-      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
+      <div class="col-12 col-sm-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
         <div class="stat-card">
           <div class="stat-card__icon"><i class="fa-solid fa-users"></i></div>
           <div class="stat-card__num">
@@ -758,7 +770,7 @@
           <div class="stat-card__label">Happy Customers</div>
         </div>
       </div>
-      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="80">
+      <div class="col-12 col-sm-6 col-md-3" data-aos="zoom-in" data-aos-delay="80">
         <div class="stat-card">
           <div class="stat-card__icon"><i class="fa-solid fa-box-open"></i></div>
           <div class="stat-card__num">
@@ -767,7 +779,7 @@
           <div class="stat-card__label">Products Listed</div>
         </div>
       </div>
-      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="160">
+      <div class="col-12 col-sm-6 col-md-3" data-aos="zoom-in" data-aos-delay="160">
         <div class="stat-card">
           <div class="stat-card__icon"><i class="fa-solid fa-award"></i></div>
           <div class="stat-card__num">
@@ -776,7 +788,7 @@
           <div class="stat-card__label">Years of Trust</div>
         </div>
       </div>
-      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="240">
+      <div class="col-12 col-sm-6 col-md-3" data-aos="zoom-in" data-aos-delay="240">
         <div class="stat-card">
           <div class="stat-card__icon"><i class="fa-solid fa-star"></i></div>
           <div class="stat-card__num">
@@ -789,9 +801,7 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     MISSION / CORE VALUES
-════════════════════════════════════════════════ -->
+
 <section class="section">
   <div class="container">
     <div class="text-center mb-5" data-aos="fade-up">
@@ -846,9 +856,7 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     WHY CHOOSE US (dark section)
-════════════════════════════════════════════════ -->
+
 <section class="section why-section">
   <div class="container" style="position:relative;z-index:2;">
     <div class="text-center mb-5" data-aos="fade-up">
@@ -903,14 +911,12 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     OUR JOURNEY — TIMELINE
-════════════════════════════════════════════════ -->
+
 <section class="section">
   <div class="container">
     <div class="row align-items-start g-5">
 
-      <!-- Left: Copy -->
+      
       <div class="col-lg-5" data-aos="fade-right">
         <span class="eyebrow">Our Journey</span>
         <h2 class="section-title mt-3 mb-3">
@@ -924,7 +930,7 @@
         </a>
       </div>
 
-      <!-- Right: Timeline -->
+      
       <div class="col-lg-7" data-aos="fade-left">
         <div class="timeline">
           <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
@@ -964,9 +970,6 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     TEAM
-════════════════════════════════════════════════ -->
 <section class="section bg-light">
   <div class="container">
     <div class="text-center mb-5" data-aos="fade-up">
@@ -975,121 +978,72 @@
       <p class="section-subtitle mx-auto mt-2">Passionate healthcare professionals committed to your wellbeing.</p>
     </div>
     <div class="row g-4">
-      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+      <div class="col-12 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="0">
         <div class="team-card">
           <div class="team-card__photo">
-            <svg class="team-card-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradArjun" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0a7c5e"/>
-                  <stop offset="100%" stop-color="#00d4a0"/>
-                </linearGradient>
-              </defs>
-              <rect width="100" height="100" fill="url(#gradArjun)"/>
-              <path d="M50 50 A12 12 0 1 0 50 26 A12 12 0 1 0 50 50 Z" fill="#ffffff" opacity="0.95"/>
-              <path d="M25 78 C25 65 33 58 50 58 C67 58 75 65 75 78 V82 H25 V78 Z" fill="#ffffff" opacity="0.95"/>
-              <path d="M42 46 C42 54 58 54 58 46" stroke="#00d4a0" stroke-width="2" stroke-linecap="round"/>
-              <path d="M50 52 V66" stroke="#00d4a0" stroke-width="2"/>
-              <circle cx="50" cy="67" r="3" fill="#00d4a0"/>
-            </svg>
-            <div class="team-card__overlay">
-              <a href="404.html" class="team-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="404.html" class="team-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="404.html" class="team-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+              <img src="assets/team_arjun.webp" alt="Dr. Arjun Selvam" class="team-card-img" style="width:100%; height:100%; object-fit:cover;" />
+              <div class="team-card__overlay">
+                <div class="d-flex gap-2">
+                  <a href="404.html" class="team-social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="404.html" class="team-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="team-card__body">
-            <div class="team-card__name">Dr. Arjun Selvam</div>
+            <div class="team-card__body">
+              <div class="team-card__name">Dr. Arjun Selvam</div>
             <div class="team-card__role">Founder &amp; Chief Pharmacist</div>
             <div class="team-card__bio">Pharm.D from JSS Ooty · 14 years in clinical pharmacy</div>
           </div>
         </div>
       </div>
-      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+      <div class="col-12 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="80">
         <div class="team-card">
           <div class="team-card__photo">
-            <svg class="team-card-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradPriya" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0d1b2a"/>
-                  <stop offset="100%" stop-color="#1b4965"/>
-                </linearGradient>
-              </defs>
-              <rect width="100" height="100" fill="url(#gradPriya)"/>
-              <path d="M50 22 C43 22 36 27 36 38 C36 43 37 47 40 50 C40 45 42 41 45 39 C46 41 48 42 50 42 C52 42 54 41 55 39 C58 41 60 45 60 50 C63 47 64 43 64 38 C64 27 57 22 50 22 Z" fill="#ffffff" opacity="0.95"/>
-              <circle cx="50" cy="37" r="10" fill="#ffffff" opacity="0.95"/>
-              <path d="M25 78 C25 66 35 60 50 60 C65 60 75 66 75 78 V82 H25 V78 Z" fill="#ffffff" opacity="0.95"/>
-              <path d="M43 60 L50 67 L57 60" stroke="#00d4a0" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <div class="team-card__overlay">
-              <a href="404.html" class="team-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="404.html" class="team-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="404.html" class="team-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+              <img src="assets/team_priya.webp" alt="Priya Krishnamurthy" class="team-card-img" style="width:100%; height:100%; object-fit:cover;" />
+              <div class="team-card__overlay">
+                <div class="d-flex gap-2">
+                  <a href="404.html" class="team-social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="404.html" class="team-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="team-card__body">
-            <div class="team-card__name">Priya Krishnamurthy</div>
+            <div class="team-card__body">
+              <div class="team-card__name">Priya Krishnamurthy</div>
             <div class="team-card__role">Operations Director</div>
             <div class="team-card__bio">MBA from PSG · 10 years healthcare supply chain</div>
           </div>
         </div>
       </div>
-      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+      <div class="col-12 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="160">
         <div class="team-card">
           <div class="team-card__photo">
-            <svg class="team-card-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradKarthik" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0d1b2a"/>
-                  <stop offset="100%" stop-color="#0a7c5e"/>
-                </linearGradient>
-              </defs>
-              <rect width="100" height="100" fill="url(#gradKarthik)"/>
-              <circle cx="50" cy="36" r="12" fill="#ffffff" opacity="0.95"/>
-              <path d="M25 78 C25 65 33 58 50 58 C67 58 75 65 75 78 V82 H25 V78 Z" fill="#ffffff" opacity="0.95"/>
-              <rect x="40" y="32" width="8" height="5" rx="1.5" stroke="#00d4a0" stroke-width="2"/>
-              <rect x="52" y="32" width="8" height="5" rx="1.5" stroke="#00d4a0" stroke-width="2"/>
-              <line x1="48" y1="34" x2="52" y2="34" stroke="#00d4a0" stroke-width="2"/>
-            </svg>
-            <div class="team-card__overlay">
-              <a href="404.html" class="team-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="404.html" class="team-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="404.html" class="team-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+              <img src="assets/team_karthik.webp" alt="Karthik Rajan" class="team-card-img" style="width:100%; height:100%; object-fit:cover;" />
+              <div class="team-card__overlay">
+                <div class="d-flex gap-2">
+                  <a href="404.html" class="team-social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="404.html" class="team-social-btn"><i class="fa-brands fa-github"></i></a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="team-card__body">
-            <div class="team-card__name">Karthik Rajan</div>
+            <div class="team-card__body">
+              <div class="team-card__name">Karthik Rajan</div>
             <div class="team-card__role">Head of Technology</div>
             <div class="team-card__bio">B.Tech NIT Trichy · Full-stack &amp; health-tech builder</div>
           </div>
         </div>
       </div>
-      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+      <div class="col-12 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="240">
         <div class="team-card">
           <div class="team-card__photo">
-            <svg class="team-card-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradMeena" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#00d4a0"/>
-                  <stop offset="100%" stop-color="#1b4965"/>
-                </linearGradient>
-              </defs>
-              <rect width="100" height="100" fill="url(#gradMeena)"/>
-              <path d="M50 20 C42 20 35 25 35 37 C35 44 38 48 40 50 C43 50 45 42 50 42 C55 42 57 50 60 50 C62 48 65 44 65 37 C65 25 58 20 50 20 Z" fill="#ffffff" opacity="0.95"/>
-              <circle cx="50" cy="35" r="10" fill="#ffffff" opacity="0.95"/>
-              <path d="M25 78 C25 65 33 58 50 58 C67 58 75 65 75 78 V82 H25 V78 Z" fill="#ffffff" opacity="0.95"/>
-              <path d="M42 46 C42 54 58 54 58 46" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-              <path d="M50 52 V62" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
-              <path d="M47 57 H53" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
-            </svg>
-            <div class="team-card__overlay">
-              <a href="404.html" class="team-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="404.html" class="team-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="404.html" class="team-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+              <img src="assets/team_meena.webp" alt="Dr. Meena Suresh" class="team-card-img" style="width:100%; height:100%; object-fit:cover;" />
+              <div class="team-card__overlay">
+                <div class="d-flex gap-2">
+                  <a href="404.html" class="team-social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="team-card__body">
-            <div class="team-card__name">Dr. Meena Suresh</div>
+            <div class="team-card__body">
+              <div class="team-card__name">Dr. Meena Suresh</div>
             <div class="team-card__role">Senior Pharmacist</div>
             <div class="team-card__bio">Pharm.D · Specialised in chronic disease management</div>
           </div>
@@ -1099,9 +1053,7 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     FAQ
-════════════════════════════════════════════════ -->
+
 <section class="section">
   <div class="container">
     <div class="row g-5 align-items-start">
@@ -1177,9 +1129,7 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     CTA BAND
-════════════════════════════════════════════════ -->
+
 <section class="section">
   <div class="container" data-aos="zoom-in">
     <div class="cta-band">
@@ -1206,14 +1156,12 @@
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════
-     FOOTER  (reusable component)
-════════════════════════════════════════════════ -->
+
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
 
-      <!-- Brand -->
+      
       <div class="footer__brand">
         <a href="index.html" class="footer__logo">
           <img src="assets/logo.webp" alt="Stackly"/>
@@ -1228,7 +1176,7 @@
         </div>
       </div>
 
-      <!-- Quick Links -->
+      
       <div>
         <div class="footer__col-title">Quick Links</div>
         <ul class="footer__links">
@@ -1241,20 +1189,20 @@
         </ul>
       </div>
 
-      <!-- Services -->
+      
       <div>
         <div class="footer__col-title">Services</div>
         <ul class="footer__links">
-          <li><a href="store.html"   class="footer__link">Prescription Refills</a></li>
-          <li><a href="store.html"   class="footer__link">Home Test Kits</a></li>
-          <li><a href="contact.html" class="footer__link">Doctor Consultation</a></li>
-          <li><a href="store.html"   class="footer__link">Auto Refill Plans</a></li>
-          <li><a href="store.html"   class="footer__link">Wellness Packages</a></li>
+          <li><a href="404.html"   class="footer__link">Prescription Refills</a></li>
+          <li><a href="404.html"   class="footer__link">Home Test Kits</a></li>
+          <li><a href="404.html" class="footer__link">Doctor Consultation</a></li>
+          <li><a href="404.html"   class="footer__link">Auto Refill Plans</a></li>
+          <li><a href="404.html"   class="footer__link">Wellness Packages</a></li>
           <li><a href="404.html"     class="footer__link">Bulk Orders</a></li>
         </ul>
       </div>
 
-      <!-- Address & Newsletter -->
+      
       <div>
         <div class="footer__col-title">Find Us</div>
         <div class="footer__address-item">
@@ -1297,29 +1245,28 @@
   </div>
 </footer>
 
-<!-- Back to top -->
+
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <i class="fa-solid fa-chevron-up"></i>
 </button>
 
-<!-- Toast container -->
+
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- ════════════════════════════════════════════════
-     SCRIPTS
-════════════════════════════════════════════════ -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
 
 <script>
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── AOS Init ── */
+  
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
   }
 
-  /* ── Navbar scroll ── */
+  
   const navbar = document.getElementById('navbar');
   const onScroll = () => {
     if (window.scrollY > 50) {
@@ -1333,7 +1280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ── Hamburger ── */
+  
   const hamburger = document.getElementById('hamburger');
   const mobileOverlay = document.getElementById('mobileOverlay');
 
@@ -1346,10 +1293,11 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.add('is-open');
       hamburger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
   });
 
-  /* ESC key */
+  
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       closeMobileMenu();
@@ -1357,7 +1305,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Search overlay ── */
+  
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 992) {
+      closeMobileMenu();
+    }
+  });
+
+  
   const searchOverlay = document.getElementById('searchOverlay');
   const searchToggle  = document.getElementById('searchToggle');
   const searchClose   = document.getElementById('searchClose');
@@ -1366,6 +1321,7 @@ document.addEventListener('DOMContentLoaded', () => {
   searchToggle.addEventListener('click', () => {
     searchOverlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     setTimeout(() => searchInput.focus(), 300);
   });
   searchClose.addEventListener('click', closeSearch);
@@ -1379,7 +1335,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Counter animation ── */
+  
   const counters = document.querySelectorAll('.counter');
   const countObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1401,14 +1357,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   counters.forEach(c => countObserver.observe(c));
 
-  /* ── Back to top ── */
+  
   const btt = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     btt.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
   btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* ── Scroll animations (supplement AOS) ── */
+  
   const animEls = document.querySelectorAll('.anim-fade-up,.anim-fade-left,.anim-fade-right,.anim-scale,.anim-flip');
   if (animEls.length) {
     const animObserver = new IntersectionObserver(entries => {
@@ -1417,7 +1373,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animEls.forEach(el => animObserver.observe(el));
   }
 
-  /* ── Active nav link ── */
+  
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.navbar__link').forEach(link => {
     link.classList.remove('active');
@@ -1426,17 +1382,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-/* ── Global helpers ── */
+
 function closeMobileMenu() {
   document.getElementById('mobileOverlay').classList.remove('is-open');
   document.getElementById('hamburger').classList.remove('is-open');
   document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 }
 
 function closeSearch() {
   document.getElementById('searchOverlay').classList.remove('is-open');
   document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
 }
 
 function showToast(msg, icon = 'fa-circle-check') {
@@ -1455,28 +1413,30 @@ function showToast(msg, icon = 'fa-circle-check') {
 
 function handleNewsletter(e) {
   e.preventDefault();
-  showToast('Subscribed successfully! 🎉', 'fa-circle-check');
-  e.target.reset();
+  window.location.href = '404.html';
 }
 
-/* ── FAQ Accordion ── */
+
 function toggleAccordion(btn) {
   const item = btn.closest('.accordion-item');
   const body = item.querySelector('.accordion-body');
   const isOpen = item.classList.contains('open');
 
-  // Close all
+  
   document.querySelectorAll('.accordion-item.open').forEach(openItem => {
     openItem.classList.remove('open');
     openItem.querySelector('.accordion-body').style.maxHeight = '0';
   });
 
-  // Open clicked (if it was closed)
+  
   if (!isOpen) {
     item.classList.add('open');
     body.style.maxHeight = body.scrollHeight + 'px';
   }
 }
+
+
 </script>
+  <script src="cart.js"></script>
 </body>
 </html>

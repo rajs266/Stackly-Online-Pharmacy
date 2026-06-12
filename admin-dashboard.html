@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#1A6B4A" />
   <title>Admin Dashboard — Stackly</title>
 
-  <link rel="icon" href="assets/logo.webp" type="image/webp" />
+  <link rel="icon" href="assets/top-logo.webp" type="image/webp" />
   <link rel="apple-touch-icon" href="assets/logo.webp" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,14 +26,14 @@
       --clr-secondary-purple: #9C27B0;
       --clr-secondary-red: #EF5350;
       --clr-white:  #FFFFFF;
-      --clr-bg:     #F8F9FA;
-      --clr-bg-alt: #EFF2F5;
+      --clr-bg:     #f0f7f3;
+      --clr-bg-alt: #f4faf7;
       --clr-surface:#FFFFFF;
-      --clr-border: #E0E0E0;
+      --clr-border: #C8E6D4;
       --clr-text-dark:  #0d1b2a;
-      --clr-text-body:  #495057;
-      --clr-text-muted: #6C757D;
-      --clr-text-light: #ADB5BD;
+      --clr-text-body:  #2d3a30;
+      --clr-text-muted: #6b7e72;
+      --clr-text-light: #6b7e72;
       --font-heading: 'Playfair Display', Georgia, serif;
       --font-body:    'DM Sans', 'Segoe UI', sans-serif;
       --r-sm:   8px;
@@ -82,7 +82,7 @@
 
     .sidebar {
       width: var(--sidebar-w);
-      background: linear-gradient(180deg, #1b2a22 0%, #243a2e 100%);
+      background: linear-gradient(180deg, #0d1b2a 0%, #142436 100%);
       height: calc(100vh - var(--topbar-h));
       display: flex;
       flex-direction: column;
@@ -181,7 +181,7 @@
       top: 0; left: 0; right: 0;
       width: 100%;
       height: var(--topbar-h);
-      background: linear-gradient(90deg, #1b2a22 0%, #1A6B4A 100%);
+      background: #0d1b2a;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       display: flex; align-items: center;
       padding: 0 1.5rem; gap: 1rem;
@@ -251,11 +251,11 @@
     .section-panel.active { display: block; }
 
     .welcome-banner {
-      background: linear-gradient(135deg, rgba(26,107,74,0.92) 0%, rgba(27,42,34,0.97) 100%);
+      background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-primary-light) 60%, var(--clr-accent) 100%);
       border-radius: var(--r-xl); padding: 1.75rem 2rem;
       display: flex; align-items: center; justify-content: space-between;
       gap: 1rem; margin-bottom: 1.75rem; overflow: hidden; position: relative;
-      border: 1px solid rgba(26,107,74,0.3);
+      border: none;
     }
     .welcome-banner::before {
       content: ''; position: absolute; top: -40px; right: -40px;
@@ -421,10 +421,8 @@
       font-size: 0.76rem;
       font-weight: 600;
       color: var(--clr-text-body);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100%;
+      white-space: normal;
+      line-height: 1.2;
     }
 
     .task-list { display: flex; flex-direction: column; gap: 0; }
@@ -826,7 +824,7 @@
                 <div class="stat-card__trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12.4%</div>
               </div>
               <div class="stat-card__value">₹24.8L</div>
-              <div class="stat-card__label">Total Revenue</div>
+              <div class="stat-card__label">Total Sales</div>
               <div class="stat-card__bar"><div class="stat-card__bar-fill" style="width:72%;background:var(--clr-primary);"></div></div>
             </div>
             <div class="stat-card">
@@ -861,7 +859,7 @@
           <div class="dash-row dash-row--chart">
             <div class="dash-card">
               <div class="dash-card__header">
-                <div class="dash-card__title"><i class="fa-solid fa-chart-column" style="color:var(--clr-primary);margin-right:0.4rem;"></i> Monthly Revenue</div>
+                <div class="dash-card__title"><i class="fa-solid fa-chart-column" style="color:var(--clr-primary);margin-right:0.4rem;"></i> Monthly Sales</div>
                 <button class="dash-card__action" onclick="showSection('analytics')"><i class="fa-solid fa-expand"></i> View Full</button>
               </div>
               <div class="dash-card__body">
@@ -887,7 +885,7 @@
             </div>
             <div class="dash-card">
               <div class="dash-card__header">
-                <div class="dash-card__title"><i class="fa-solid fa-chart-pie" style="color:var(--clr-primary);margin-right:0.4rem;"></i> Revenue Split</div>
+                <div class="dash-card__title"><i class="fa-solid fa-chart-pie" style="color:var(--clr-primary);margin-right:0.4rem;"></i> Sales Split</div>
                 <button class="dash-card__action" onclick="showSection('analytics')">Details</button>
               </div>
               <div class="dash-card__body">
@@ -902,8 +900,8 @@
                   </svg>
                   <div class="donut-legend">
                     <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#1A6B4A;"></div><span class="donut-legend__label">Consulting</span><span class="donut-legend__val">59%</span></div>
-                    <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#FFB300;"></div><span class="donut-legend__label">Tax Filing</span><span class="donut-legend__val">25%</span></div>
-                    <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#2196F3;"></div><span class="donut-legend__label">Audit</span><span class="donut-legend__val">16%</span></div>
+                    <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#FFB300;"></div><span class="donut-legend__label">Prescription Refills</span><span class="donut-legend__val">25%</span></div>
+                    <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#2196F3;"></div><span class="donut-legend__label">Checkup</span><span class="donut-legend__val">16%</span></div>
                   </div>
                 </div>
               </div>
@@ -921,9 +919,9 @@
                   <table class="dash-table">
                     <thead><tr><th>Client</th><th>Service</th><th>Amount</th><th>Status</th></tr></thead>
                     <tbody>
-                      <tr><td><div class="dash-table__name"><div class="dash-table__avatar">RK</div><div><div class="dash-table__name-text">Ramesh Kumar</div><div class="dash-table__email">ramesh@gmail.com</div></div></div></td><td>ITR Filing</td><td>₹8,500</td><td><span class="badge badge--green">Completed</span></td></tr>
+                      <tr><td><div class="dash-table__name"><div class="dash-table__avatar">RK</div><div><div class="dash-table__name-text">Ramesh Kumar</div><div class="dash-table__email">ramesh@gmail.com</div></div></div></td><td>Chronic Care Plan</td><td>₹8,500</td><td><span class="badge badge--green">Completed</span></td></tr>
                       <tr><td><div class="dash-table__name"><div class="dash-table__avatar">PA</div><div><div class="dash-table__name-text">Priya Anand</div><div class="dash-table__email">priya@corp.com</div></div></div></td><td>OTC Medications</td><td>₹12,000</td><td><span class="badge badge--gold">Pending</span></td></tr>
-                      <tr><td><div class="dash-table__name"><div class="dash-table__avatar">VS</div><div><div class="dash-table__name-text">Vijay Sharma</div><div class="dash-table__email">vijay@biz.in</div></div></div></td><td>Audit</td><td>₹45,000</td><td><span class="badge badge--blue">In Review</span></td></tr>
+                      <tr><td><div class="dash-table__name"><div class="dash-table__avatar">VS</div><div><div class="dash-table__name-text">Vijay Sharma</div><div class="dash-table__email">vijay@biz.in</div></div></div></td><td>Checkup</td><td>₹45,000</td><td><span class="badge badge--blue">In Review</span></td></tr>
                       <tr><td><div class="dash-table__name"><div class="dash-table__avatar">LN</div><div><div class="dash-table__name-text">Lakshmi Nair</div><div class="dash-table__email">lakshnair@xyz.com</div></div></div></td><td>Payroll</td><td>₹6,200</td><td><span class="badge badge--red">Overdue</span></td></tr>
                     </tbody>
                   </table>
@@ -957,10 +955,10 @@
                 <div class="task-list">
                   <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Review Q3 Medicine orderss for 5 clients</span><span class="task-item__due urgent">Today</span></div>
                   <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Send reminder to Lakshmi Nair (overdue)</span><span class="task-item__due urgent">Today</span></div>
-                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Prepare audit report — Vijay Sharma</span><span class="task-item__due">Jun 12</span></div>
+                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Prepare checkup report — Vijay Sharma</span><span class="task-item__due">Jun 12</span></div>
                   <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">Upload PAN documents — Priya Anand</span><span class="task-item__due">Done</span></div>
-                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Monthly payroll processing — Suresh Co</span><span class="task-item__due">Jun 15</span></div>
-                  <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">ITR filing — Ramesh Kumar</span><span class="task-item__due">Done</span></div>
+                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Monthly order processing — Suresh Co</span><span class="task-item__due">Jun 15</span></div>
+                  <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">Prescription Refill — Ramesh Kumar</span><span class="task-item__due">Done</span></div>
                 </div>
               </div>
             </div>
@@ -971,10 +969,10 @@
               </div>
               <div class="dash-card__body">
                 <div class="progress-section">
-                  <div class="progress-item"><span class="progress-item__label">Tax Filing</span><div class="progress-track"><div class="progress-fill" style="width:87%;background:var(--clr-primary);"></div></div><span class="progress-item__pct">87%</span></div>
-                  <div class="progress-item"><span class="progress-item__label">Audit</span><div class="progress-track"><div class="progress-fill" style="width:72%;background:var(--clr-accent);"></div></div><span class="progress-item__pct">72%</span></div>
+                  <div class="progress-item"><span class="progress-item__label">Prescription Refills</span><div class="progress-track"><div class="progress-fill" style="width:87%;background:var(--clr-primary);"></div></div><span class="progress-item__pct">87%</span></div>
+                  <div class="progress-item"><span class="progress-item__label">Checkup</span><div class="progress-track"><div class="progress-fill" style="width:72%;background:var(--clr-accent);"></div></div><span class="progress-item__pct">72%</span></div>
                   <div class="progress-item"><span class="progress-item__label">Client Sat.</span><div class="progress-track"><div class="progress-fill" style="width:95%;background:#1565C0;"></div></div><span class="progress-item__pct">95%</span></div>
-                  <div class="progress-item"><span class="progress-item__label">Invoice Rec.</span><div class="progress-track"><div class="progress-fill" style="width:61%;background:#EF5350;"></div></div><span class="progress-item__pct">61%</span></div>
+                  <div class="progress-item"><span class="progress-item__label">Prescription Rec.</span><div class="progress-track"><div class="progress-fill" style="width:61%;background:#EF5350;"></div></div><span class="progress-item__pct">61%</span></div>
                   <div class="progress-item"><span class="progress-item__label">Payroll Acc.</span><div class="progress-track"><div class="progress-fill" style="width:99%;background:#2D9B5E;"></div></div><span class="progress-item__pct">99%</span></div>
                   <div class="progress-item"><span class="progress-item__label">Drug Regulations</span><div class="progress-track"><div class="progress-fill" style="width:78%;background:#7C3AED;"></div></div><span class="progress-item__pct">78%</span></div>
                 </div>
@@ -988,14 +986,14 @@
           <div class="section-header">
             <div>
               <div class="section-header__title">Analytics</div>
-              <div class="section-header__sub">Financial performance, trends and forecasts</div>
+              <div class="section-header__sub">Pharmacy Performance, trends and forecasts</div>
             </div>
             <button class="section-header__btn" onclick="showToast('Exporting analytics report...')"><i class="fa-solid fa-download"></i> Export Report</button>
           </div>
 
           <div class="kpi-grid">
             <div class="kpi-tile">
-              <div class="kpi-tile__label"><i class="fa-solid fa-indian-rupee-sign"></i> Revenue YTD</div>
+              <div class="kpi-tile__label"><i class="fa-solid fa-indian-rupee-sign"></i> Sales YTD</div>
               <div class="kpi-tile__value">₹1.48 Cr</div>
               <div class="kpi-tile__sub">+14.2% vs last year</div>
             </div>
@@ -1012,14 +1010,14 @@
             <div class="kpi-tile kpi-tile--red">
               <div class="kpi-tile__label"><i class="fa-solid fa-clock-rotate-left"></i> Outstanding</div>
               <div class="kpi-tile__value">₹12.3L</div>
-              <div class="kpi-tile__sub">18 overdue invoices</div>
+              <div class="kpi-tile__sub">18 overdue prescriptions</div>
             </div>
           </div>
 
           <div class="dash-row dash-row--2col">
             <div class="dash-card">
               <div class="dash-card__header">
-                <div class="dash-card__title"><i class="fa-solid fa-chart-area" style="color:var(--clr-primary);margin-right:0.4rem;"></i> Revenue Trend (12 Months)</div>
+                <div class="dash-card__title"><i class="fa-solid fa-chart-area" style="color:var(--clr-primary);margin-right:0.4rem;"></i> Sales Trend (12 Months)</div>
                 <button class="dash-card__action" onclick="showToast('Full chart loading...')">Expand</button>
               </div>
               <div class="dash-card__body">
@@ -1038,7 +1036,7 @@
                   <div class="chart-bar accent" style="height:100%;"></div>
                 </div>
                 <div class="chart-legend">
-                  <div class="chart-legend__item"><div class="chart-legend__dot" style="background:var(--clr-primary);"></div> Regular Revenue</div>
+                  <div class="chart-legend__item"><div class="chart-legend__dot" style="background:var(--clr-primary);"></div> Regular Sales</div>
                   <div class="chart-legend__item"><div class="chart-legend__dot" style="background:var(--clr-accent);"></div> Peak Quarters</div>
                 </div>
               </div>
@@ -1059,9 +1057,9 @@
                     <text x="60" y="70" text-anchor="middle" font-size="7" fill="#6C757D" font-family="sans-serif">FY 2025-26</text>
                   </svg>
                   <div class="donut-legend">
-                    <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#1A6B4A;"></div><span class="donut-legend__label">Tax Advisory</span><span class="donut-legend__val">50%</span></div>
+                    <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#1A6B4A;"></div><span class="donut-legend__label">Health Advisory</span><span class="donut-legend__val">50%</span></div>
                     <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#FFB300;"></div><span class="donut-legend__label">Healthcare</span><span class="donut-legend__val">26%</span></div>
-                    <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#2196F3;"></div><span class="donut-legend__label">Audit Services</span><span class="donut-legend__val">17%</span></div>
+                    <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#2196F3;"></div><span class="donut-legend__label">Checkup Services</span><span class="donut-legend__val">17%</span></div>
                     <div class="donut-legend__item"><div class="donut-legend__dot" style="background:#9C27B0;"></div><span class="donut-legend__label">Payroll Mgmt</span><span class="donut-legend__val">7%</span></div>
                   </div>
                 </div>
@@ -1077,7 +1075,7 @@
             <div class="dash-card__body" style="padding:0;">
               <div class="dash-table-wrap">
                 <table class="dash-table">
-                  <thead><tr><th>Month</th><th>Revenue</th><th>Expenses</th><th>Net Profit</th><th>Margin</th><th>Prescriptions</th></tr></thead>
+                  <thead><tr><th>Month</th><th>Sales</th><th>Returns</th><th>Net Profit</th><th>Margin</th><th>Prescriptions</th></tr></thead>
                   <tbody>
                     <tr><td>January 2026</td><td>₹1,85,000</td><td>₹98,000</td><td>₹87,000</td><td><span class="badge badge--green">47%</span></td><td>28</td></tr>
                     <tr><td>February 2026</td><td>₹2,12,000</td><td>₹1,05,000</td><td>₹1,07,000</td><td><span class="badge badge--green">50%</span></td><td>34</td></tr>
@@ -1118,12 +1116,12 @@
                 <table class="dash-table">
                   <thead><tr><th>Txn ID</th><th>Client / Vendor</th><th>Type</th><th>Amount</th><th>Date</th><th>Status</th></tr></thead>
                   <tbody>
-                    <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00481</td><td>Ramesh Kumar</td><td>Invoice Payment</td><td style="color:#2D9B5E;font-weight:700;">+₹8,500</td><td>Jun 08</td><td><span class="badge badge--green">Settled</span></td></tr>
-                    <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00480</td><td>Vijay Sharma</td><td>Audit Fee</td><td style="color:#2D9B5E;font-weight:700;">+₹45,000</td><td>Jun 07</td><td><span class="badge badge--blue">In Review</span></td></tr>
+                    <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00481</td><td>Ramesh Kumar</td><td>Order Payment</td><td style="color:#2D9B5E;font-weight:700;">+₹8,500</td><td>Jun 08</td><td><span class="badge badge--green">Settled</span></td></tr>
+                    <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00480</td><td>Vijay Sharma</td><td>Checkup Fee</td><td style="color:#2D9B5E;font-weight:700;">+₹45,000</td><td>Jun 07</td><td><span class="badge badge--blue">In Review</span></td></tr>
                     <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00479</td><td>Office Supplies</td><td>Expense</td><td style="color:#C53030;font-weight:700;">-₹3,200</td><td>Jun 06</td><td><span class="badge badge--green">Settled</span></td></tr>
                     <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00478</td><td>Lakshmi Nair</td><td>Payroll</td><td style="color:#C53030;font-weight:700;">-₹6,200</td><td>Jun 05</td><td><span class="badge badge--red">Overdue</span></td></tr>
                     <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00477</td><td>SBI Bank Charges</td><td>Bank Fee</td><td style="color:#C53030;font-weight:700;">-₹850</td><td>Jun 04</td><td><span class="badge badge--green">Settled</span></td></tr>
-                    <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00476</td><td>Priya Anand Corp</td><td>GST Refund</td><td style="color:#2D9B5E;font-weight:700;">+₹12,000</td><td>Jun 03</td><td><span class="badge badge--gold">Pending</span></td></tr>
+                    <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00476</td><td>Priya Anand Corp</td><td>Order Refund</td><td style="color:#2D9B5E;font-weight:700;">+₹12,000</td><td>Jun 03</td><td><span class="badge badge--gold">Pending</span></td></tr>
                     <tr><td style="color:var(--clr-primary);font-weight:700;">#TXN-00475</td><td>Suresh Co.</td><td>Consulting Fee</td><td style="color:#2D9B5E;font-weight:700;">+₹22,500</td><td>Jun 01</td><td><span class="badge badge--green">Settled</span></td></tr>
                   </tbody>
                 </table>
@@ -1136,9 +1134,9 @@
           <div class="section-header">
             <div>
               <div class="section-header__title">Prescriptions</div>
-              <div class="section-header__sub">Create, manage and track client invoices</div>
+              <div class="section-header__sub">Create, manage and track client prescriptions</div>
             </div>
-            <button class="section-header__btn" onclick="showToast('Opening invoice creator...')"><i class="fa-solid fa-plus"></i> New Prescription</button>
+            <button class="section-header__btn" onclick="showToast('Opening prescription creator...')"><i class="fa-solid fa-plus"></i> New Prescription</button>
           </div>
 
           <div class="stats-grid">
@@ -1150,19 +1148,19 @@
 
           <div class="dash-card">
             <div class="dash-card__header">
-              <div class="dash-card__title"><i class="fa-solid fa-file-invoice-dollar" style="color:var(--clr-primary);margin-right:0.4rem;"></i> Invoice Register</div>
-              <button class="dash-card__action" onclick="showToast('Downloading invoice list...')"><i class="fa-solid fa-download"></i> Download</button>
+              <div class="dash-card__title"><i class="fa-solid fa-file-invoice-dollar" style="color:var(--clr-primary);margin-right:0.4rem;"></i> Prescription Register</div>
+              <button class="dash-card__action" onclick="showToast('Downloading prescription list...')"><i class="fa-solid fa-download"></i> Download</button>
             </div>
             <div class="dash-card__body" style="padding:0;">
               <div class="dash-table-wrap">
                 <table class="dash-table">
-                  <thead><tr><th>Invoice #</th><th>Client</th><th>Service</th><th>Amount</th><th>Due Date</th><th>Status</th><th>Action</th></tr></thead>
+                  <thead><tr><th>Prescription #</th><th>Client</th><th>Service</th><th>Amount</th><th>Due Date</th><th>Status</th><th>Action</th></tr></thead>
                   <tbody>
-                    <tr><td style="color:var(--clr-primary);font-weight:700;">INV-2026-342</td><td>Ramesh Kumar</td><td>ITR Filing</td><td>₹8,500</td><td>Jun 10</td><td><span class="badge badge--green">Paid</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening invoice INV-2026-342...')">View</button></td></tr>
-                    <tr><td style="color:var(--clr-primary);font-weight:700;">INV-2026-341</td><td>Vijay Sharma</td><td>Statutory Audit</td><td>₹45,000</td><td>Jun 20</td><td><span class="badge badge--gold">Pending</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening invoice INV-2026-341...')">View</button></td></tr>
-                    <tr><td style="color:var(--clr-primary);font-weight:700;">INV-2026-340</td><td>Priya Anand Corp</td><td>GST Drug Regulations</td><td>₹12,000</td><td>May 31</td><td><span class="badge badge--red">Overdue</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening invoice INV-2026-340...')">View</button></td></tr>
-                    <tr><td style="color:var(--clr-primary);font-weight:700;">INV-2026-339</td><td>Suresh Co.</td><td>Payroll Processing</td><td>₹6,200</td><td>Jun 05</td><td><span class="badge badge--green">Paid</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening invoice INV-2026-339...')">View</button></td></tr>
-                    <tr><td style="color:var(--clr-primary);font-weight:700;">INV-2026-338</td><td>Lakshmi Nair</td><td>Bookkeeping</td><td>₹9,800</td><td>May 25</td><td><span class="badge badge--red">Overdue</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening invoice INV-2026-338...')">View</button></td></tr>
+                    <tr><td style="color:var(--clr-primary);font-weight:700;">ORD-2026-342</td><td>Ramesh Kumar</td><td>Chronic Care Plan</td><td>₹8,500</td><td>Jun 10</td><td><span class="badge badge--green">Paid</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('opening prescription ORD-2026-342...')">View</button></td></tr>
+                    <tr><td style="color:var(--clr-primary);font-weight:700;">ORD-2026-341</td><td>Vijay Sharma</td><td>Quarterly Health Check</td><td>₹45,000</td><td>Jun 20</td><td><span class="badge badge--gold">Pending</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('opening prescription ORD-2026-341...')">View</button></td></tr>
+                    <tr><td style="color:var(--clr-primary);font-weight:700;">ORD-2026-340</td><td>Priya Anand Corp</td><td>FDA Drug Regulations</td><td>₹12,000</td><td>May 31</td><td><span class="badge badge--red">Overdue</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('opening prescription ORD-2026-340...')">View</button></td></tr>
+                    <tr><td style="color:var(--clr-primary);font-weight:700;">ORD-2026-339</td><td>Suresh Co.</td><td>Inventory Processing</td><td>₹6,200</td><td>Jun 05</td><td><span class="badge badge--green">Paid</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('opening prescription ORD-2026-339...')">View</button></td></tr>
+                    <tr><td style="color:var(--clr-primary);font-weight:700;">ORD-2026-338</td><td>Lakshmi Nair</td><td>Prescription Refill</td><td>₹9,800</td><td>May 25</td><td><span class="badge badge--red">Overdue</span></td><td><button class="table-action-btn table-action-btn--view" onclick="showToast('opening prescription ORD-2026-338...')">View</button></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -1183,7 +1181,7 @@
             <div class="team-card">
               <div class="team-card__avatar" style="background:linear-gradient(135deg,#1A6B4A,#28A36E);">AK</div>
               <div class="team-card__name">Arjun Kumar</div>
-              <div class="team-card__role">Senior Chartered Accountant</div>
+              <div class="team-card__role">Senior Pharmacist</div>
               <div style="margin-bottom:0.75rem;"><span class="badge badge--green">Admin</span></div>
               <div class="team-card__actions">
                 <button class="team-card__action-btn" onclick="showToast('Editing Arjun Kumar...')"><i class="fa-solid fa-pen"></i></button>
@@ -1194,7 +1192,7 @@
             <div class="team-card">
               <div class="team-card__avatar" style="background:linear-gradient(135deg,#B07800,#FFB300);">PM</div>
               <div class="team-card__name">Preethi Menon</div>
-              <div class="team-card__role">GST & Drug Regulations Specialist</div>
+              <div class="team-card__role">Drug Regulations Specialist</div>
               <div style="margin-bottom:0.75rem;"><span class="badge badge--blue">Manager</span></div>
               <div class="team-card__actions">
                 <button class="team-card__action-btn" onclick="showToast('Editing Preethi Menon...')"><i class="fa-solid fa-pen"></i></button>
@@ -1205,7 +1203,7 @@
             <div class="team-card">
               <div class="team-card__avatar" style="background:linear-gradient(135deg,#1565C0,#2196F3);">SR</div>
               <div class="team-card__name">Sathish Rajan</div>
-              <div class="team-card__role">Tax Filing Analyst</div>
+              <div class="team-card__role">Prescription Analyst</div>
               <div style="margin-bottom:0.75rem;"><span class="badge badge--gold">Analyst</span></div>
               <div class="team-card__actions">
                 <button class="team-card__action-btn" onclick="showToast('Editing Sathish Rajan...')"><i class="fa-solid fa-pen"></i></button>
@@ -1227,7 +1225,7 @@
             <div class="team-card">
               <div class="team-card__avatar" style="background:linear-gradient(135deg,#C53030,#EF5350);">KP</div>
               <div class="team-card__name">Karthik Prabhu</div>
-              <div class="team-card__role">Audit & Assurance Associate</div>
+              <div class="team-card__role">Quality Assurance Associate</div>
               <div style="margin-bottom:0.75rem;"><span class="badge badge--gray">Associate</span></div>
               <div class="team-card__actions">
                 <button class="team-card__action-btn" onclick="showToast('Editing Karthik Prabhu...')"><i class="fa-solid fa-pen"></i></button>
@@ -1260,57 +1258,57 @@
 
           <div class="content-grid">
             <div class="content-card">
-              <img src="assets/img_paracetamol.png" class="content-card__img" alt="Vijay Sharma & Associates" />
+              <img src="assets/client_hospital_1781263568073.webp" class="content-card__img" alt="Apollo City Hospital" />
               <div class="content-card__body">
-                <div class="content-card__title">Vijay Sharma & Associates</div>
+                <div class="content-card__title">Apollo City Hospital</div>
                 <div class="content-card__meta"><span class="badge badge--blue">Corporate</span> &nbsp; Since 2019</div>
-                <div class="content-card__text">Leading textile export firm. Services: statutory audit, Medicine orders, income tax planning and payroll management.</div>
-                <div class="content-card__footer"><span style="font-weight:700;color:var(--clr-primary);">₹45,000/yr</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Vijay Sharma profile...')">View</button></div>
+                <div class="content-card__text">Leading private hospital. Services: annual health checkups, wholesale medicine orders, and chronic care management.</div>
+                <div class="content-card__footer"><span style="font-weight:700;color:var(--clr-primary);">₹45,000/yr</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Apollo profile...')">View</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/img_vitamin.png" class="content-card__img" alt="Priya Anand Retail" />
+              <img src="assets/client_clinic_1781263581178.webp" class="content-card__img" alt="Priya Anand Clinics" />
               <div class="content-card__body">
-                <div class="content-card__title">Priya Anand Retail</div>
-                <div class="content-card__meta"><span class="badge badge--gold">SME</span> &nbsp; Since 2021</div>
-                <div class="content-card__text">Retail chain with 6 outlets in Chennai. Services: GST compliance, monthly bookkeeping and annual returns filing.</div>
+                <div class="content-card__title">Priya Anand Clinics</div>
+                <div class="content-card__meta"><span class="badge badge--gold">Clinic</span> &nbsp; Since 2021</div>
+                <div class="content-card__text">Medical chain with 6 outlets in Chennai. Services: FDA compliance, monthly prescription refills and health assessments.</div>
                 <div class="content-card__footer"><span style="font-weight:700;color:var(--clr-primary);">₹12,000/yr</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Priya Anand profile...')">View</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/img_ashwagandha.png" class="content-card__img" alt="Ramesh Kumar" />
+              <img src="assets/client_patient_1781263592053.webp" class="content-card__img" alt="Ramesh Kumar" />
               <div class="content-card__body">
                 <div class="content-card__title">Ramesh Kumar (Individual)</div>
-                <div class="content-card__meta"><span class="badge badge--green">Individual</span> &nbsp; Since 2022</div>
-                <div class="content-card__text">Senior software engineer. Services: ITR filing, capital gains computation and tax-saving investment advisory.</div>
+                <div class="content-card__meta"><span class="badge badge--green">Patient</span> &nbsp; Since 2022</div>
+                <div class="content-card__text">Senior software engineer. Services: Health insurance claims, medical history tracking and wellness advisory.</div>
                 <div class="content-card__footer"><span style="font-weight:700;color:var(--clr-primary);">₹8,500/yr</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Ramesh Kumar profile...')">View</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/img_skincare.png" class="content-card__img" alt="Lakshmi Nair Industries" />
+              <img src="assets/client_nursing_1781263604568.webp" class="content-card__img" alt="Lakshmi Nair Nursing Home" />
               <div class="content-card__body">
-                <div class="content-card__title">Lakshmi Nair Industries</div>
+                <div class="content-card__title">Lakshmi Nair Nursing Home</div>
                 <div class="content-card__meta"><span class="badge badge--red">Overdue</span> &nbsp; Since 2020</div>
-                <div class="content-card__text">Manufacturing unit in Coimbatore. Services: payroll processing, TDS filing, GST reconciliation and MSME compliance.</div>
+                <div class="content-card__text">Nursing home in Coimbatore. Services: inventory processing, Medicine supply, stock reconciliation and FDA compliance.</div>
                 <div class="content-card__footer"><span style="font-weight:700;color:#C53030;">₹6,200 due</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Lakshmi Nair profile...')">View</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/img_omega3.png" class="content-card__img" alt="MedCare Diagnostics" />
+              <img src="assets/client_diagnostics_1781263617406.webp" class="content-card__img" alt="MedCare Diagnostics" />
               <div class="content-card__body">
                 <div class="content-card__title">MedCare Diagnostics</div>
                 <div class="content-card__meta"><span class="badge badge--blue">Healthcare</span> &nbsp; Since 2023</div>
-                <div class="content-card__text">Private diagnostic chain. Services: GST exemption filings, salary TDS management and annual financial statements.</div>
+                <div class="content-card__text">Private diagnostic chain. Services: drug exemption filings, chronic care management and annual health statements.</div>
                 <div class="content-card__footer"><span style="font-weight:700;color:var(--clr-primary);">₹18,000/yr</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening MedCare profile...')">View</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/img_serum.png" class="content-card__img" alt="Suresh Organic Farms" />
+              <img src="assets/client_pharma_1781263629393.webp" class="content-card__img" alt="Suresh Pharma Distributors" />
               <div class="content-card__body">
-                <div class="content-card__title">Suresh Organic Farms</div>
-                <div class="content-card__meta"><span class="badge badge--green">Agriculture</span> &nbsp; Since 2022</div>
-                <div class="content-card__text">Organic produce export startup. Services: startup accounting setup, FSSAI compliance and annual ITR filing.</div>
-                <div class="content-card__footer"><span style="font-weight:700;color:var(--clr-primary);">₹22,500/yr</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Suresh Farms profile...')">View</button></div>
+                <div class="content-card__title">Suresh Pharma Distributors</div>
+                <div class="content-card__meta"><span class="badge badge--green">Supplier</span> &nbsp; Since 2022</div>
+                <div class="content-card__text">Wholesale medicine distributor. Services: bulk first-aid kit supply, FDA compliance and annual health checkups.</div>
+                <div class="content-card__footer"><span style="font-weight:700;color:var(--clr-primary);">₹22,500/yr</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Suresh Pharma profile...')">View</button></div>
               </div>
             </div>
           </div>
@@ -1320,64 +1318,64 @@
           <div class="section-header">
             <div>
               <div class="section-header__title">Inventory</div>
-              <div class="section-header__sub">Generate and download financial reports</div>
+              <div class="section-header__sub">Generate and download pharmacy reports</div>
             </div>
             <button class="section-header__btn" onclick="showToast('Scheduling automated report...')"><i class="fa-solid fa-clock"></i> Schedule</button>
           </div>
 
           <div class="content-grid">
             <div class="content-card">
-              <img src="assets/blog_medicines_summer.png" class="content-card__img" alt="Inventory Report" />
+              <img src="assets/report_inventory_1781263649634.webp" class="content-card__img" alt="Inventory Report" />
               <div class="content-card__body">
                 <div class="content-card__title">Inventory Report</div>
-                <div class="content-card__meta">Profit & Loss · FY 2025-26</div>
-                <div class="content-card__text">Comprehensive income and expenditure summary across all service verticals for the current financial year.</div>
+                <div class="content-card__meta">Medicine Stock · FY 2025-26</div>
+                <div class="content-card__text">Comprehensive medicine and supply inventory summary across all service verticals for the current business year.</div>
                 <div class="content-card__footer"><span class="badge badge--green">Ready</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Downloading Inventory Report...')"><i class="fa-solid fa-download"></i> Download</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/blog_ayurveda_immunity.png" class="content-card__img" alt="Sales Report" />
+              <img src="assets/cat_diagnostics.webp" class="content-card__img" alt="Sales Report" />
               <div class="content-card__body">
                 <div class="content-card__title">Sales Report</div>
-                <div class="content-card__meta">Assets & Liabilities · Mar 31, 2026</div>
-                <div class="content-card__text">Year-end balance sheet with current assets, fixed assets, liabilities and shareholders' equity breakdown.</div>
+                <div class="content-card__meta">Pharmacy Sales · Mar 31, 2026</div>
+                <div class="content-card__text">Year-end sales analysis with OTC medicines, prescribed drugs, and wellness supplements breakdown.</div>
                 <div class="content-card__footer"><span class="badge badge--green">Ready</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Downloading Sales Report...')"><i class="fa-solid fa-download"></i> Download</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/img_omega3.png" class="content-card__img" alt="Stock Analysis" />
+              <img src="assets/cat_medicines.webp" class="content-card__img" alt="Stock Analysis" />
               <div class="content-card__body">
                 <div class="content-card__title">Stock Analysis</div>
-                <div class="content-card__meta">GSTR-3B · May 2026</div>
-                <div class="content-card__text">Monthly GST summary for all registered clients including IGST, CGST and SGST breakdowns with filing status.</div>
-                <div class="content-card__footer"><span class="badge badge--gold">Processing</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening GST Report...')">Preview</button></div>
+                <div class="content-card__meta">Inventory Check · May 2026</div>
+                <div class="content-card__text">Monthly Inventory summary for all pharmacies including OTC, Prescription and Supplement breakdowns with stock status.</div>
+                <div class="content-card__footer"><span class="badge badge--gold">Processing</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Stock Analysis...')">Preview</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/blog_blood_pressure.png" class="content-card__img" alt="Customer Insights" />
+              <img src="assets/cat_heart.webp" class="content-card__img" alt="Customer Insights" />
               <div class="content-card__body">
                 <div class="content-card__title">Customer Insights</div>
-                <div class="content-card__meta">Top 50 Customers · Q1 FY 26</div>
-                <div class="content-card__text">Revenue contribution by client, outstanding balances, service-wise billing analysis and collection efficiency.</div>
+                <div class="content-card__meta">Top 50 Patients · Q1 FY 26</div>
+                <div class="content-card__text">Sales contribution by client, outstanding prescriptions, service-wise medicine delivery analysis and collection efficiency.</div>
                 <div class="content-card__footer"><span class="badge badge--green">Ready</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Downloading Customer Insights...')"><i class="fa-solid fa-download"></i> Download</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/img_brahmi.png" class="content-card__img" alt="Expiry Tracking" />
+              <img src="assets/cat_firstaid.webp" class="content-card__img" alt="Expiry Tracking" />
               <div class="content-card__body">
                 <div class="content-card__title">Expiry Tracking</div>
-                <div class="content-card__meta">Form 26AS · FY 2025-26</div>
-                <div class="content-card__text">Tax Deducted at Source compilation across all clients with 26AS matching, discrepancies and compliance status.</div>
+                <div class="content-card__meta">Safety Check · FY 2025-26</div>
+                <div class="content-card__text">Medicine supply compilation across all clients with prescription matching, discrepancies and FDA compliance status.</div>
                 <div class="content-card__footer"><span class="badge badge--red">Pending</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Opening Expiry Tracking...')">Preview</button></div>
               </div>
             </div>
             <div class="content-card">
-              <img src="assets/img_paracetamol.png" class="content-card__img" alt="Revenue Statement" />
+              <img src="assets/cat_diagnostics.webp" class="content-card__img" alt="Sales Statement" />
               <div class="content-card__body">
-                <div class="content-card__title">Revenue Statement</div>
+                <div class="content-card__title">Sales Statement</div>
                 <div class="content-card__meta">Operations · Q1 FY 2025-26</div>
-                <div class="content-card__text">Quarterly cash flow from operations, investing and financing activities with liquidity ratio analysis.</div>
-                <div class="content-card__footer"><span class="badge badge--green">Ready</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Downloading Revenue Statement...')"><i class="fa-solid fa-download"></i> Download</button></div>
+                <div class="content-card__text">Quarterly medical sales from operations, supply chain and logistics activities with distribution ratio analysis.</div>
+                <div class="content-card__footer"><span class="badge badge--green">Ready</span><button class="table-action-btn table-action-btn--view" onclick="showToast('Downloading Sales Statement...')"><i class="fa-solid fa-download"></i> Download</button></div>
               </div>
             </div>
           </div>
@@ -1392,9 +1390,9 @@
             <button class="section-header__btn" onclick="showToast('Loading compliance calendar...')"><i class="fa-solid fa-calendar-check"></i> Calendar</button>
           </div>
 
-          <div class="alert-strip alert-strip--error"><i class="fa-solid fa-circle-xmark"></i> <strong>3 clients</strong> have missed TDS deposit deadlines — penalties may apply. Immediate action required.</div>
-          <div class="alert-strip alert-strip--warning"><i class="fa-solid fa-triangle-exclamation"></i> GSTR-3B due in <strong>5 days</strong> for 24 registered clients. Prepare filings now.</div>
-          <div class="alert-strip alert-strip--success"><i class="fa-solid fa-circle-check"></i> Income Tax Returns for 89 clients successfully filed this quarter.</div>
+          <div class="alert-strip alert-strip--error"><i class="fa-solid fa-circle-xmark"></i> <strong>3 clients</strong> have missed medication refill deadlines — penalties may apply. Immediate action required.</div>
+          <div class="alert-strip alert-strip--warning"><i class="fa-solid fa-triangle-exclamation"></i> Inventory Check due in <strong>5 days</strong> for 24 registered clients. Prepare filings now.</div>
+          <div class="alert-strip alert-strip--success"><i class="fa-solid fa-circle-check"></i> Prescription renewals for 89 clients successfully processed this quarter.</div>
 
           <div class="dash-row dash-row--2col">
             <div class="dash-card">
@@ -1404,13 +1402,13 @@
               </div>
               <div class="dash-card__body">
                 <div class="task-list">
-                  <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">GSTR-1 Filing — April 2026</span><span class="task-item__due">Done</span></div>
-                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">GSTR-3B Filing — May 2026</span><span class="task-item__due urgent">Jun 20</span></div>
-                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">TDS Deposit — Q1 FY26</span><span class="task-item__due urgent">Overdue</span></div>
-                  <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">PF & ESI Contribution — May</span><span class="task-item__due">Done</span></div>
-                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Form 16 Issuance — FY26</span><span class="task-item__due">Jun 30</span></div>
-                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Advance Tax — Q1 FY26</span><span class="task-item__due">Jun 15</span></div>
-                  <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">ROC Annual Filing — FY25</span><span class="task-item__due">Done</span></div>
+                  <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">Inventory Stocktake — April 2026</span><span class="task-item__due">Done</span></div>
+                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Inventory Checkup — May 2026</span><span class="task-item__due urgent">Jun 20</span></div>
+                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Medication Refill — Q1 FY26</span><span class="task-item__due urgent">Overdue</span></div>
+                  <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">Quality & Standard Check — May</span><span class="task-item__due">Done</span></div>
+                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">License Renewal — FY26</span><span class="task-item__due">Jun 30</span></div>
+                  <div class="task-item" onclick="toggleTask(this)"><div class="task-checkbox"></div><span class="task-item__title">Advance Order — Q1 FY26</span><span class="task-item__due">Jun 15</span></div>
+                  <div class="task-item completed" onclick="toggleTask(this)"><div class="task-checkbox done"></div><span class="task-item__title">FDA Annual Filing — FY25</span><span class="task-item__due">Done</span></div>
                 </div>
               </div>
             </div>
@@ -1420,11 +1418,11 @@
               </div>
               <div class="dash-card__body">
                 <div class="progress-section">
-                  <div class="progress-item"><span class="progress-item__label">GST Drug Regulations</span><div class="progress-track"><div class="progress-fill" style="width:88%;background:var(--clr-primary);"></div></div><span class="progress-item__pct">88%</span></div>
+                  <div class="progress-item"><span class="progress-item__label">FDA Drug Regulations</span><div class="progress-track"><div class="progress-fill" style="width:88%;background:var(--clr-primary);"></div></div><span class="progress-item__pct">88%</span></div>
                   <div class="progress-item"><span class="progress-item__label">Chronic Care Meds</span><div class="progress-track"><div class="progress-fill" style="width:62%;background:#EF5350;"></div></div><span class="progress-item__pct">62%</span></div>
-                  <div class="progress-item"><span class="progress-item__label">ROC Filings</span><div class="progress-track"><div class="progress-fill" style="width:95%;background:#2D9B5E;"></div></div><span class="progress-item__pct">95%</span></div>
+                  <div class="progress-item"><span class="progress-item__label">FDA Filings</span><div class="progress-track"><div class="progress-fill" style="width:95%;background:#2D9B5E;"></div></div><span class="progress-item__pct">95%</span></div>
                   <div class="progress-item"><span class="progress-item__label">PF / ESI</span><div class="progress-track"><div class="progress-fill" style="width:100%;background:#1565C0;"></div></div><span class="progress-item__pct">100%</span></div>
-                  <div class="progress-item"><span class="progress-item__label">Income Tax</span><div class="progress-track"><div class="progress-fill" style="width:78%;background:var(--clr-accent);"></div></div><span class="progress-item__pct">78%</span></div>
+                  <div class="progress-item"><span class="progress-item__label">Lab Tests</span><div class="progress-track"><div class="progress-fill" style="width:78%;background:var(--clr-accent);"></div></div><span class="progress-item__pct">78%</span></div>
                 </div>
               </div>
             </div>
@@ -1454,9 +1452,9 @@
                 <div class="form-group"><label>Firm Name</label><input class="form-control" type="text" value="Stackly Pharmacy & Healthcare LLP" /></div>
                 <div class="form-group"><label>Admin Email</label><input class="form-control" type="email" value="admin@stackly.com" /></div>
                 <div class="form-group"><label>Contact Phone</label><input class="form-control" type="tel" value="+91 422 2345 678" /></div>
-                <div class="form-group"><label>GST Number</label><input class="form-control" type="text" value="33AABFS9603R1ZX" /></div>
+                <div class="form-group"><label>Pharmacy License Number</label><input class="form-control" type="text" value="33AABFS9603R1ZX" /></div>
                 <div class="form-group"><label>Currency</label><select class="form-control"><option selected>₹ INR</option><option>$ USD</option><option>€ EUR</option></select></div>
-                <div class="form-group"><label>Tax Rate (%)</label><input class="form-control" type="number" value="18" /></div>
+                <div class="form-group"><label>Discount Rate (%)</label><input class="form-control" type="number" value="18" /></div>
                 <div class="form-group form-group--full"><label>Office Address</label><textarea class="form-control" style="resize:vertical;min-height:60px;">12/3 Race Course Road, Coimbatore, Tamil Nadu – 641 018</textarea></div>
               </div>
               <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
@@ -1481,15 +1479,15 @@
               <div class="notif-item unread">
                 <div class="notif-item__icon" style="background:#FFF0F0;color:#C53030;"><i class="fa-solid fa-triangle-exclamation"></i></div>
                 <div class="notif-item__body">
-                  <div class="notif-item__title">TDS Deadline Overdue — 3 Customers</div>
-                  <div class="notif-item__sub">Lakshmi Nair, Suresh & Co, KR Textiles have missed Q1 TDS deposit deadline.</div>
+                  <div class="notif-item__title">Refill Deadline Overdue — 3 Customers</div>
+                  <div class="notif-item__sub">Lakshmi Nair, Suresh & Co, KR Textiles have missed Q1 medication refill deadline.</div>
                 </div>
                 <div class="notif-item__time">2 hrs ago</div>
               </div>
               <div class="notif-item unread">
                 <div class="notif-item__icon" style="background:#FFF8E1;color:#B07800;"><i class="fa-solid fa-file-invoice"></i></div>
                 <div class="notif-item__body">
-                  <div class="notif-item__title">Invoice INV-2026-340 Overdue</div>
+                  <div class="notif-item__title">Prescription ORD-2026-340 Overdue</div>
                   <div class="notif-item__sub">Priya Anand Corp — ₹12,000 outstanding for 10 days. Send reminder?</div>
                 </div>
                 <div class="notif-item__time">5 hrs ago</div>
@@ -1497,7 +1495,7 @@
               <div class="notif-item unread">
                 <div class="notif-item__icon" style="background:var(--clr-primary-pale);color:var(--clr-primary);"><i class="fa-solid fa-circle-check"></i></div>
                 <div class="notif-item__body">
-                  <div class="notif-item__title">ITR Filed Successfully — Ramesh Kumar</div>
+                  <div class="notif-item__title">Prescription Renewed Successfully — Ramesh Kumar</div>
                   <div class="notif-item__sub">Assessment Year 2026-27. Acknowledgement No. 4582194810. View details.</div>
                 </div>
                 <div class="notif-item__time">Yesterday</div>
@@ -1513,7 +1511,7 @@
               <div class="notif-item unread">
                 <div class="notif-item__icon" style="background:#F3E5F5;color:#7B1FA2;"><i class="fa-solid fa-calendar-days"></i></div>
                 <div class="notif-item__body">
-                  <div class="notif-item__title">GSTR-3B Due in 11 Days</div>
+                  <div class="notif-item__title">Inventory Check Due in 11 Days</div>
                   <div class="notif-item__sub">Filing deadline: June 20, 2026. 24 clients affected. Start preparation now.</div>
                 </div>
                 <div class="notif-item__time">Jun 06</div>
@@ -1522,7 +1520,7 @@
                 <div class="notif-item__icon" style="background:var(--clr-bg);color:var(--clr-text-muted);"><i class="fa-solid fa-file-export"></i></div>
                 <div class="notif-item__body">
                   <div class="notif-item__title">Monthly Report Generated</div>
-                  <div class="notif-item__sub">May 2026 revenue report ready for download. Total revenue: ₹2,90,000.</div>
+                  <div class="notif-item__sub">May 2026 sales report ready for download. Total sales: ₹2,90,000.</div>
                 </div>
                 <div class="notif-item__time">Jun 01</div>
               </div>
@@ -1541,29 +1539,29 @@
 
           <div class="content-grid">
             <div class="content-card" style="cursor:pointer;" onclick="showToast('Opening OTC Medications Guide...')">
-              <img src="assets/img_skincare.png" class="content-card__img" alt="OTC Medications Guide" />
+              <img src="assets/cat_medicines.webp" class="content-card__img" alt="OTC Medications Guide" />
               <div class="content-card__body">
                 <div class="content-card__title">OTC Medications Guide</div>
                 <div class="content-card__meta">Documentation · Updated Jun 2026</div>
-                <div class="content-card__text">Step-by-step guide for GSTR-1, GSTR-3B filing, ITC reconciliation and annual return submission process.</div>
+                <div class="content-card__text">Step-by-step guide for ordering OTC medicines, Inventory Checkup, stock reconciliation and annual report submission.</div>
                 <div class="content-card__footer"><span class="badge badge--green">Docs</span><span style="font-size:0.78rem;color:var(--clr-primary);font-weight:600;">Read Guide →</span></div>
               </div>
             </div>
-            <div class="content-card" style="cursor:pointer;" onclick="showToast('Opening ITR Filing Guide...')">
-              <img src="assets/img_vitamin.png" class="content-card__img" alt="Prescription Guide" />
+            <div class="content-card" style="cursor:pointer;" onclick="showToast('Opening Chronic Care Plan Guide...')">
+              <img src="assets/cat_firstaid.webp" class="content-card__img" alt="Prescription Guide" />
               <div class="content-card__body">
                 <div class="content-card__title">Prescription Guide</div>
                 <div class="content-card__meta">Documentation · AY 2026-27</div>
-                <div class="content-card__text">Comprehensive Income Tax Return filing manual covering ITR-1 through ITR-7 with form selection guide.</div>
+                <div class="content-card__text">Comprehensive Prescription renewal manual covering Care-1 through Care-7 with selection guide.</div>
                 <div class="content-card__footer"><span class="badge badge--gold">Docs</span><span style="font-size:0.78rem;color:var(--clr-primary);font-weight:600;">Read Guide →</span></div>
               </div>
             </div>
-            <div class="content-card" style="cursor:pointer;" onclick="showToast('Opening Payroll Handbook...')">
-              <img src="assets/img_vitamin.png" class="content-card__img" alt="Pharmacy Operations" />
+            <div class="content-card" style="cursor:pointer;" onclick="showToast('Opening Pharmacy Handbook...')">
+              <img src="assets/cat_brain.webp" class="content-card__img" alt="Pharmacy Operations" />
               <div class="content-card__body">
                 <div class="content-card__title">Pharmacy Operations</div>
                 <div class="content-card__meta">Documentation · FY 2025-26</div>
-                <div class="content-card__text">Guide for salary computation, PF, ESI, TDS deductions, Form 16 generation and payroll compliance.</div>
+                <div class="content-card__text">Guide for dosage computation, OT, ESI, medication schedules, safety checks and medical compliance.</div>
                 <div class="content-card__footer"><span class="badge badge--blue">Docs</span><span style="font-size:0.78rem;color:var(--clr-primary);font-weight:600;">Read Guide →</span></div>
               </div>
             </div>
@@ -1575,7 +1573,7 @@
             </div>
             <div class="dash-card__body">
               <div class="form-grid">
-                <div class="form-group"><label>Subject</label><input class="form-control" type="text" placeholder="e.g. GST portal login issue" /></div>
+                <div class="form-group"><label>Subject</label><input class="form-control" type="text" placeholder="e.g. Vendor portal login issue" /></div>
                 <div class="form-group"><label>Priority</label><select class="form-control"><option>Low</option><option selected>Medium</option><option>High</option><option>Critical</option></select></div>
                 <div class="form-group form-group--full"><label>Describe your issue</label><textarea class="form-control" style="resize:vertical;min-height:80px;" placeholder="Describe the problem in detail..."></textarea></div>
               </div>
