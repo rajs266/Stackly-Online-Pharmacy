@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5"/>
+  <meta name="description" content="Contact Stackly Pharmacy — Reach us for medicine orders, prescription uploads, doctor consultations or general enquiries. Salem, Tamil Nadu."/>
+  <title>Contact Us — Stackly Pharmacy</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    /* ══ CONTACT PAGE — SPECIFIC STYLES ══ */
+
+    /* ── Page Header (same as about.html) ── */
+    .page-header {
+      background: var(--grad-dark);
+      padding-block: 6rem 3rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 30%, rgba(10,124,94,0.32) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0,212,160,0.15) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .page-header__particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .page-header__particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,160,0.5) 0%, transparent 70%);
+      animation: floatParticle var(--duration,6s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      opacity: 0.25;
+    }
+    @keyframes floatParticle {
+      0%,100%{ transform: translateY(0) translateX(0) scale(1); opacity: 0.2; }
+      50%    { transform: translateY(-30px) translateX(12px) scale(1.2); opacity: 0.5; }
+    }
+    .page-header__inner { position: relative; z-index: 2; }
+    .page-header__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      background: rgba(0,212,160,0.1);
+      border: 1px solid rgba(0,212,160,0.25);
+      padding: 0.35rem 1rem;
+      border-radius: var(--r-full);
+      margin-bottom: 1.1rem;
+    }
+    .page-header__title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--clr-white);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .page-header__desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin-inline: auto;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.38s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--clr-accent); }
+    .breadcrumb i { font-size: 0.65rem; }
+
+    /* ── Contact Info Cards ── */
+    .contact-info-card {
+      background: var(--clr-white);
+      border-radius: var(--r-lg);
+      padding: 1.75rem 1.5rem;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.4s,
+                  border-color 0.2s;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+    .contact-info-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--clr-primary);
+    }
+    .contact-info-card__icon {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--r-md);
+      background: var(--clr-accent2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--clr-primary);
+      flex-shrink: 0;
+      transition: background 0.3s, color 0.2s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .contact-info-card:hover .contact-info-card__icon {
+      background: var(--clr-primary);
+      color: var(--clr-white);
+      transform: rotateY(360deg) scale(1.1);
+    }
+    .contact-info-card__label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--clr-grey);
+      margin-bottom: 0.25rem;
+    }
+    .contact-info-card__value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--clr-dark);
+      line-height: 1.5;
+    }
+    .contact-info-card__sub {
+      font-size: 0.78rem;
+      color: var(--clr-grey);
+      margin-top: 0.2rem;
+    }
+
+    /* ── Contact Form ── */
+    .contact-form-wrap {
+      background: var(--clr-white);
+      border-radius: var(--r-xl);
+      padding: 2.5rem 2rem;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      box-shadow: var(--shadow-md);
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.1rem; }
+    .form-label {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--clr-dark);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      color: var(--clr-dark);
+      background: var(--clr-light);
+      border: 1.5px solid transparent;
+      border-radius: var(--r-md);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .form-control:focus {
+      border-color: var(--clr-primary);
+      background: var(--clr-white);
+      box-shadow: 0 0 0 4px rgba(10,124,94,0.1);
+    }
+    .form-control::placeholder { color: var(--clr-grey); }
+    textarea.form-control { resize: vertical; min-height: 130px; }
+    select.form-control { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23687d94' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+
+    /* ── Form row ── */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 575.98px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* ── Map wrap ── */
+    .map-wrap {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      height: 360px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      background: linear-gradient(135deg, #e8f9f4, #d0f0e8);
+    }
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    /* Placeholder when iframe not loaded */
+    .map-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .map-placeholder__icon { font-size: 4rem; opacity: 0.35; }
+    .map-placeholder__text { font-size: 0.9rem; color: var(--clr-grey); font-weight: 600; }
+    .map-wrap iframe { position: relative; z-index: 1; }
+
+    /* ── Quick Contact Buttons ── */
+    .quick-contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.25rem;
+      border-radius: var(--r-lg);
+      border: 1.5px solid rgba(10,124,94,0.12);
+      background: var(--clr-white);
+      text-decoration: none;
+      color: var(--clr-dark);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.4s,
+                  border-color 0.2s,
+                  background 0.2s;
+      width: 100%;
+      font-family: var(--font-body);
+      cursor: pointer;
+    }
+    .quick-contact-btn:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--clr-primary);
+      background: var(--clr-accent2);
+      color: var(--clr-dark);
+    }
+    .quick-contact-btn__icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .quick-contact-btn:hover .quick-contact-btn__icon { transform: scale(1.12) rotate(8deg); }
+    .quick-contact-btn__label { font-size: 0.78rem; color: var(--clr-grey); font-weight: 600; }
+    .quick-contact-btn__value { font-size: 0.9rem; font-weight: 700; color: var(--clr-dark); }
+    .qcb-arrow {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: var(--clr-primary);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.2s, transform 0.3s;
+    }
+    .quick-contact-btn:hover .qcb-arrow { opacity: 1; transform: translateX(0); }
+
+    /* ── Why Contact Section (dark) ── */
+    .why-contact-section {
+      background: var(--grad-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-contact-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(10,124,94,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 80% 30%, rgba(0,212,160,0.15) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .why-contact-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--r-lg);
+      padding: 1.75rem 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.3s, box-shadow 0.4s;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+    .why-contact-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0,212,160,0.12) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .why-contact-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+    }
+    .why-contact-card:hover::before { opacity: 1; }
+    .why-contact-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--r-md);
+      background: rgba(0,212,160,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--clr-accent);
+      margin-bottom: 1.1rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .why-contact-card:hover .why-contact-icon { transform: rotateY(360deg) scale(1.1); }
+    .why-contact-title { font-size: 0.95rem; font-weight: 700; color: var(--clr-white); margin-bottom: 0.4rem; }
+    .why-contact-desc  { font-size: 0.82rem; color: rgba(255,255,255,0.58); line-height: 1.65; }
+
+    /* ── Hours Table ── */
+    .hours-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .hours-table tr:not(:last-child) td {
+      border-bottom: 1px solid rgba(10,124,94,0.08);
+    }
+    .hours-table td {
+      padding: 0.75rem 0;
+      font-size: 0.88rem;
+      color: var(--clr-dark);
+    }
+    .hours-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: var(--clr-primary);
+    }
+    .hours-table tr.today td {
+      color: var(--clr-primary);
+      font-weight: 700;
+    }
+    .hours-table tr.today td:first-child::before {
+      content: '▶ ';
+      font-size: 0.6rem;
+    }
+    .open-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #0a7c5e;
+      background: rgba(10,124,94,0.1);
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--r-full);
+    }
+    .open-badge span {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #0a7c5e;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* ── CTA band (same as about) ── */
+    .cta-band {
+      background: linear-gradient(135deg, #0a7c5e 0%, #065c45 60%, #0d1b2a 100%);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      position: relative;
+      padding: 3.5rem 3rem;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300d4a0' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .cta-band::after {
+      content: '📍';
+      position: absolute;
+      right: -10px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 10rem;
+      opacity: 0.06;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 767.98px) {
+      .contact-form-wrap { padding: 1.75rem 1.25rem; }
+      .map-wrap { height: 260px; }
+      .cta-band { padding: 2.5rem 1.5rem; text-align: center; }
+      .cta-band::after { display: none; }
+    }
+    @media (max-width: 480px) {
+      .page-header { padding-block: 5rem 2.5rem; }
+    }
+  </style>
+  <link rel="shortcut icon" href="assets/top-logo.webp" type="image/webp"/>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════════
+     SEARCH OVERLAY  (reusable component)
+════════════════════════════════════════════════ -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="search-overlay__inner">
+    <div class="search-overlay__input-wrap">
+      <i class="fa-solid fa-magnifying-glass" style="padding-left:1.4rem;color:#687d94;"></i>
+      <input class="search-overlay__input" id="searchInput" type="text" placeholder="Search medicines, vitamins, healthcare…" autocomplete="off"/>
+      <button class="search-overlay__close" id="searchClose" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <p class="search-overlay__hint">Press <kbd style="background:rgba(255,255,255,0.15);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.75rem;">ESC</kbd> to close</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MOBILE OVERLAY MENU  (reusable component)
+════════════════════════════════════════════════ -->
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <nav class="mobile-overlay__nav" aria-label="Mobile Navigation">
+    <a href="index.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">About</a>
+    <a href="store.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">Store</a>
+    <a href="blog.html"    class="mobile-overlay__link" onclick="closeMobileMenu()">Blog</a>
+    <a href="contact.html" class="mobile-overlay__link active" onclick="closeMobileMenu()">Contact</a>
+  </nav>
+  <div class="mobile-overlay__bottom">
+    <div class="mobile-overlay__divider"></div>
+    <div class="mobile-overlay__btns">
+      <a href="signin.html"      class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="signup.html"      class="btn btn-primary btn-sm">Get Started</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     NAVBAR  (reusable component)
+════════════════════════════════════════════════ -->
+<header class="navbar navbar--hero" id="navbar">
+  <div class="container navbar__inner">
+
+    <a href="index.html" class="navbar__logo" aria-label="Stackly Home">
+      <img src="assets/logo.webp" alt="Stackly" loading="eager"/>
+    </a>
+
+    <nav class="navbar__nav" aria-label="Main Navigation">
+      <a href="index.html"   class="navbar__link">Home</a>
+      <a href="about.html"   class="navbar__link">About</a>
+      <a href="store.html"   class="navbar__link">Store</a>
+      <a href="blog.html"    class="navbar__link">Blog</a>
+      <a href="contact.html" class="navbar__link active">Contact</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <button class="navbar__search-btn" id="searchToggle" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button class="navbar__cart-btn" aria-label="Cart" onclick="location.href='store.html'">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count">3</span>
+      </button>
+      <a href="signin.html"      class="btn btn-outline btn-sm d-none d-lg-inline-flex">Sign In</a>
+      <a href="signup.html"      class="btn btn-primary btn-sm d-none d-lg-inline-flex">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     PAGE HEADER
+════════════════════════════════════════════════ -->
+<section class="page-header">
+  <div class="page-header__particles" aria-hidden="true">
+    <div class="page-header__particle" style="width:70px;height:70px;top:15%;left:8%;--duration:7s;--delay:0s;"></div>
+    <div class="page-header__particle" style="width:45px;height:45px;top:65%;left:5%;--duration:5s;--delay:-2s;"></div>
+    <div class="page-header__particle" style="width:90px;height:90px;top:25%;right:6%;--duration:8s;--delay:-1s;"></div>
+    <div class="page-header__particle" style="width:35px;height:35px;top:75%;right:18%;--duration:6s;--delay:-3s;"></div>
+  </div>
+  <div class="container page-header__inner">
+    <div class="page-header__eyebrow">
+      <i class="fa-solid fa-headset"></i> Get In Touch
+    </div>
+    <h1 class="page-header__title">
+      Contact <span class="text-gradient">Stackly</span>
+    </h1>
+    <p class="page-header__desc">
+      Questions about your order, prescription upload, or just want to say hello? We're here 24/7 — real people, real answers.
+    </p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Contact Us</span>
+    </nav>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FEATURES MARQUEE STRIP  (reusable component)
+════════════════════════════════════════════════ -->
+<div class="features-strip" aria-hidden="true">
+  <div class="features-strip__inner">
+    <div class="features-strip__track">
+      <div class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</div>
+      <div class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Fast Home Delivery</div>
+      <div class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</div>
+      <div class="features-strip__item"><i class="fa-solid fa-rotate"></i> Easy Prescription Refills</div>
+      <div class="features-strip__item"><i class="fa-solid fa-headset"></i> 24/7 Support</div>
+      <div class="features-strip__item"><i class="fa-solid fa-tag"></i> Best Price Guarantee</div>
+      <div class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurvedic & Wellness</div>
+      <div class="features-strip__item"><i class="fa-solid fa-star"></i> 4.9 Customer Rating</div>
+      <div class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</div>
+      <div class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Fast Home Delivery</div>
+      <div class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</div>
+      <div class="features-strip__item"><i class="fa-solid fa-rotate"></i> Easy Prescription Refills</div>
+      <div class="features-strip__item"><i class="fa-solid fa-headset"></i> 24/7 Support</div>
+      <div class="features-strip__item"><i class="fa-solid fa-tag"></i> Best Price Guarantee</div>
+      <div class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurvedic & Wellness</div>
+      <div class="features-strip__item"><i class="fa-solid fa-star"></i> 4.9 Customer Rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     CONTACT INFO CARDS
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow">Reach Us</span>
+      <h2 class="section-title mt-3">We're Always <span class="text-gradient">Available</span></h2>
+      <p class="section-subtitle mx-auto mt-2">Pick the channel that works best for you — every enquiry gets a response within 15 minutes during business hours.</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Phone -->
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <a href="tel:+919876543210" class="contact-info-card">
+          <div class="contact-info-card__icon" style="background:#e8f9f4;color:#0a7c5e;">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div>
+            <div class="contact-info-card__label">Call Us</div>
+            <div class="contact-info-card__value">+91 98765 43210</div>
+            <div class="contact-info-card__sub">Mon–Sat 8am–10pm</div>
+          </div>
+        </a>
+      </div>
+      <!-- WhatsApp -->
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+        <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="contact-info-card">
+          <div class="contact-info-card__icon" style="background:rgba(37,211,102,0.1);color:#25d366;">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div>
+            <div class="contact-info-card__label">WhatsApp</div>
+            <div class="contact-info-card__value">Chat with Us</div>
+            <div class="contact-info-card__sub">Usually replies in 5 min</div>
+          </div>
+        </a>
+      </div>
+      <!-- Email -->
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+        <a href="mailto:hello@stackly.in" class="contact-info-card">
+          <div class="contact-info-card__icon" style="background:#e8f9f4;color:#0a7c5e;">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div>
+            <div class="contact-info-card__label">Email</div>
+            <div class="contact-info-card__value">hello@stackly.in</div>
+            <div class="contact-info-card__sub">We reply within 2 hours</div>
+          </div>
+        </a>
+      </div>
+      <!-- Location -->
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+        <a href="https://maps.google.com/?q=MMR+Complex+Salem+Tamil+Nadu" target="_blank" rel="noopener" class="contact-info-card">
+          <div class="contact-info-card__icon" style="background:#e8f9f4;color:#0a7c5e;">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <div class="contact-info-card__label">Visit Us</div>
+            <div class="contact-info-card__value">MMR Complex, Salem</div>
+            <div class="contact-info-card__sub">Tamil Nadu 636008</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CONTACT FORM + SIDEBAR
+════════════════════════════════════════════════ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+
+      <!-- ── Left: Form ── -->
+      <div class="col-lg-7" data-aos="fade-right">
+        <div class="contact-form-wrap">
+          <span class="eyebrow mb-3 d-inline-flex">Send a Message</span>
+          <h2 class="section-title mb-1" style="font-size:clamp(1.5rem,3vw,2rem);">
+            How Can We <span class="text-gradient">Help You?</span>
+          </h2>
+          <p style="font-size:0.88rem;color:var(--clr-grey);margin-bottom:1.75rem;margin-top:0.4rem;">Fill in the form — a licensed pharmacist will respond personally.</p>
+
+          <div id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fname">First Name <span style="color:#f05a5a">*</span></label>
+                <input type="text" id="fname" class="form-control" placeholder="Arjun" required autocomplete="given-name"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lname">Last Name</label>
+                <input type="text" id="lname" class="form-control" placeholder="Selvam" autocomplete="family-name"/>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address <span style="color:#f05a5a">*</span></label>
+                <input type="email" id="email" class="form-control" placeholder="arjun@email.com" required autocomplete="email"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210" autocomplete="tel"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject <span style="color:#f05a5a">*</span></label>
+              <select id="subject" class="form-control" required>
+                <option value="" disabled selected>Choose a topic…</option>
+                <option value="order">Order / Delivery Status</option>
+                <option value="prescription">Prescription Upload</option>
+                <option value="refund">Return / Refund Request</option>
+                <option value="pharmacist">Speak to a Pharmacist</option>
+                <option value="wholesale">Bulk / Wholesale Enquiry</option>
+                <option value="feedback">Feedback or Complaint</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message <span style="color:#f05a5a">*</span></label>
+              <textarea id="message" class="form-control" placeholder="Describe your query in detail — the more context, the faster we can help…" required rows="5"></textarea>
+            </div>
+
+            <!-- File upload hint -->
+            <div style="background:var(--clr-accent2);border-radius:var(--r-md);padding:0.9rem 1rem;display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;font-size:0.84rem;color:var(--clr-primary);">
+              <i class="fa-solid fa-paperclip"></i>
+              <span>Have a prescription? Send it via <a href="https://wa.me/919876543210" target="_blank" rel="noopener" style="color:var(--clr-primary);font-weight:700;text-decoration:underline;">WhatsApp</a> for fastest processing.</span>
+            </div>
+
+            <button type="button" class="btn btn-primary w-100" onclick="handleContactForm()" style="font-size:1rem;padding:0.95rem;">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </div>
+
+          <!-- Success state (hidden by default) -->
+          <div id="formSuccess" style="display:none;text-align:center;padding:2rem 1rem;">
+            <div style="font-size:3.5rem;margin-bottom:1rem;">✅</div>
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:800;color:var(--clr-dark);margin-bottom:0.5rem;">Message Sent!</h3>
+            <p style="font-size:0.9rem;color:var(--clr-grey);margin-bottom:1.5rem;">We've received your message and will respond within 15 minutes during business hours.</p>
+            <button class="btn btn-outline btn-sm" onclick="resetForm()">Send Another</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Right: Sidebar ── -->
+      <div class="col-lg-5" data-aos="fade-left">
+
+        <!-- Quick contact channels -->
+        <div class="mb-4">
+          <h3 style="font-size:1rem;font-weight:700;color:var(--clr-dark);margin-bottom:1rem;">Quick Contact</h3>
+          <div style="display:flex;flex-direction:column;gap:0.65rem;">
+
+            <a href="tel:+919876543210" class="quick-contact-btn">
+              <div class="quick-contact-btn__icon" style="background:#e8f9f4;">
+                <i class="fa-solid fa-phone" style="color:#0a7c5e;"></i>
+              </div>
+              <div>
+                <div class="quick-contact-btn__label">Call Directly</div>
+                <div class="quick-contact-btn__value">+91 98765 43210</div>
+              </div>
+              <i class="fa-solid fa-arrow-right qcb-arrow"></i>
+            </a>
+
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="quick-contact-btn">
+              <div class="quick-contact-btn__icon" style="background:rgba(37,211,102,0.1);">
+                <i class="fa-brands fa-whatsapp" style="color:#25d366;font-size:1.3rem;"></i>
+              </div>
+              <div>
+                <div class="quick-contact-btn__label">WhatsApp Chat</div>
+                <div class="quick-contact-btn__value">Message Us Now</div>
+              </div>
+              <i class="fa-solid fa-arrow-right qcb-arrow"></i>
+            </a>
+
+            <a href="mailto:hello@stackly.in" class="quick-contact-btn">
+              <div class="quick-contact-btn__icon" style="background:#e8f9f4;">
+                <i class="fa-solid fa-envelope" style="color:#0a7c5e;"></i>
+              </div>
+              <div>
+                <div class="quick-contact-btn__label">Email Us</div>
+                <div class="quick-contact-btn__value">hello@stackly.in</div>
+              </div>
+              <i class="fa-solid fa-arrow-right qcb-arrow"></i>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="contact-form-wrap" style="margin-bottom:1.25rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;">
+            <h3 style="font-size:0.95rem;font-weight:700;color:var(--clr-dark);margin:0;">Opening Hours</h3>
+            <span class="open-badge"><span></span> Open Now</span>
+          </div>
+          <table class="hours-table">
+            <tr class="today">
+              <td>Thursday</td>
+              <td>8:00 AM – 10:00 PM</td>
+            </tr>
+            <tr><td>Friday</td><td>8:00 AM – 10:00 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM – 10:00 PM</td></tr>
+            <tr><td>Sunday</td><td>9:00 AM – 6:00 PM</td></tr>
+            <tr><td>Monday</td><td>8:00 AM – 10:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>8:00 AM – 10:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>8:00 AM – 10:00 PM</td></tr>
+          </table>
+          <p style="font-size:0.78rem;color:var(--clr-grey);margin-top:0.85rem;margin-bottom:0;">
+            <i class="fa-solid fa-circle-info" style="color:var(--clr-primary);"></i>
+            Prescription &amp; emergency orders accepted 24/7 via WhatsApp.
+          </p>
+        </div>
+
+        <!-- Social links -->
+        <div class="contact-form-wrap" style="padding:1.25rem 1.5rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;color:var(--clr-dark);margin-bottom:1rem;">Follow Us</h3>
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+            <a href="404.html" class="footer__social-link" aria-label="Facebook" style="background:rgba(10,124,94,0.08);color:var(--clr-primary);"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="footer__social-link" aria-label="Instagram" style="background:rgba(10,124,94,0.08);color:var(--clr-primary);"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="footer__social-link" aria-label="Twitter/X" style="background:rgba(10,124,94,0.08);color:var(--clr-primary);"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="footer__social-link" aria-label="YouTube" style="background:rgba(10,124,94,0.08);color:var(--clr-primary);"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp" style="background:rgba(37,211,102,0.1);color:#25d366;"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     MAP
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <span class="eyebrow">Find Us</span>
+      <h2 class="section-title mt-3">Visit Our <span class="text-gradient">Store</span></h2>
+      <p class="section-subtitle mx-auto mt-2">
+        <i class="fa-solid fa-location-dot" style="color:var(--clr-primary);"></i>
+        MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008
+      </p>
+    </div>
+
+    <div class="map-wrap" data-aos="zoom-in">
+      <!-- Map placeholder visual — iframe works only with real embed key -->
+      <div class="map-placeholder">
+        <div class="map-placeholder__icon">🗺️</div>
+        <div class="map-placeholder__text">MMR Complex, Salem, Tamil Nadu 636008</div>
+      </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3906.6!2d78.1460!3d11.6643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf1a8b9a7b0b7%3A0x1!2sMMR+Complex%2C+Salem%2C+Tamil+Nadu+636008!5e0!3m2!1sen!2sin!4v1"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Stackly Pharmacy Location">
+      </iframe>
+    </div>
+
+    <!-- Directions CTA -->
+    <div class="text-center mt-4" data-aos="fade-up">
+      <a href="https://maps.google.com/?q=MMR+Complex+Chinna+Thirupathi+Salem+Tamil+Nadu+636008" target="_blank" rel="noopener" class="btn btn-primary">
+        <i class="fa-solid fa-diamond-turn-right"></i> Get Directions
+      </a>
+      <a href="tel:+919876543210" class="btn btn-outline ms-2">
+        <i class="fa-solid fa-phone"></i> Call for Directions
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     WHY CONTACT US (dark section)
+════════════════════════════════════════════════ -->
+<section class="section why-contact-section">
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow" style="background:rgba(0,212,160,0.1);border:1px solid rgba(0,212,160,0.25);color:var(--clr-accent);">Support Promise</span>
+      <h2 class="section-title mt-3 text-white">Why Our <span class="text-gradient">Support Stands Out</span></h2>
+      <p class="section-subtitle mx-auto mt-2" style="color:rgba(255,255,255,0.55);">We're not a chatbot. Every response comes from a real, licensed pharmacist who understands your health.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-contact-card">
+          <div class="why-contact-icon"><i class="fa-solid fa-clock"></i></div>
+          <div class="why-contact-title">15-Minute Response</div>
+          <div class="why-contact-desc">During business hours, every form submission, WhatsApp message, and call is answered within 15 minutes — guaranteed.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-contact-card">
+          <div class="why-contact-icon"><i class="fa-solid fa-user-doctor"></i></div>
+          <div class="why-contact-title">Real Pharmacists</div>
+          <div class="why-contact-desc">No scripts, no bots. Our Pharm.D-qualified team gives personalised guidance on dosage, drug interactions, and storage.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-contact-card">
+          <div class="why-contact-icon"><i class="fa-solid fa-language"></i></div>
+          <div class="why-contact-title">Tamil & English</div>
+          <div class="why-contact-desc">Communicate comfortably in Tamil or English — whichever feels natural. Healthcare shouldn't have a language barrier.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-contact-card">
+          <div class="why-contact-icon"><i class="fa-solid fa-lock"></i></div>
+          <div class="why-contact-title">Confidential</div>
+          <div class="why-contact-desc">Your health queries and prescriptions are treated with complete privacy. We never share your data with third parties.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-contact-card">
+          <div class="why-contact-icon"><i class="fa-solid fa-rotate"></i></div>
+          <div class="why-contact-title">Prescription Follow-up</div>
+          <div class="why-contact-desc">After your consultation, our pharmacist follows up to confirm your medication arrived correctly and is working as expected.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-contact-card">
+          <div class="why-contact-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="why-contact-title">Emergency Line 24/7</div>
+          <div class="why-contact-desc">For urgent prescription needs — insulin, blood pressure, cardiac meds — our WhatsApp emergency line operates around the clock.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA BAND
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container" data-aos="zoom-in">
+    <div class="cta-band">
+      <div class="row align-items-center g-4" style="position:relative;z-index:2;">
+        <div class="col-lg-8">
+          <span class="eyebrow" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.25);color:#fff;">Start Shopping</span>
+          <h2 class="section-title text-white mt-3 mb-2">
+            Ready to <span style="color:var(--clr-accent);">Order?</span>
+          </h2>
+          <p style="color:rgba(255,255,255,0.75);font-size:1rem;max-width:480px;line-height:1.7;">
+            Browse 8,000+ genuine medicines and wellness products — delivered to your door in Salem within 2 hours.
+          </p>
+        </div>
+        <div class="col-lg-4 d-flex gap-3 flex-wrap justify-content-lg-end">
+          <a href="store.html" class="btn btn-white">
+            <i class="fa-solid fa-store"></i> Shop Now
+          </a>
+          <a href="signup.html"      class="btn btn-ghost">
+            <i class="fa-solid fa-user-plus"></i> Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER  (reusable component)
+════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="assets/logo.webp" alt="Stackly"/>
+        </a>
+        <p class="footer__desc">Your trusted online pharmacy — delivering genuine medicines, wellness products and expert guidance to your door since 2018.</p>
+        <div class="footer__social">
+          <a href="404.html" class="footer__social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Quick Links</div>
+        <ul class="footer__links">
+          <li><a href="index.html"    class="footer__link">Home</a></li>
+          <li><a href="about.html"    class="footer__link">About Us</a></li>
+          <li><a href="store.html"    class="footer__link">Our Store</a></li>
+          <li><a href="blog.html"     class="footer__link">Health Blog</a></li>
+          <li><a href="contact.html"  class="footer__link">Contact</a></li>
+          <li><a href="signin.html"   class="footer__link">Sign In</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__links">
+          <li><a href="store.html"   class="footer__link">Prescription Refills</a></li>
+          <li><a href="store.html"   class="footer__link">Home Test Kits</a></li>
+          <li><a href="contact.html" class="footer__link">Doctor Consultation</a></li>
+          <li><a href="store.html"   class="footer__link">Auto Refill Plans</a></li>
+          <li><a href="store.html"   class="footer__link">Wellness Packages</a></li>
+          <li><a href="404.html"     class="footer__link">Bulk Orders</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Find Us</div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>hello@stackly.in</span>
+        </div>
+        <div class="footer__address-item" style="margin-top:0.25rem;">
+          <i class="fa-solid fa-clock"></i>
+          <span>Mon–Sat: 8am–10pm · Sun: 9am–6pm</span>
+        </div>
+        <div class="footer__col-title" style="margin-top:1.5rem;">Newsletter</div>
+        <form class="footer__newsletter" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="Your email…" required aria-label="Newsletter email"/>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        &copy; 2026 <span>Stackly</span>. All rights reserved. Designed with ❤️ in Salem.
+      </div>
+      <div class="footer__legal">
+        <a href="404.html">Privacy Policy</a>
+        <a href="404.html">Terms of Use</a>
+        <a href="404.html">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── AOS Init ── */
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
+  }
+
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+      navbar.classList.remove('navbar--hero');
+    } else {
+      navbar.classList.remove('scrolled');
+      navbar.classList.add('navbar--hero');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Hamburger ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileOverlay.classList.contains('is-open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileOverlay.classList.add('is-open');
+      hamburger.classList.add('is-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  /* ESC */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeMobileMenu(); closeSearch(); }
+  });
+
+  /* ── Search overlay ── */
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchToggle  = document.getElementById('searchToggle');
+  const searchClose   = document.getElementById('searchClose');
+  const searchInput   = document.getElementById('searchInput');
+
+  searchToggle.addEventListener('click', () => {
+    searchOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => searchInput.focus(), 300);
+  });
+  searchClose.addEventListener('click', closeSearch);
+  searchOverlay.addEventListener('click', e => {
+    if (e.target === searchOverlay) closeSearch();
+  });
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { closeSearch(); window.location.href = 'store.html'; }
+  });
+
+  /* ── Back to top ── */
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Scroll animations ── */
+  const animEls = document.querySelectorAll('.anim-fade-up,.anim-fade-left,.anim-fade-right,.anim-scale,.anim-flip');
+  if (animEls.length) {
+    const animObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+    }, { threshold: 0.12 });
+    animEls.forEach(el => animObserver.observe(el));
+  }
+
+  /* ── Active nav link ── */
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.navbar__link').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === currentPage) link.classList.add('active');
+  });
+
+  /* ── Highlight today in hours table ── */
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const todayName = days[new Date().getDay()];
+  document.querySelectorAll('.hours-table tr').forEach(row => {
+    const td = row.querySelector('td');
+    if (td && td.textContent.trim() === todayName) {
+      row.classList.add('today');
+    } else {
+      row.classList.remove('today');
+    }
+  });
+});
+
+/* ── Global helpers ── */
+function closeMobileMenu() {
+  document.getElementById('mobileOverlay').classList.remove('is-open');
+  document.getElementById('hamburger').classList.remove('is-open');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+function showToast(msg, icon = 'fa-circle-check') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="fa-solid ${icon}"></i>${msg}`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(16px)';
+    toast.style.transition = 'all 0.35s';
+    setTimeout(() => toast.remove(), 400);
+  }, 3500);
+}
+function handleNewsletter(e) {
+  e.preventDefault();
+  showToast('Subscribed successfully! 🎉', 'fa-circle-check');
+  e.target.reset();
+}
+
+/* ── Contact Form ── */
+function handleContactForm() {
+  const fname   = document.getElementById('fname').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value.trim();
+
+  if (!fname) { showToast('Please enter your first name.', 'fa-circle-exclamation'); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('Please enter a valid email address.', 'fa-circle-exclamation'); return;
+  }
+  if (!subject) { showToast('Please select a subject.', 'fa-circle-exclamation'); return; }
+  if (!message) { showToast('Please write your message.', 'fa-circle-exclamation'); return; }
+
+  // Show success state
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display  = 'block';
+  showToast('Message sent! We\'ll reply within 15 minutes.', 'fa-circle-check');
+}
+
+function resetForm() {
+  document.getElementById('contactForm').style.display = 'block';
+  document.getElementById('formSuccess').style.display  = 'none';
+  document.getElementById('fname').value    = '';
+  document.getElementById('lname').value    = '';
+  document.getElementById('email').value    = '';
+  document.getElementById('phone').value    = '';
+  document.getElementById('subject').value  = '';
+  document.getElementById('message').value  = '';
+}
+</script>
+</body>
+</html>

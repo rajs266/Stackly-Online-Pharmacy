@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5"/>
+  <meta name="description" content="About Stackly — Trusted online pharmacy since 2018. Learn about our mission, team, and commitment to your health in Salem, Tamil Nadu."/>
+  <title>About Us — Stackly Pharmacy</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    /* ══ ABOUT PAGE — SPECIFIC STYLES ══ */
+
+    /* Page Header (shared across inner pages) */
+    .page-header {
+      background: var(--grad-dark);
+      padding-block: 6rem 3rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 30%, rgba(10,124,94,0.32) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0,212,160,0.15) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .page-header__particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .page-header__particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,160,0.5) 0%, transparent 70%);
+      animation: floatParticle var(--duration, 6s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      opacity: 0.25;
+    }
+    .page-header__inner { position: relative; z-index: 2; }
+    .page-header__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      background: rgba(0,212,160,0.1);
+      border: 1px solid rgba(0,212,160,0.25);
+      padding: 0.35rem 1rem;
+      border-radius: var(--r-full);
+      margin-bottom: 1.1rem;
+    }
+    .page-header__title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--clr-white);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .page-header__desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin-inline: auto;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.38s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--clr-accent); }
+    .breadcrumb i { font-size: 0.65rem; }
+
+    /* ══ STORY SECTION ══ */
+    .about-story-img {
+      position: relative;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      background: linear-gradient(135deg, #e8f9f4, #d0f0e8);
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-story-img__inner {
+      font-size: 9rem;
+      animation: imgFloat 5s ease-in-out infinite;
+      filter: drop-shadow(0 24px 48px rgba(10,124,94,0.3));
+      user-select: none;
+    }
+    @keyframes imgFloat {
+      0%,100%{ transform: translateY(0) rotate(-2deg); }
+      50%    { transform: translateY(-18px) rotate(2deg); }
+    }
+    .about-badge-float {
+      position: absolute;
+      background: var(--clr-white);
+      border-radius: var(--r-md);
+      padding: 0.9rem 1.2rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--clr-dark);
+      animation: floatBadge 3.5s ease-in-out infinite;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .about-badge-float i { color: var(--clr-primary); font-size: 1.1rem; }
+    .about-badge-float .num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--clr-primary);
+      line-height: 1;
+      display: block;
+    }
+    .about-badge-float .lbl { font-size: 0.72rem; color: var(--clr-grey); font-weight: 600; }
+    .about-bf-years  { bottom: 2rem; left: -1rem; animation-delay: 0s; }
+    .about-bf-cust   { top: 2rem; right: -1rem; animation-delay: -1.5s; }
+    @keyframes floatBadge {
+      0%,100%{ transform: translateY(0) scale(1); }
+      50%    { transform: translateY(-8px) scale(1.02); }
+    }
+
+    /* ══ MISSION / VALUES ══ */
+    .mission-card {
+      background: var(--clr-white);
+      border-radius: var(--r-lg);
+      padding: 2rem 1.75rem;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+      height: 100%;
+    }
+    .mission-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--clr-primary);
+    }
+    .mission-card__icon {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--r-md);
+      background: var(--clr-accent2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--clr-primary);
+      margin-bottom: 1.25rem;
+      transition: background 0.3s, color 0.2s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .mission-card:hover .mission-card__icon {
+      background: var(--clr-primary);
+      color: var(--clr-white);
+      transform: rotateY(360deg) scale(1.1);
+    }
+    .mission-card__title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--clr-dark);
+      margin-bottom: 0.5rem;
+    }
+    .mission-card__desc {
+      font-size: 0.88rem;
+      color: var(--clr-grey);
+      line-height: 1.7;
+    }
+
+    /* ══ WHY CHOOSE US (dark bg) ══ */
+    .why-section {
+      background: var(--grad-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(10,124,94,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 80% 30%, rgba(0,212,160,0.15) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--r-lg);
+      padding: 1.75rem 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.3s, box-shadow 0.4s;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0,212,160,0.12) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .why-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+    }
+    .why-card:hover::before { opacity: 1; }
+    .why-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--r-md);
+      background: rgba(0,212,160,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--clr-accent);
+      margin-bottom: 1.1rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .why-card:hover .why-icon { transform: rotateY(360deg) scale(1.1); }
+    .why-title { font-size: 0.95rem; font-weight: 700; color: var(--clr-white); margin-bottom: 0.4rem; }
+    .why-desc  { font-size: 0.82rem; color: rgba(255,255,255,0.58); line-height: 1.65; }
+
+    /* ══ TEAM CARDS ══ */
+    .team-card {
+      background: var(--clr-white);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+      text-align: center;
+    }
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    .team-card__photo {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, #e8f9f4, #d0f0e8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+    .team-card__emoji {
+      transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      user-select: none;
+    }
+    .team-card:hover .team-card__emoji { transform: scale(1.15) rotate(5deg); }
+    .team-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,124,94,0.9), transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 0.5rem;
+      padding-bottom: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .team-card:hover .team-card__overlay { opacity: 1; }
+    .team-social-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--clr-primary);
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      border: none;
+      cursor: pointer;
+      transform: translateY(16px);
+    }
+    .team-card:hover .team-social-btn { transform: translateY(0); }
+    .team-social-btn:nth-child(1) { transition-delay: 0.05s; }
+    .team-social-btn:nth-child(2) { transition-delay: 0.1s; }
+    .team-social-btn:nth-child(3) { transition-delay: 0.15s; }
+    .team-social-btn:hover { background: var(--clr-primary); color: var(--clr-white); }
+    .team-card__body { padding: 1.1rem 1rem 1.4rem; }
+    .team-card__name { font-size: 1rem; font-weight: 700; color: var(--clr-dark); margin-bottom: 0.2rem; }
+    .team-card__role { font-size: 0.78rem; color: var(--clr-primary); font-weight: 600; }
+    .team-card__bio  { font-size: 0.78rem; color: var(--clr-grey); margin-top: 0.4rem; line-height: 1.55; }
+
+    /* ══ STATS COUNTER ══ */
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--clr-white);
+      border-radius: var(--r-lg);
+      border: 1px solid rgba(10,124,94,0.09);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s;
+    }
+    .stat-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+    .stat-card__icon {
+      font-size: 2rem;
+      color: var(--clr-primary);
+      margin-bottom: 0.75rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .stat-card:hover .stat-card__icon { transform: scale(1.2) rotateY(180deg); }
+    .stat-card__num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--clr-dark);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .stat-card__num .accent { color: var(--clr-primary); }
+    .stat-card__label { font-size: 0.82rem; color: var(--clr-grey); font-weight: 600; }
+
+    /* ══ TIMELINE ══ */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.55rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--clr-primary), var(--clr-accent));
+      border-radius: var(--r-full);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.65rem;
+      top: 0.35rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--clr-primary);
+      border: 3px solid var(--clr-white);
+      box-shadow: 0 0 0 2px var(--clr-primary);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), background 0.2s;
+    }
+    .timeline-item:hover::before {
+      transform: scale(1.4);
+      background: var(--clr-accent);
+    }
+    .timeline-year {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-primary);
+      background: var(--clr-accent2);
+      padding: 0.2rem 0.7rem;
+      border-radius: var(--r-full);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--clr-dark);
+      margin-bottom: 0.3rem;
+    }
+    .timeline-desc {
+      font-size: 0.84rem;
+      color: var(--clr-grey);
+      line-height: 1.6;
+    }
+
+    /* ══ FAQ ACCORDION ══ */
+    .accordion-item {
+      border: 1px solid rgba(10,124,94,0.12);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      margin-bottom: 0.6rem;
+      transition: box-shadow 0.2s;
+    }
+    .accordion-item:hover { box-shadow: var(--shadow-sm); }
+    .accordion-item.open  { box-shadow: var(--shadow-md); border-color: var(--clr-primary); }
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--clr-dark);
+      gap: 0.75rem;
+      transition: color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      font-family: inherit;
+    }
+    .accordion-trigger:hover { color: var(--clr-primary); }
+    .accordion-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--clr-accent2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-primary);
+      font-size: 0.75rem;
+      transition: background 0.2s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .accordion-item.open .accordion-icon {
+      background: var(--clr-primary);
+      color: var(--clr-white);
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .accordion-body__inner {
+      padding: 0 1.25rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--clr-grey);
+      line-height: 1.7;
+    }
+
+    /* ══ CTA BAND ══ */
+    .cta-band {
+      background: linear-gradient(135deg, #0a7c5e 0%, #065c45 60%, #0d1b2a 100%);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      position: relative;
+      padding: 3.5rem 3rem;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300d4a0' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-band::after {
+      content: '💊';
+      position: absolute;
+      right: -20px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 10rem;
+      opacity: 0.06;
+      line-height: 1;
+      pointer-events: none;
+    }
+    @media (max-width: 767.98px) {
+      .cta-band { padding: 2.5rem 1.5rem; text-align: center; }
+      .cta-band::after { display: none; }
+      /* Hide floating badges with negative offsets — prevent right-side overflow on mobile */
+      .about-bf-years, .about-bf-cust { display: none; }
+      .about-story-img { min-height: 280px; overflow: hidden; }
+      .timeline { padding-left: 1.5rem; }
+      /* Make story image section not overflow */
+      .about-story-img { max-width: 100%; }
+      /* Prevent any absolute positioned element from bleeding out */
+      .page-header__particle { pointer-events: none; }
+    }
+    /* Overflow guard for all screens */
+    .about-story-img,
+    .page-header { overflow: hidden; }
+    @media (max-width: 480px) {
+      .page-header { padding-block: 5rem 2.5rem; }
+    }
+  </style>
+  <link rel="shortcut icon" href="assets/top-logo.webp" type="image/webp"/>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════════
+     SEARCH OVERLAY  (reusable component)
+════════════════════════════════════════════════ -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="search-overlay__inner">
+    <div class="search-overlay__input-wrap">
+      <i class="fa-solid fa-magnifying-glass" style="padding-left:1.4rem;color:#687d94;"></i>
+      <input class="search-overlay__input" id="searchInput" type="text" placeholder="Search medicines, vitamins, healthcare…" autocomplete="off"/>
+      <button class="search-overlay__close" id="searchClose" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <p class="search-overlay__hint">Press <kbd style="background:rgba(255,255,255,0.15);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.75rem;">ESC</kbd> to close</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MOBILE OVERLAY MENU  (reusable component)
+════════════════════════════════════════════════ -->
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <nav class="mobile-overlay__nav" aria-label="Mobile Navigation">
+    <a href="index.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html"   class="mobile-overlay__link active" onclick="closeMobileMenu()">About</a>
+    <a href="store.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">Store</a>
+    <a href="blog.html"    class="mobile-overlay__link" onclick="closeMobileMenu()">Blog</a>
+    <a href="contact.html" class="mobile-overlay__link" onclick="closeMobileMenu()">Contact</a>
+  </nav>
+  <div class="mobile-overlay__bottom">
+    <div class="mobile-overlay__divider"></div>
+    <div class="mobile-overlay__btns">
+      <a href="signin.html"      class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="signup.html"      class="btn btn-primary btn-sm">Get Started</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     NAVBAR  (reusable component)
+════════════════════════════════════════════════ -->
+<header class="navbar navbar--hero" id="navbar">
+  <div class="container navbar__inner">
+
+    <!-- Logo -->
+    <a href="index.html" class="navbar__logo" aria-label="Stackly Home">
+      <img src="assets/logo.webp" alt="Stackly" loading="eager"/>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="navbar__nav" aria-label="Main Navigation">
+      <a href="index.html"   class="navbar__link">Home</a>
+      <a href="about.html"   class="navbar__link active">About</a>
+      <a href="store.html"   class="navbar__link">Store</a>
+      <a href="blog.html"    class="navbar__link">Blog</a>
+      <a href="contact.html" class="navbar__link">Contact</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="navbar__actions">
+      <button class="navbar__search-btn" id="searchToggle" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button class="navbar__cart-btn" aria-label="Cart" onclick="location.href='store.html'">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count">3</span>
+      </button>
+      <a href="signin.html"      class="btn btn-outline btn-sm d-none d-lg-inline-flex">Sign In</a>
+      <a href="signup.html"      class="btn btn-primary btn-sm d-none d-lg-inline-flex">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     PAGE HEADER
+════════════════════════════════════════════════ -->
+<section class="page-header">
+  <!-- Floating particles -->
+  <div class="page-header__particles" aria-hidden="true">
+    <div class="page-header__particle" style="width:70px;height:70px;top:15%;left:8%;--duration:7s;--delay:0s;"></div>
+    <div class="page-header__particle" style="width:45px;height:45px;top:65%;left:5%;--duration:5s;--delay:-2s;"></div>
+    <div class="page-header__particle" style="width:90px;height:90px;top:25%;right:6%;--duration:8s;--delay:-1s;"></div>
+    <div class="page-header__particle" style="width:35px;height:35px;top:75%;right:18%;--duration:6s;--delay:-3s;"></div>
+  </div>
+
+  <div class="container page-header__inner">
+    <div class="page-header__eyebrow">
+      <i class="fa-solid fa-circle-info"></i> Our Story
+    </div>
+    <h1 class="page-header__title">
+      About <span class="text-gradient">Stackly</span>
+    </h1>
+    <p class="page-header__desc">
+      Salem's most trusted online pharmacy — delivering genuine medicines, expert guidance, and wellness essentials since 2018.
+    </p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>About Us</span>
+    </nav>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FEATURES MARQUEE STRIP  (reusable component)
+════════════════════════════════════════════════ -->
+<div class="features-strip" aria-hidden="true">
+  <div class="features-strip__inner">
+    <div class="features-strip__track">
+      <div class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</div>
+      <div class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Fast Home Delivery</div>
+      <div class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</div>
+      <div class="features-strip__item"><i class="fa-solid fa-rotate"></i> Easy Prescription Refills</div>
+      <div class="features-strip__item"><i class="fa-solid fa-headset"></i> 24/7 Support</div>
+      <div class="features-strip__item"><i class="fa-solid fa-tag"></i> Best Price Guarantee</div>
+      <div class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurvedic & Wellness</div>
+      <div class="features-strip__item"><i class="fa-solid fa-star"></i> 4.9 Customer Rating</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</div>
+      <div class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Fast Home Delivery</div>
+      <div class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</div>
+      <div class="features-strip__item"><i class="fa-solid fa-rotate"></i> Easy Prescription Refills</div>
+      <div class="features-strip__item"><i class="fa-solid fa-headset"></i> 24/7 Support</div>
+      <div class="features-strip__item"><i class="fa-solid fa-tag"></i> Best Price Guarantee</div>
+      <div class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurvedic & Wellness</div>
+      <div class="features-strip__item"><i class="fa-solid fa-star"></i> 4.9 Customer Rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     OUR STORY
+════════════════════════════════════════════════ -->
+<section class="section" id="story">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Visual -->
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="about-story-img">
+          <div class="about-story-img__inner">🏥</div>
+          <!-- Floating badges -->
+          <div class="about-badge-float about-bf-years">
+            <div>
+              <span class="num">8+</span>
+              <span class="lbl">Years of Trust</span>
+            </div>
+          </div>
+          <div class="about-badge-float about-bf-cust">
+            <i class="fa-solid fa-users"></i>
+            <div>
+              <span class="num">50K+</span>
+              <span class="lbl">Happy Customers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="col-lg-7" data-aos="fade-left">
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="section-title mt-3 mb-3">
+          More Than a Pharmacy —<br/>
+          <span class="text-gradient">A Healthcare Partner</span>
+        </h2>
+        <p class="section-subtitle mb-4">
+          Stackly was born in 2018 with a single mission: make quality healthcare accessible to every household in Salem and beyond. We started as a small counter at MMR Complex and have grown into Tamil Nadu's most loved online pharmacy.
+        </p>
+        <p style="font-size:0.93rem;color:var(--clr-grey);line-height:1.75;margin-bottom:1.5rem;">
+          Every order we fulfil represents a person who trusts us with their health. That responsibility drives everything we do — from sourcing only genuine, temperature-controlled medicines to ensuring our pharmacists are available round the clock to answer your questions.
+        </p>
+
+        <!-- Values list -->
+        <div class="values-list mb-4">
+          <div class="value-item" data-aos="fade-up" data-aos-delay="0">
+            <div class="value-item__icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <div>
+              <div class="value-item__title">Authenticity First</div>
+              <div class="value-item__desc">Every product sourced directly from licensed manufacturers and distributors — zero counterfeits, always.</div>
+            </div>
+          </div>
+          <div class="value-item" data-aos="fade-up" data-aos-delay="80">
+            <div class="value-item__icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div>
+              <div class="value-item__title">Patient-Centred Care</div>
+              <div class="value-item__desc">Your health outcomes are our success metric, not just transaction numbers.</div>
+            </div>
+          </div>
+          <div class="value-item" data-aos="fade-up" data-aos-delay="160">
+            <div class="value-item__icon"><i class="fa-solid fa-leaf"></i></div>
+            <div>
+              <div class="value-item__title">Holistic Wellness</div>
+              <div class="value-item__desc">Allopathy, Ayurveda, nutrition and preventive care — all under one roof.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="store.html" class="btn btn-primary">
+            <i class="fa-solid fa-store"></i> Shop Now
+          </a>
+          <a href="contact.html" class="btn btn-outline">
+            <i class="fa-solid fa-envelope"></i> Contact Us
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     STATS COUNTER
+════════════════════════════════════════════════ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow">By the Numbers</span>
+      <h2 class="section-title mt-3">Our <span class="text-gradient">Impact</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
+        <div class="stat-card">
+          <div class="stat-card__icon"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-card__num">
+            <span class="counter" data-target="50000">0</span><span class="accent">+</span>
+          </div>
+          <div class="stat-card__label">Happy Customers</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="80">
+        <div class="stat-card">
+          <div class="stat-card__icon"><i class="fa-solid fa-box-open"></i></div>
+          <div class="stat-card__num">
+            <span class="counter" data-target="8000">0</span><span class="accent">+</span>
+          </div>
+          <div class="stat-card__label">Products Listed</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="160">
+        <div class="stat-card">
+          <div class="stat-card__icon"><i class="fa-solid fa-award"></i></div>
+          <div class="stat-card__num">
+            <span class="counter" data-target="8" data-suffix="+">0</span>
+          </div>
+          <div class="stat-card__label">Years of Trust</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="240">
+        <div class="stat-card">
+          <div class="stat-card__icon"><i class="fa-solid fa-star"></i></div>
+          <div class="stat-card__num">
+            4.9<span class="accent">★</span>
+          </div>
+          <div class="stat-card__label">Average Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     MISSION / CORE VALUES
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow">What Drives Us</span>
+      <h2 class="section-title mt-3">Our Mission &amp; <span class="text-gradient">Values</span></h2>
+      <p class="section-subtitle mx-auto mt-2">Everything we do starts from a simple belief — every person deserves affordable, genuine healthcare.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="mission-card">
+          <div class="mission-card__icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h3 class="mission-card__title">Our Mission</h3>
+          <p class="mission-card__desc">To make genuine medicines and wellness products universally accessible — bridging the gap between trusted pharmacies and every household in Tamil Nadu.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="mission-card">
+          <div class="mission-card__icon"><i class="fa-solid fa-eye"></i></div>
+          <h3 class="mission-card__title">Our Vision</h3>
+          <p class="mission-card__desc">To become India's most trusted health-tech platform — combining pharmacy, diagnostics, and preventive care in one seamless experience.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="mission-card">
+          <div class="mission-card__icon"><i class="fa-solid fa-handshake-angle"></i></div>
+          <h3 class="mission-card__title">Our Promise</h3>
+          <p class="mission-card__desc">Genuine products, transparent pricing, and a real pharmacist just a message away — always. Your trust is our most valuable asset.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="mission-card">
+          <div class="mission-card__icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 class="mission-card__title">100% Authenticity</h3>
+          <p class="mission-card__desc">Every product is sourced directly from licensed manufacturers. We conduct rigorous quality checks at every step of our supply chain.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="mission-card">
+          <div class="mission-card__icon"><i class="fa-solid fa-truck-fast"></i></div>
+          <h3 class="mission-card__title">Swift Delivery</h3>
+          <p class="mission-card__desc">Temperature-controlled packaging and express delivery — because healthcare can't wait. Salem orders delivered within 2 hours.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="mission-card">
+          <div class="mission-card__icon"><i class="fa-solid fa-user-doctor"></i></div>
+          <h3 class="mission-card__title">Expert Pharmacists</h3>
+          <p class="mission-card__desc">Our licensed pharmacists are available 24/7 to review your prescription, advise on drug interactions, and guide your wellness journey.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     WHY CHOOSE US (dark section)
+════════════════════════════════════════════════ -->
+<section class="section why-section">
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow" style="background:rgba(0,212,160,0.1);border:1px solid rgba(0,212,160,0.25);color:var(--clr-accent);">Why Stackly</span>
+      <h2 class="section-title mt-3 text-white">Why Thousands <span class="text-gradient">Choose Us</span></h2>
+      <p class="section-subtitle mx-auto mt-2" style="color:rgba(255,255,255,0.55);">We're not just an e-pharmacy. We're your long-term healthcare partner.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-certificate"></i></div>
+          <div class="why-title">Licensed &amp; Regulated</div>
+          <div class="why-desc">Registered with Tamil Nadu Drug Control and operating under full pharmaceutical compliance — your safety is guaranteed by law.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-temperature-half"></i></div>
+          <div class="why-title">Cold-Chain Packaging</div>
+          <div class="why-desc">Insulin, vaccines, and sensitive medications are packed with temperature-monitoring gel packs — arriving exactly as prescribed.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-rotate"></i></div>
+          <div class="why-title">Auto-Refill Plans</div>
+          <div class="why-desc">Set up a monthly auto-refill for chronic medications. Never run out — we remind, pack, and deliver on schedule, every time.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-lock"></i></div>
+          <div class="why-title">Private &amp; Secure</div>
+          <div class="why-desc">Your prescriptions and health data are encrypted and never shared. We treat your privacy with the same care as your health.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-tag"></i></div>
+          <div class="why-title">Best Price Guarantee</div>
+          <div class="why-desc">We match or beat any licensed pharmacy's MRP. Exclusive member discounts up to 30% on generics and wellness products.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="why-title">24/7 Pharmacist Chat</div>
+          <div class="why-desc">Real, licensed pharmacists — not chatbots. Reach us any time via WhatsApp, call, or in-app chat for personalised guidance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     OUR JOURNEY — TIMELINE
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="row align-items-start g-5">
+
+      <!-- Left: Copy -->
+      <div class="col-lg-5" data-aos="fade-right">
+        <span class="eyebrow">Our Journey</span>
+        <h2 class="section-title mt-3 mb-3">
+          8 Years of <span class="text-gradient">Growth</span>
+        </h2>
+        <p class="section-subtitle mb-4">
+          From a single pharmacy counter in Salem to a full-stack health platform — every milestone has been driven by your trust.
+        </p>
+        <a href="store.html" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-right"></i> Explore Our Store
+        </a>
+      </div>
+
+      <!-- Right: Timeline -->
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="timeline">
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+            <span class="timeline-year">2018</span>
+            <div class="timeline-title">Stackly Founded</div>
+            <div class="timeline-desc">Started as a retail pharmacy at MMR Complex, Salem with 500 products and 3 staff members dedicated to genuine healthcare.</div>
+          </div>
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="60">
+            <span class="timeline-year">2019</span>
+            <div class="timeline-title">Online Platform Launched</div>
+            <div class="timeline-desc">Built our website and WhatsApp ordering system, bringing Salem's most trusted pharmacy to smartphones across the city.</div>
+          </div>
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="120">
+            <span class="timeline-year">2020</span>
+            <div class="timeline-title">Home Delivery During Pandemic</div>
+            <div class="timeline-desc">Scaled emergency home delivery across Salem and Erode during COVID-19 — serving over 10,000 families when they needed it most.</div>
+          </div>
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="180">
+            <span class="timeline-year">2022</span>
+            <div class="timeline-title">Auto-Refill &amp; Chronic Care</div>
+            <div class="timeline-desc">Launched auto-refill subscriptions and chronic-disease management programs, covering diabetes, hypertension, and thyroid conditions.</div>
+          </div>
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="240">
+            <span class="timeline-year">2024</span>
+            <div class="timeline-title">8,000+ Products &amp; App Launch</div>
+            <div class="timeline-desc">Expanded catalogue to 8,000+ SKUs spanning medicines, Ayurveda, nutrition, skincare and diagnostics. Launched the Stackly mobile app.</div>
+          </div>
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+            <span class="timeline-year">2026</span>
+            <div class="timeline-title">50,000 Happy Customers</div>
+            <div class="timeline-desc">Crossed 50,000 satisfied customers with a 4.9-star rating — and we're just getting started.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TEAM
+════════════════════════════════════════════════ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow">The People</span>
+      <h2 class="section-title mt-3">Meet Our <span class="text-gradient">Team</span></h2>
+      <p class="section-subtitle mx-auto mt-2">Passionate healthcare professionals committed to your wellbeing.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="team-card">
+          <div class="team-card__photo">
+            <svg class="team-card-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gradArjun" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0a7c5e"/>
+                  <stop offset="100%" stop-color="#00d4a0"/>
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" fill="url(#gradArjun)"/>
+              <path d="M50 50 A12 12 0 1 0 50 26 A12 12 0 1 0 50 50 Z" fill="#ffffff" opacity="0.95"/>
+              <path d="M25 78 C25 65 33 58 50 58 C67 58 75 65 75 78 V82 H25 V78 Z" fill="#ffffff" opacity="0.95"/>
+              <path d="M42 46 C42 54 58 54 58 46" stroke="#00d4a0" stroke-width="2" stroke-linecap="round"/>
+              <path d="M50 52 V66" stroke="#00d4a0" stroke-width="2"/>
+              <circle cx="50" cy="67" r="3" fill="#00d4a0"/>
+            </svg>
+            <div class="team-card__overlay">
+              <a href="404.html" class="team-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="404.html" class="team-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="404.html" class="team-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__name">Dr. Arjun Selvam</div>
+            <div class="team-card__role">Founder &amp; Chief Pharmacist</div>
+            <div class="team-card__bio">Pharm.D from JSS Ooty · 14 years in clinical pharmacy</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+        <div class="team-card">
+          <div class="team-card__photo">
+            <svg class="team-card-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gradPriya" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0d1b2a"/>
+                  <stop offset="100%" stop-color="#1b4965"/>
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" fill="url(#gradPriya)"/>
+              <path d="M50 22 C43 22 36 27 36 38 C36 43 37 47 40 50 C40 45 42 41 45 39 C46 41 48 42 50 42 C52 42 54 41 55 39 C58 41 60 45 60 50 C63 47 64 43 64 38 C64 27 57 22 50 22 Z" fill="#ffffff" opacity="0.95"/>
+              <circle cx="50" cy="37" r="10" fill="#ffffff" opacity="0.95"/>
+              <path d="M25 78 C25 66 35 60 50 60 C65 60 75 66 75 78 V82 H25 V78 Z" fill="#ffffff" opacity="0.95"/>
+              <path d="M43 60 L50 67 L57 60" stroke="#00d4a0" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div class="team-card__overlay">
+              <a href="404.html" class="team-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="404.html" class="team-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="404.html" class="team-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__name">Priya Krishnamurthy</div>
+            <div class="team-card__role">Operations Director</div>
+            <div class="team-card__bio">MBA from PSG · 10 years healthcare supply chain</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+        <div class="team-card">
+          <div class="team-card__photo">
+            <svg class="team-card-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gradKarthik" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0d1b2a"/>
+                  <stop offset="100%" stop-color="#0a7c5e"/>
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" fill="url(#gradKarthik)"/>
+              <circle cx="50" cy="36" r="12" fill="#ffffff" opacity="0.95"/>
+              <path d="M25 78 C25 65 33 58 50 58 C67 58 75 65 75 78 V82 H25 V78 Z" fill="#ffffff" opacity="0.95"/>
+              <rect x="40" y="32" width="8" height="5" rx="1.5" stroke="#00d4a0" stroke-width="2"/>
+              <rect x="52" y="32" width="8" height="5" rx="1.5" stroke="#00d4a0" stroke-width="2"/>
+              <line x1="48" y1="34" x2="52" y2="34" stroke="#00d4a0" stroke-width="2"/>
+            </svg>
+            <div class="team-card__overlay">
+              <a href="404.html" class="team-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="404.html" class="team-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="404.html" class="team-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__name">Karthik Rajan</div>
+            <div class="team-card__role">Head of Technology</div>
+            <div class="team-card__bio">B.Tech NIT Trichy · Full-stack &amp; health-tech builder</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+        <div class="team-card">
+          <div class="team-card__photo">
+            <svg class="team-card-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gradMeena" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00d4a0"/>
+                  <stop offset="100%" stop-color="#1b4965"/>
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" fill="url(#gradMeena)"/>
+              <path d="M50 20 C42 20 35 25 35 37 C35 44 38 48 40 50 C43 50 45 42 50 42 C55 42 57 50 60 50 C62 48 65 44 65 37 C65 25 58 20 50 20 Z" fill="#ffffff" opacity="0.95"/>
+              <circle cx="50" cy="35" r="10" fill="#ffffff" opacity="0.95"/>
+              <path d="M25 78 C25 65 33 58 50 58 C67 58 75 65 75 78 V82 H25 V78 Z" fill="#ffffff" opacity="0.95"/>
+              <path d="M42 46 C42 54 58 54 58 46" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+              <path d="M50 52 V62" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+              <path d="M47 57 H53" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+            </svg>
+            <div class="team-card__overlay">
+              <a href="404.html" class="team-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="404.html" class="team-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="404.html" class="team-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__name">Dr. Meena Suresh</div>
+            <div class="team-card__role">Senior Pharmacist</div>
+            <div class="team-card__bio">Pharm.D · Specialised in chronic disease management</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-4" data-aos="fade-right">
+        <span class="eyebrow">Questions</span>
+        <h2 class="section-title mt-3 mb-3">
+          Frequently Asked <span class="text-gradient">Questions</span>
+        </h2>
+        <p class="section-subtitle mb-4">
+          Can't find your answer? Our team is available 24/7.
+        </p>
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fa-solid fa-headset"></i> Ask Us Anything
+        </a>
+      </div>
+      <div class="col-lg-8" data-aos="fade-left">
+        <div class="accordion-item open">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            Is Stackly a licensed pharmacy?
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="accordion-body" style="max-height:300px;">
+            <div class="accordion-body__inner">Yes. Stackly is a fully licensed retail and online pharmacy registered under the Tamil Nadu Drugs Control Authority. All our pharmacists hold valid licenses and every product we sell is sourced from approved manufacturers and distributors.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            Do you deliver outside Salem?
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body__inner">Absolutely. We currently deliver across Tamil Nadu, including Erode, Coimbatore, Namakkal, Dharmapuri, and Chennai. Salem orders qualify for our 2-hour express delivery. Outstation orders are delivered within 24–48 hours via our cold-chain logistics partners.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            How do I upload my prescription?
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body__inner">Simply take a clear photo of your prescription and upload it during checkout, or send it to us on WhatsApp (+91 98765 43210). A licensed pharmacist will verify it within 15 minutes and confirm your order. We accept handwritten, digital, and e-prescriptions.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            Are your prices cheaper than local pharmacies?
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body__inner">We offer up to 30% off on generics and 15–20% off branded medicines — consistently better than most retail counters. Our Best Price Guarantee means if you find a lower price at any licensed pharmacy, we'll match it. Members get additional exclusive discounts on wellness products.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            What is your return &amp; refund policy?
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body__inner">We accept returns on non-prescription items within 7 days if the product is unopened and in original packaging. For any quality issue or wrong product delivered, we offer a full refund or free replacement within 24 hours — no questions asked. Prescription medicines cannot be returned due to regulatory requirements.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            How does the auto-refill plan work?
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body__inner">Set up your chronic medication list once — we'll remind you 3 days before you're due to run out, confirm with a quick message, and dispatch automatically. You can pause, modify, or cancel anytime from your account dashboard or by messaging us on WhatsApp. No lock-in, no hidden fees.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA BAND
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container" data-aos="zoom-in">
+    <div class="cta-band">
+      <div class="row align-items-center g-4" style="position:relative;z-index:2;">
+        <div class="col-lg-8">
+          <span class="eyebrow" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.25);color:#fff;">Get Started Today</span>
+          <h2 class="section-title text-white mt-3 mb-2">
+            Your Health, Our <span style="color:var(--clr-accent);">Priority</span>
+          </h2>
+          <p style="color:rgba(255,255,255,0.75);font-size:1rem;max-width:480px;line-height:1.7;">
+            Join 50,000+ families who trust Stackly for genuine medicines and expert pharmacy care — delivered fast.
+          </p>
+        </div>
+        <div class="col-lg-4 d-flex gap-3 flex-wrap justify-content-lg-end">
+          <a href="signup.html"      class="btn btn-white">
+            <i class="fa-solid fa-user-plus"></i> Get Started Free
+          </a>
+          <a href="store.html" class="btn btn-ghost">
+            <i class="fa-solid fa-store"></i> Shop Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER  (reusable component)
+════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <!-- Brand -->
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="assets/logo.webp" alt="Stackly"/>
+        </a>
+        <p class="footer__desc">Your trusted online pharmacy — delivering genuine medicines, wellness products and expert guidance to your door since 2018.</p>
+        <div class="footer__social">
+          <a href="404.html" class="footer__social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <div class="footer__col-title">Quick Links</div>
+        <ul class="footer__links">
+          <li><a href="index.html"    class="footer__link">Home</a></li>
+          <li><a href="about.html"    class="footer__link">About Us</a></li>
+          <li><a href="store.html"    class="footer__link">Our Store</a></li>
+          <li><a href="blog.html"     class="footer__link">Health Blog</a></li>
+          <li><a href="contact.html"  class="footer__link">Contact</a></li>
+          <li><a href="signin.html"   class="footer__link">Sign In</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__links">
+          <li><a href="store.html"   class="footer__link">Prescription Refills</a></li>
+          <li><a href="store.html"   class="footer__link">Home Test Kits</a></li>
+          <li><a href="contact.html" class="footer__link">Doctor Consultation</a></li>
+          <li><a href="store.html"   class="footer__link">Auto Refill Plans</a></li>
+          <li><a href="store.html"   class="footer__link">Wellness Packages</a></li>
+          <li><a href="404.html"     class="footer__link">Bulk Orders</a></li>
+        </ul>
+      </div>
+
+      <!-- Address & Newsletter -->
+      <div>
+        <div class="footer__col-title">Find Us</div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>hello@stackly.in</span>
+        </div>
+        <div class="footer__address-item" style="margin-top:0.25rem;">
+          <i class="fa-solid fa-clock"></i>
+          <span>Mon–Sat: 8am–10pm · Sun: 9am–6pm</span>
+        </div>
+        <div class="footer__col-title" style="margin-top:1.5rem;">Newsletter</div>
+        <form class="footer__newsletter" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="Your email…" required aria-label="Newsletter email"/>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        &copy; 2026 <span>Stackly</span>. All rights reserved. Designed with ❤️ in Salem.
+      </div>
+      <div class="footer__legal">
+        <a href="404.html">Privacy Policy</a>
+        <a href="404.html">Terms of Use</a>
+        <a href="404.html">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── AOS Init ── */
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
+  }
+
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+      navbar.classList.remove('navbar--hero');
+    } else {
+      navbar.classList.remove('scrolled');
+      navbar.classList.add('navbar--hero');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Hamburger ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileOverlay.classList.contains('is-open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileOverlay.classList.add('is-open');
+      hamburger.classList.add('is-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  /* ESC key */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeMobileMenu();
+      closeSearch();
+    }
+  });
+
+  /* ── Search overlay ── */
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchToggle  = document.getElementById('searchToggle');
+  const searchClose   = document.getElementById('searchClose');
+  const searchInput   = document.getElementById('searchInput');
+
+  searchToggle.addEventListener('click', () => {
+    searchOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => searchInput.focus(), 300);
+  });
+  searchClose.addEventListener('click', closeSearch);
+  searchOverlay.addEventListener('click', e => {
+    if (e.target === searchOverlay) closeSearch();
+  });
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      closeSearch();
+      window.location.href = 'store.html';
+    }
+  });
+
+  /* ── Counter animation ── */
+  const counters = document.querySelectorAll('.counter');
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.target;
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = target >= 10000
+          ? Math.floor(current).toLocaleString('en-IN')
+          : Math.floor(current) + (el.dataset.suffix || '');
+        if (current >= target) clearInterval(timer);
+      }, 16);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => countObserver.observe(c));
+
+  /* ── Back to top ── */
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Scroll animations (supplement AOS) ── */
+  const animEls = document.querySelectorAll('.anim-fade-up,.anim-fade-left,.anim-fade-right,.anim-scale,.anim-flip');
+  if (animEls.length) {
+    const animObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+    }, { threshold: 0.12 });
+    animEls.forEach(el => animObserver.observe(el));
+  }
+
+  /* ── Active nav link ── */
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.navbar__link').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === currentPage) link.classList.add('active');
+  });
+
+});
+
+/* ── Global helpers ── */
+function closeMobileMenu() {
+  document.getElementById('mobileOverlay').classList.remove('is-open');
+  document.getElementById('hamburger').classList.remove('is-open');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+function showToast(msg, icon = 'fa-circle-check') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="fa-solid ${icon}"></i>${msg}`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(16px)';
+    toast.style.transition = 'all 0.35s';
+    setTimeout(() => toast.remove(), 400);
+  }, 3500);
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  showToast('Subscribed successfully! 🎉', 'fa-circle-check');
+  e.target.reset();
+}
+
+/* ── FAQ Accordion ── */
+function toggleAccordion(btn) {
+  const item = btn.closest('.accordion-item');
+  const body = item.querySelector('.accordion-body');
+  const isOpen = item.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.accordion-item.open').forEach(openItem => {
+    openItem.classList.remove('open');
+    openItem.querySelector('.accordion-body').style.maxHeight = '0';
+  });
+
+  // Open clicked (if it was closed)
+  if (!isOpen) {
+    item.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+</script>
+</body>
+</html>

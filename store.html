@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5"/>
+  <meta name="description" content="Stackly Pharmacy — Shop genuine medicines, wellness products, vitamins, skincare & more. Salem, Tamil Nadu."/>
+  <title>Store — Stackly Pharmacy</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Fonts: preload key subset for speed -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800&display=swap"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Bootstrap CSS -->
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Font Awesome (defer non-critical icons via media trick) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+
+  <!-- Shared style.css -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    /* ══════════════════════════════════════════════
+       STORE-SPECIFIC STYLES
+    ══════════════════════════════════════════════ */
+
+    /* ── Page Header (store specific gradient) ── */
+    .store-header {
+      background: linear-gradient(135deg, #0d1b2a 0%, #0a7c5e 60%, #065c45 100%);
+      padding: 6.5rem 0 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .store-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 80% at 80% 50%, rgba(0,212,160,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 20% 30%, rgba(10,124,94,0.3) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .store-header__inner { position: relative; z-index: 2; }
+
+    /* ── Toolbar / Controls bar ── */
+    .store-toolbar {
+      background: #fff;
+      border-bottom: 1px solid rgba(10,124,94,0.1);
+      padding: 0.85rem 0;
+      position: sticky;
+      top: 64px;
+      z-index: 500;
+      box-shadow: 0 2px 12px rgba(10,124,94,0.07);
+    }
+    .store-toolbar__inner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .store-toolbar__search {
+      display: flex;
+      align-items: center;
+      background: #f0f6f4;
+      border-radius: 9999px;
+      overflow: hidden;
+      border: 1.5px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      flex: 1;
+      min-width: 180px;
+      max-width: 340px;
+    }
+    .store-toolbar__search:focus-within {
+      border-color: #0a7c5e;
+      box-shadow: 0 0 0 3px rgba(10,124,94,0.1);
+    }
+    .store-toolbar__search i {
+      padding: 0 0.75rem 0 1rem;
+      color: #687d94;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .store-toolbar__search input {
+      flex: 1;
+      padding: 0.55rem 0.75rem 0.55rem 0;
+      font-size: 0.86rem;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #0d1b2a;
+      font-family: inherit;
+      min-width: 0;
+    }
+    .store-sort-select {
+      padding: 0.52rem 2.2rem 0.52rem 1rem;
+      border: 1.5px solid rgba(10,124,94,0.18);
+      border-radius: 9999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #0d1b2a;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%230a7c5e'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      font-family: inherit;
+      min-width: 0;
+    }
+    .store-sort-select:focus { border-color: #0a7c5e; }
+
+    .results-count {
+      font-size: 0.82rem;
+      color: #687d94;
+      font-weight: 600;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+    .view-toggle {
+      display: flex;
+      gap: 0.25rem;
+      flex-shrink: 0;
+    }
+    .view-btn {
+      width: 36px; height: 36px;
+      border-radius: 0.5rem;
+      background: #f0f6f4;
+      border: 1.5px solid transparent;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      color: #687d94;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .view-btn.active, .view-btn:hover {
+      background: #0a7c5e;
+      color: #fff;
+      border-color: #0a7c5e;
+    }
+
+    /* ── Filter Pills (horizontal scroll on mobile) ── */
+    .cat-filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
+    }
+    .cat-filter-bar::-webkit-scrollbar { display: none; }
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.42rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1.5px solid rgba(10,124,94,0.2);
+      background: #fff;
+      color: #687d94;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cat-pill.active, .cat-pill:hover {
+      background: #0a7c5e;
+      color: #fff;
+      border-color: #0a7c5e;
+    }
+
+    /* ── Sidebar ── */
+    .shop-sidebar-wrapper {
+      position: sticky;
+      top: 130px;
+    }
+    .sidebar-widget {
+      background: #fff;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .sidebar-widget__title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(10,124,94,0.1);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .sidebar-widget__title i { color: #0a7c5e; }
+
+    /* Checkbox filter */
+    .filter-checkbox-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .filter-checkbox-item {
+      display: flex; align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      font-size: 0.86rem;
+      color: #2e4057;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .filter-checkbox-item input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: #0a7c5e;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .filter-cb-count {
+      margin-left: auto;
+      font-size: 0.74rem;
+      background: #e8f9f4;
+      color: #0a7c5e;
+      padding: 0.1rem 0.5rem;
+      border-radius: 9999px;
+      font-weight: 700;
+    }
+
+    /* Rating filter */
+    .rating-filter-item {
+      display: flex; align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-size: 0.84rem;
+      color: #687d94;
+      padding: 0.3rem 0;
+      transition: color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .rating-filter-item:hover { color: #0a7c5e; }
+    .stars-row { color: #f7b731; font-size: 0.78rem; display: flex; gap: 2px; }
+
+    /* Price range */
+    .price-range-wrap { padding-top: 0.5rem; }
+    .price-display {
+      display: flex; justify-content: space-between;
+      font-size: 0.84rem; font-weight: 700;
+      color: #0a7c5e;
+      margin-bottom: 0.75rem;
+    }
+    .range-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: linear-gradient(to right, #0a7c5e 0%, #0a7c5e var(--val,60%), rgba(10,124,94,0.15) var(--val,60%), rgba(10,124,94,0.15) 100%);
+      border-radius: 9999px;
+      outline: none;
+      cursor: pointer;
+    }
+    .range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #0a7c5e;
+      box-shadow: 0 0 0 4px rgba(10,124,94,0.18);
+      cursor: pointer;
+    }
+
+    /* ── Product Grid ── */
+    .prod-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+      position: relative;
+      height: 100%;
+    }
+    .prod-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(10,124,94,0.22);
+    }
+    .prod-thumb {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e8f9f4, #f0faf7);
+      aspect-ratio: 1/1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .prod-img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      display: block;
+    }
+    .prod-card:hover .prod-img { transform: scale(1.15) rotate(8deg); }
+    .rating-filter-item.active {
+      background: #e8f9f4;
+      color: #0a7c5e;
+      font-weight: 700;
+      border-radius: var(--r-sm);
+      padding: 0.25rem 0.5rem;
+    }
+    .prod-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,124,94,0.9) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 1rem;
+      gap: 0.5rem;
+    }
+    .prod-card:hover .prod-overlay { opacity: 1; }
+    .prod-action-btn {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.95);
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      color: #0a7c5e;
+      cursor: pointer;
+      transform: translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1) var(--d,0s), background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .prod-card:hover .prod-action-btn { transform: translateY(0); }
+    .prod-action-btn:nth-child(1){--d:0.05s;} .prod-action-btn:nth-child(2){--d:0.10s;} .prod-action-btn:nth-child(3){--d:0.15s;}
+    .prod-action-btn:hover { background: #0a7c5e; color: #fff; }
+    .prod-badge {
+      position: absolute; top: 0.7rem; left: 0.7rem;
+      background: #0a7c5e; color: #fff;
+      font-size: 0.68rem; font-weight: 700;
+      padding: 0.22rem 0.55rem;
+      border-radius: 9999px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      z-index: 2;
+    }
+    .prod-badge.sale { background: #f05a5a; }
+    .prod-badge.new  { background: #00d4a0; color: #0d1b2a; }
+    .prod-body { padding: 1rem 1.1rem 1.2rem; }
+    .prod-name { font-size: 0.9rem; font-weight: 700; color: #0d1b2a; margin-bottom: 0.25rem; line-height: 1.4; }
+    .prod-brand { font-size: 0.72rem; color: #687d94; margin-bottom: 0.35rem; }
+    .prod-stars { color: #f7b731; font-size: 0.72rem; }
+    .prod-stars span { color: #687d94; margin-left: 0.25rem; font-size: 0.7rem; }
+    .prod-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 0.55rem; }
+    .prod-price { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #0a7c5e; }
+    .prod-price del { font-size: 0.78rem; color: #687d94; margin-left: 0.3rem; font-family: var(--font-body); font-weight: 400; }
+    .prod-cart-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #e8f9f4;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      color: #0a7c5e;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .prod-cart-btn:hover { background: #0a7c5e; color: #fff; transform: scale(1.15) rotate(8deg); }
+
+    /* List view mode */
+    .products-grid.list-view { display: flex; flex-direction: column; gap: 1rem; }
+    .products-grid.list-view .prod-col { width: 100%; max-width: 100%; flex: 0 0 100%; }
+    .products-grid.list-view .prod-card { flex-direction: row; height: auto; }
+    .products-grid.list-view .prod-thumb { width: 140px; min-width: 140px; aspect-ratio: auto; height: 140px; }
+    .products-grid.list-view .prod-emoji { font-size: 3rem; }
+    .products-grid.list-view .prod-body { flex: 1; }
+    .products-grid.list-view .prod-overlay { display: none; }
+
+    /* ── Promo Banner ── */
+    .promo-banner {
+      background: linear-gradient(135deg, #0a7c5e 0%, #00d4a0 100%);
+      border-radius: 1.25rem;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .promo-banner::after {
+      content: '💊';
+      position: absolute;
+      right: 2%;
+      font-size: 6rem;
+      opacity: 0.12;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .promo-text { color: #fff; }
+    .promo-text h4 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; margin-bottom: 0.25rem; }
+    .promo-text p { font-size: 0.88rem; opacity: 0.85; margin: 0; }
+
+    /* ── Pagination ── */
+    .pagination-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .pag-btn {
+      width: 40px; height: 40px;
+      border-radius: 0.65rem;
+      border: 1.5px solid rgba(10,124,94,0.18);
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #687d94;
+      cursor: pointer;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      text-decoration: none;
+    }
+    .pag-btn:hover, .pag-btn.active {
+      background: #0a7c5e;
+      color: #fff;
+      border-color: #0a7c5e;
+    }
+
+    /* ── Quick View Modal ── */
+    .qv-modal-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(13,27,42,0.65);
+      z-index: 2000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .qv-modal-backdrop.open { opacity: 1; visibility: visible; }
+    .qv-modal {
+      background: #fff;
+      border-radius: 1.5rem;
+      max-width: 700px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      transform: scale(0.9) translateY(30px);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+    .qv-modal-backdrop.open .qv-modal { transform: scale(1) translateY(0); }
+    .qv-close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #f0f6f4;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: #0d1b2a;
+      cursor: pointer; z-index: 5;
+      transition: background 0.2s, transform 0.3s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .qv-close:hover { background: #0a7c5e; color: #fff; transform: rotate(90deg); }
+    .qv-thumb {
+      background: linear-gradient(135deg, #e8f9f4, #f0faf7);
+      height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem;
+      border-radius: 1.5rem 1.5rem 0 0;
+    }
+    .qv-body { padding: 1.5rem; }
+    .qv-brand { font-size: 0.78rem; color: #687d94; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .qv-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: #0d1b2a; margin: 0.4rem 0 0.5rem; }
+    .qv-stars { color: #f7b731; font-size: 0.88rem; margin-bottom: 0.85rem; }
+    .qv-stars span { color: #687d94; }
+    .qv-desc { font-size: 0.9rem; color: #2e4057; line-height: 1.7; margin-bottom: 1.25rem; }
+    .qv-price-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .qv-price { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: #0a7c5e; }
+    .qv-price-old { font-size: 1rem; color: #687d94; text-decoration: line-through; }
+    .qv-save { background: #e8f9f4; color: #0a7c5e; font-size: 0.76rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px; }
+    .qv-qty { display: flex; align-items: center; gap: 0; border: 1.5px solid rgba(10,124,94,0.2); border-radius: 9999px; overflow: hidden; margin-bottom: 1rem; width: fit-content; }
+    .qv-qty-btn { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; background: #f0f6f4; border: none; font-size: 1rem; color: #0a7c5e; cursor: pointer; transition: background 0.2s; }
+    .qv-qty-btn:hover { background: #0a7c5e; color: #fff; }
+    .qv-qty-num { width: 44px; text-align: center; font-weight: 700; font-size: 0.95rem; }
+
+    /* ── Toast ── */
+    .toast-container {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+      pointer-events: none;
+    }
+    .toast {
+      background: #0d1b2a;
+      color: #fff;
+      padding: 0.75rem 1.4rem;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      animation: toastIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+      white-space: nowrap;
+    }
+    .toast i { color: #00d4a0; }
+    @keyframes toastIn { from { opacity:0; transform: translateY(20px) scale(0.9); } to { opacity:1; transform: none; } }
+
+    /* ── Back to top ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem; right: 1.5rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0a7c5e, #00d4a0);
+      color: #fff;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(10,124,94,0.4);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 900;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { transform: scale(1.12) translateY(-3px); }
+
+    /* ══ MOBILE RESPONSIVE ══ */
+    @media (max-width: 991.98px) {
+      .sidebar-col { display: none; }
+      .products-col { flex: 0 0 100%; max-width: 100%; }
+    }
+    @media (max-width: 767.98px) {
+      .store-header { padding: 5.5rem 0 1.75rem; }
+      .store-toolbar { top: 58px; }
+      .store-toolbar__inner { gap: 0.5rem; }
+      .store-toolbar__search { max-width: 100%; min-width: 0; flex: 1 1 100%; order: 3; }
+      .store-sort-select { min-width: 0; font-size: 0.8rem; }
+      .results-count { display: none; }
+      .products-grid.list-view .prod-thumb { width: 100px; min-width: 100px; height: 100px; }
+      .products-grid.list-view .prod-emoji { font-size: 2.2rem; }
+      .promo-banner { padding: 1.25rem; }
+      .promo-banner::after { display: none; }
+    }
+    @media (max-width: 480px) {
+      .products-grid.list-view .prod-card { flex-direction: column; }
+      .products-grid.list-view .prod-thumb { width: 100%; height: 160px; }
+    }
+    @media (max-width: 575.98px) {
+      .cat-pill { font-size: 0.76rem; padding: 0.38rem 0.85rem; }
+    }
+  </style>
+  <link rel="shortcut icon" href="assets/top-logo.webp" type="image/webp"/>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════
+     SEARCH OVERLAY  (reusable component)
+════════════════════════════════════════════ -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="search-overlay__inner">
+    <div class="search-overlay__input-wrap">
+      <i class="fa-solid fa-magnifying-glass" style="padding-left:1.4rem;color:#687d94;"></i>
+      <input class="search-overlay__input" id="searchInput" type="text" placeholder="Search medicines, vitamins, healthcare…" autocomplete="off"/>
+      <button class="search-overlay__close" id="searchClose" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <p class="search-overlay__hint">Press <kbd style="background:rgba(255,255,255,0.15);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.75rem;">ESC</kbd> to close</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     MOBILE FULL-SCREEN OVERLAY MENU  (reusable)
+════════════════════════════════════════════ -->
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <nav class="mobile-overlay__nav" aria-label="Mobile Navigation">
+    <a href="index.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html"   class="mobile-overlay__link" onclick="closeMobileMenu()">About</a>
+    <a href="store.html"   class="mobile-overlay__link active" onclick="closeMobileMenu()">Store</a>
+    <a href="blog.html"    class="mobile-overlay__link" onclick="closeMobileMenu()">Blog</a>
+    <a href="contact.html" class="mobile-overlay__link" onclick="closeMobileMenu()">Contact</a>
+  </nav>
+  <div class="mobile-overlay__bottom">
+    <div class="mobile-overlay__divider"></div>
+    <div class="mobile-overlay__btns">
+      <a href="signin.html"      class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="signup.html"      class="btn btn-primary btn-sm">Get Started</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     NAVBAR  (reusable component)
+════════════════════════════════════════════ -->
+<header class="navbar scrolled" id="navbar">
+  <div class="container navbar__inner">
+
+    <!-- Logo — text "stackly" written inside the logo image, no separate text node -->
+    <a href="index.html" class="navbar__logo" aria-label="Stackly Home">
+      <img src="assets/logo.webp" alt="Stackly" loading="eager" width="120" height="42"/>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="navbar__nav" aria-label="Main Navigation">
+      <a href="index.html"   class="navbar__link">Home</a>
+      <a href="about.html"   class="navbar__link">About</a>
+      <a href="store.html"   class="navbar__link active">Store</a>
+      <a href="blog.html"    class="navbar__link">Blog</a>
+      <a href="contact.html" class="navbar__link">Contact</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="navbar__actions">
+      <button class="navbar__search-btn" id="searchToggle" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button class="navbar__cart-btn" aria-label="Cart" onclick="openCart()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a href="signin.html"      class="btn btn-outline btn-sm d-none d-lg-inline-flex">Sign In</a>
+      <a href="signup.html"      class="btn btn-primary btn-sm d-none d-lg-inline-flex">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════
+     STORE PAGE HEADER
+════════════════════════════════════════════ -->
+<div class="store-header">
+  <div class="container store-header__inner">
+    <div class="row align-items-center g-3">
+      <div class="col-md-7" data-aos="fade-up">
+        <nav class="breadcrumb mb-2" aria-label="breadcrumb">
+          <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;opacity:0.5;"></i>
+          <span style="color:#00d4a0;">Store</span>
+        </nav>
+        <h1 class="page-header__title" style="font-size:clamp(1.8rem,4vw,3rem);margin-bottom:0.5rem;">
+          Our <span style="color:#00d4a0;">Store</span>
+        </h1>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.96rem;max-width:480px;margin:0;">
+          Genuine medicines, vitamins, wellness &amp; more — delivered to your door in Salem &amp; beyond.
+        </p>
+      </div>
+      <div class="col-md-5 d-none d-md-flex justify-content-end gap-3" data-aos="fade-left">
+        <!-- Mini stat chips -->
+        <div style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16);border-radius:1rem;padding:1rem 1.25rem;text-align:center;min-width:110px;">
+          <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:#00d4a0;line-height:1;">8K+</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);margin-top:0.2rem;">Products</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16);border-radius:1rem;padding:1rem 1.25rem;text-align:center;min-width:110px;">
+          <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:#00d4a0;line-height:1;">40%</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);margin-top:0.2rem;">Max Off</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16);border-radius:1rem;padding:1rem 1.25rem;text-align:center;min-width:110px;">
+          <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:#00d4a0;line-height:1;">2hr</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);margin-top:0.2rem;">Delivery</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     MARQUEE STRIP  (reusable component)
+════════════════════════════════════════════ -->
+<div style="background:linear-gradient(135deg,#0a7c5e,#065c45);padding:0.75rem 0;overflow:hidden;" aria-label="Features">
+  <div class="marquee-track" aria-hidden="true">
+    <div style="display:flex;gap:0;width:max-content;">
+      <span class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Same-Day Delivery</span>
+      <span class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</span>
+      <span class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</span>
+      <span class="features-strip__item"><i class="fa-solid fa-clock-rotate-left"></i> 24/7 Support</span>
+      <span class="features-strip__item"><i class="fa-solid fa-prescription-bottle-medical"></i> Upload Prescription</span>
+      <span class="features-strip__item"><i class="fa-solid fa-percent"></i> Up to 40% Off</span>
+      <span class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurveda &amp; Wellness</span>
+      <span class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Same-Day Delivery</span>
+      <span class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</span>
+      <span class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</span>
+      <span class="features-strip__item"><i class="fa-solid fa-clock-rotate-left"></i> 24/7 Support</span>
+      <span class="features-strip__item"><i class="fa-solid fa-prescription-bottle-medical"></i> Upload Prescription</span>
+      <span class="features-strip__item"><i class="fa-solid fa-percent"></i> Up to 40% Off</span>
+      <span class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurveda &amp; Wellness</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     STICKY STORE TOOLBAR
+════════════════════════════════════════════ -->
+<div class="store-toolbar" id="storeToolbar">
+  <div class="container">
+    <div class="store-toolbar__inner">
+      <!-- Search -->
+      <div class="store-toolbar__search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="storeSearchInput" placeholder="Search products…" autocomplete="off" aria-label="Search products"/>
+      </div>
+
+      <!-- Sort -->
+      <select class="store-sort-select" id="sortSelect" aria-label="Sort products">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="rating">Top Rated</option>
+        <option value="newest">Newest</option>
+      </select>
+
+      <!-- Results count -->
+      <span class="results-count" id="resultsCount">Showing 24 products</span>
+
+      <!-- View toggle -->
+      <div class="view-toggle" role="group" aria-label="View mode">
+        <button class="view-btn active" id="gridViewBtn" aria-label="Grid view" onclick="setView('grid')">
+          <i class="fa-solid fa-grid-2"></i>
+        </button>
+        <button class="view-btn" id="listViewBtn" aria-label="List view" onclick="setView('list')">
+          <i class="fa-solid fa-list"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category pills (horizontal scroll) -->
+    <div class="cat-filter-bar mt-2" role="group" aria-label="Filter by category">
+      <button class="cat-pill active" data-cat="all" onclick="filterCat(this,'all')">
+        <i class="fa-solid fa-border-all"></i> All
+      </button>
+      <button class="cat-pill" data-cat="medicines" onclick="filterCat(this,'medicines')">
+        💊 Medicines
+      </button>
+      <button class="cat-pill" data-cat="vitamins" onclick="filterCat(this,'vitamins')">
+        🌟 Vitamins
+      </button>
+      <button class="cat-pill" data-cat="ayurveda" onclick="filterCat(this,'ayurveda')">
+        🌿 Ayurveda
+      </button>
+      <button class="cat-pill" data-cat="skincare" onclick="filterCat(this,'skincare')">
+        🧴 Skincare
+      </button>
+      <button class="cat-pill" data-cat="nutrition" onclick="filterCat(this,'nutrition')">
+        🏋️ Nutrition
+      </button>
+      <button class="cat-pill" data-cat="baby" onclick="filterCat(this,'baby')">
+        👶 Baby Care
+      </button>
+      <button class="cat-pill" data-cat="firstaid" onclick="filterCat(this,'firstaid')">
+        🩹 First Aid
+      </button>
+      <button class="cat-pill" data-cat="dental" onclick="filterCat(this,'dental')">
+        🦷 Dental
+      </button>
+      <button class="cat-pill" data-cat="eyecare" onclick="filterCat(this,'eyecare')">
+        👁️ Eye Care
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     MAIN STORE CONTENT
+════════════════════════════════════════════ -->
+<main>
+<div class="container" style="padding-top:2rem;padding-bottom:3rem;">
+  <div class="row g-4">
+
+    <!-- ── SIDEBAR ── -->
+    <div class="col-lg-3 sidebar-col">
+      <aside class="shop-sidebar-wrapper" aria-label="Filters">
+
+        <!-- Upload Prescription CTA -->
+        <div style="background:linear-gradient(135deg,#0a7c5e,#00d4a0);border-radius:1.25rem;padding:1.4rem;margin-bottom:1.1rem;text-align:center;">
+          <i class="fa-solid fa-prescription" style="font-size:1.8rem;color:#fff;margin-bottom:0.6rem;display:block;"></i>
+          <div style="font-family:var(--font-display);font-weight:800;color:#fff;font-size:0.95rem;margin-bottom:0.3rem;">Have a Prescription?</div>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.82);margin-bottom:0.9rem;">Upload and get medicines delivered in 2 hours.</p>
+          <button class="btn btn-white btn-sm w-100" onclick="showToast('Prescription upload coming soon!','fa-prescription')">
+            <i class="fa-solid fa-upload"></i> Upload Now
+          </button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title"><i class="fa-solid fa-tag"></i> Categories</div>
+          <div class="filter-checkbox-list">
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="cat-cb" value="medicines" onchange="filterCatCheckbox(this)"/> Medicines
+              <span class="filter-cb-count">142</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="cat-cb" value="vitamins" onchange="filterCatCheckbox(this)"/> Vitamins &amp; Supplements
+              <span class="filter-cb-count">87</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="cat-cb" value="ayurveda" onchange="filterCatCheckbox(this)"/> Ayurveda
+              <span class="filter-cb-count">63</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="cat-cb" value="skincare" onchange="filterCatCheckbox(this)"/> Skincare
+              <span class="filter-cb-count">95</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="cat-cb" value="nutrition" onchange="filterCatCheckbox(this)"/> Nutrition &amp; Fitness
+              <span class="filter-cb-count">74</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="cat-cb" value="baby" onchange="filterCatCheckbox(this)"/> Baby Care
+              <span class="filter-cb-count">58</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="cat-cb" value="firstaid" onchange="filterCatCheckbox(this)"/> First Aid
+              <span class="filter-cb-count">44</span>
+            </label>
+            <label class="filter-checkbox-item">
+              <input type="checkbox" class="cat-cb" value="dental" onchange="filterCatCheckbox(this)"/> Dental
+              <span class="filter-cb-count">31</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Range -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title"><i class="fa-solid fa-indian-rupee-sign"></i> Price Range</div>
+          <div class="price-range-wrap">
+            <div class="price-display">
+              <span>₹0</span>
+              <span id="priceMax">₹2,500</span>
+            </div>
+            <input type="range" class="range-slider" id="priceSlider" min="0" max="5000" value="2500" step="50"
+                   oninput="updatePrice(this)" style="--val:50%;" aria-label="Max price"/>
+          </div>
+        </div>
+
+        <!-- Brand Filter -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title"><i class="fa-solid fa-building"></i> Brands</div>
+          <div class="filter-checkbox-list">
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Sun Pharma" onchange="applyBrandFilter()"/> Sun Pharma <span class="filter-cb-count">38</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Cipla" onchange="applyBrandFilter()"/> Cipla <span class="filter-cb-count">29</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Himalaya" onchange="applyBrandFilter()"/> Himalaya <span class="filter-cb-count">24</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="CeraVe" onchange="applyBrandFilter()"/> CeraVe <span class="filter-cb-count">18</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="MuscleBlaze" onchange="applyBrandFilter()"/> MuscleBlaze <span class="filter-cb-count">15</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Dettol" onchange="applyBrandFilter()"/> Dettol <span class="filter-cb-count">22</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Johnson's" onchange="applyBrandFilter()"/> Johnson's <span class="filter-cb-count">16</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Now Foods" onchange="applyBrandFilter()"/> Now Foods <span class="filter-cb-count">14</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Micro Labs" onchange="applyBrandFilter()"/> Micro Labs <span class="filter-cb-count">11</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="HUL" onchange="applyBrandFilter()"/> HUL <span class="filter-cb-count">9</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Intas" onchange="applyBrandFilter()"/> Intas <span class="filter-cb-count">7</span></label>
+            <label class="filter-checkbox-item"><input type="checkbox" class="brand-cb" value="Dabur" onchange="applyBrandFilter()"/> Dabur <span class="filter-cb-count">12</span></label>
+          </div>
+        </div>
+
+        <!-- Rating Filter -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title"><i class="fa-solid fa-star"></i> Rating</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div class="rating-filter-item" onclick="filterRating(this, 5)">
+              <div class="stars-row"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span style="font-size:0.8rem;">&amp; above</span>
+              <span class="filter-cb-count" style="margin-left:auto;">124</span>
+            </div>
+            <div class="rating-filter-item" onclick="filterRating(this, 4)">
+              <div class="stars-row"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+              <span style="font-size:0.8rem;">&amp; above</span>
+              <span class="filter-cb-count" style="margin-left:auto;">256</span>
+            </div>
+            <div class="rating-filter-item" onclick="filterRating(this, 3)">
+              <div class="stars-row"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+              <span style="font-size:0.8rem;">&amp; above</span>
+              <span class="filter-cb-count" style="margin-left:auto;">312</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clear Filters -->
+        <button class="btn btn-outline w-100" onclick="resetFilters()">
+          <i class="fa-solid fa-rotate-left"></i> Clear All Filters
+        </button>
+
+      </aside>
+    </div><!-- /sidebar col -->
+
+    <!-- ── PRODUCTS COL ── -->
+    <div class="col-lg-9 products-col">
+
+      <!-- Promo Banner -->
+      <div class="promo-banner mb-4" data-aos="fade-up">
+        <div class="promo-text">
+          <h4>🎉 Summer Health Sale — Up to 40% Off!</h4>
+          <p>Limited time offer on vitamins, skincare &amp; wellness. Use code <strong>STACK40</strong></p>
+        </div>
+        <button class="btn btn-white btn-sm" onclick="showToast('Offer code STACK40 copied!','fa-copy')" style="flex-shrink:0;">
+          Copy Code
+        </button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="row g-3 products-grid" id="productsGrid">
+
+        <!-- Product 1 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="vitamins" data-price="349" data-brand="Sun Pharma" data-rating="4.5" data-name="Vitamin D3 + K2 Capsules" data-index="1" data-new="false" data-aos="fade-up" data-aos-delay="0">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_vitamin.png" class="prod-img" alt="Vitamin D3 + K2 Capsules">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Vitamin D3 + K2 Capsules','Sun Pharma','assets/prod_vitamin.png','Immune-boosting combination of Vitamin D3 2000 IU and Vitamin K2 100 mcg. Supports bone health, immunity &amp; cardiovascular wellness. 60 capsules per pack.',349,430,'4.5','142','sale','-20%')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge sale">-20%</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Sun Pharma</div>
+              <div class="prod-name">Vitamin D3 + K2 Capsules</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(142)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹349 <del>₹430</del></span>
+                <button class="prod-cart-btn" onclick="addToCart('Vitamin D3 + K2 Capsules',349)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="ayurveda" data-price="279" data-brand="Himalaya" data-rating="4.0" data-name="Ashwagandha Stress Relief" data-index="2" data-new="true" data-aos="fade-up" data-aos-delay="60">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_ayurveda.png" class="prod-img" alt="Ashwagandha Stress Relief">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Ashwagandha Stress Relief','Himalaya','assets/prod_ayurveda.png','KSM-66 Ashwagandha root extract — clinically proven to reduce stress, improve energy &amp; support cognitive function. 60 tablets.',279,null,'4.0','98','new','New')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge new">New</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Himalaya</div>
+              <div class="prod-name">Ashwagandha Stress Relief</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(98)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹279</span>
+                <button class="prod-cart-btn" onclick="addToCart('Ashwagandha Stress Relief',279)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="skincare" data-price="520" data-brand="CeraVe" data-rating="5.0" data-name="Moisturising Cream SPF 50" data-index="3" data-new="false" data-aos="fade-up" data-aos-delay="120">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_skincare.png" class="prod-img" alt="Moisturising Cream SPF 50">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Moisturising Cream SPF 50','CeraVe','assets/prod_skincare.png','Lightweight, non-comedogenic daily moisturiser with SPF 50 broad-spectrum UV protection. Contains ceramides &amp; hyaluronic acid. 75ml.',520,610,'5.0','215','sale','-15%')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge sale">-15%</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">CeraVe</div>
+              <div class="prod-name">Moisturising Cream SPF 50</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(215)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹520 <del>₹610</del></span>
+                <button class="prod-cart-btn" onclick="addToCart('Moisturising Cream SPF 50',520)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="nutrition" data-price="2499" data-brand="MuscleBlaze" data-rating="4.5" data-name="Whey Protein Isolate 2kg" data-index="4" data-new="false" data-aos="fade-up" data-aos-delay="180">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_protein.png" class="prod-img" alt="Whey Protein Isolate 2kg">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Whey Protein Isolate 2kg','MuscleBlaze','assets/prod_protein.png','90% protein per serving, ultra-filtered for purity. Chocolate Fudge flavour. 62 servings per 2kg bag. Lab tested &amp; certified.',2499,null,'4.5','308',null,null)" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">MuscleBlaze</div>
+              <div class="prod-name">Whey Protein Isolate 2kg</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(308)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹2,499</span>
+                <button class="prod-cart-btn" onclick="addToCart('Whey Protein Isolate',2499)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="vitamins" data-price="449" data-brand="Cipla" data-rating="4.0" data-name="Omega-3 Fish Oil 1000mg" data-index="5" data-new="false" data-aos="fade-up" data-aos-delay="0">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_omega.png" class="prod-img" alt="Omega-3 Fish Oil 1000mg">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Omega-3 Fish Oil 1000mg','Cipla','assets/prod_omega.png','Purified deep-sea fish oil with 300mg EPA &amp; 200mg DHA per softgel. Supports heart, brain &amp; joint health. 90 softgels. Requires prescription.',449,null,'4.0','187','rx','RX')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge">RX</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Cipla</div>
+              <div class="prod-name">Omega-3 Fish Oil 1000mg</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(187)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹449</span>
+                <button class="prod-cart-btn" onclick="addToCart('Omega-3 Fish Oil 1000mg',449)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="baby" data-price="185" data-brand="Johnson's" data-rating="5.0" data-name="Baby Soft Lotion 200ml" data-index="6" data-new="true" data-aos="fade-up" data-aos-delay="60">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_baby.png" class="prod-img" alt="Baby Soft Lotion 200ml">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Baby Soft Lotion 200ml','Johnson\'s','assets/prod_baby.png','Clinically tested, hypoallergenic baby lotion with a gentle, soft formula. Fragrance-free option available. Suitable for newborns &amp; sensitive skin.',185,null,'5.0','421','new','New')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge new">New</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Johnson's</div>
+              <div class="prod-name">Baby Soft Lotion 200ml</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(421)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹185</span>
+                <button class="prod-cart-btn" onclick="addToCart('Baby Soft Lotion',185)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="vitamins" data-price="599" data-brand="Now Foods" data-rating="4.5" data-name="Magnesium Glycinate 400mg" data-index="7" data-new="false" data-aos="fade-up" data-aos-delay="120">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/pill.png" class="prod-img" alt="Magnesium Glycinate 400mg">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Magnesium Glycinate 400mg','Now Foods','assets/pill.png','Highly bioavailable chelated magnesium for superior absorption. Supports sleep quality, muscle function &amp; nervous system health. 90 capsules.',599,799,'4.5','93','sale','-25%')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge sale">-25%</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Now Foods</div>
+              <div class="prod-name">Magnesium Glycinate 400mg</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(93)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹599 <del>₹799</del></span>
+                <button class="prod-cart-btn" onclick="addToCart('Magnesium Glycinate',599)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="firstaid" data-price="899" data-brand="Dettol" data-rating="4.0" data-name="First Aid Kit Complete" data-index="8" data-new="false" data-aos="fade-up" data-aos-delay="180">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_firstaid.png" class="prod-img" alt="First Aid Kit Complete">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('First Aid Kit Complete','Dettol','assets/prod_firstaid.png','Comprehensive 56-piece first aid kit in a durable carry case. Includes bandages, antiseptic wipes, gloves &amp; emergency manual.',899,null,'4.0','76',null,null)" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Dettol</div>
+              <div class="prod-name">First Aid Kit Complete</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(76)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹899</span>
+                <button class="prod-cart-btn" onclick="addToCart('First Aid Kit Complete',899)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="medicines" data-price="32" data-brand="Micro Labs" data-rating="4.8" data-name="Dolo 650 Paracetamol" data-index="9" data-new="false" data-aos="fade-up" data-aos-delay="0">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/capsule.png" class="prod-img" alt="Dolo 650 Paracetamol">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Dolo 650 Paracetamol','Micro Labs','assets/capsule.png','Paracetamol 650mg — fast-acting fever &amp; mild pain relief. Safe for adults and children above 12. 15 tablets per strip.',32,null,'4.8','1.2K','rx','RX')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge">RX</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Micro Labs</div>
+              <div class="prod-name">Dolo 650 Paracetamol</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(1.2K)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹32</span>
+                <button class="prod-cart-btn" onclick="addToCart('Dolo 650',32)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="dental" data-price="125" data-brand="HUL" data-rating="4.3" data-name="Pepsodent Cavity Fighter 200g" data-index="10" data-new="false" data-aos="fade-up" data-aos-delay="60">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_dental.png" class="prod-img" alt="Pepsodent Cavity Fighter 200g">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Pepsodent Cavity Fighter 200g','HUL','assets/prod_dental.png','Advanced cavity protection toothpaste with Fluoride Shield technology. Fights 99.9% of germs. Mint fresh flavour. 200g pack.',125,null,'4.3','342',null,null)" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">HUL</div>
+              <div class="prod-name">Pepsodent Cavity Fighter 200g</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(342)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹125</span>
+                <button class="prod-cart-btn" onclick="addToCart('Pepsodent Cavity Fighter',125)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="eyecare" data-price="180" data-brand="Intas" data-rating="4.6" data-name="Eyemist Eye Drops 10ml" data-index="11" data-new="false" data-aos="fade-up" data-aos-delay="120">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/prod_eyecare.png" class="prod-img" alt="Eyemist Eye Drops 10ml">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Eyemist Eye Drops 10ml','Intas','assets/prod_eyecare.png','Lubricating eye drops for dry eye relief. Contains carboxymethylcellulose 0.5%. Preservative-free, suitable for contact lens wearers.',180,220,'4.6','189','sale','-18%')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge sale">-18%</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Intas</div>
+              <div class="prod-name">Eyemist Eye Drops 10ml</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(189)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹180 <del>₹220</del></span>
+                <button class="prod-cart-btn" onclick="addToCart('Eyemist Eye Drops',180)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="col-6 col-md-4 col-xl-3 prod-col" data-cat="ayurveda" data-price="325" data-brand="Dabur" data-rating="4.7" data-name="Chyawanprash 1kg" data-index="12" data-new="false" data-aos="fade-up" data-aos-delay="180">
+          <div class="prod-card">
+            <div class="prod-thumb">
+              <img src="assets/cat_vitamin.png" class="prod-img" alt="Chyawanprash 1kg">
+              <div class="prod-overlay">
+                <button class="prod-action-btn" onclick="openQuickView('Chyawanprash 1kg','Dabur','assets/cat_vitamin.png','Classic immunity-boosting Chyawanprash with 40+ Ayurvedic herbs. Rich in Vitamin C from Amla. Suitable for all ages. 1kg jar.',325,380,'4.7','511','sale','-14%')" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+                <button class="prod-action-btn" onclick="addWishlist(this)" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                <button class="prod-action-btn" onclick="showToast('Added to compare','fa-right-left')" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+              </div>
+              <span class="prod-badge sale">-14%</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Dabur</div>
+              <div class="prod-name">Chyawanprash 1kg</div>
+              <div class="prod-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(511)</span></div>
+              <div class="prod-price-row">
+                <span class="prod-price">₹325 <del>₹380</del></span>
+                <button class="prod-cart-btn" onclick="addToCart('Dabur Chyawanprash',325)" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /products-grid -->
+
+      <!-- No results message (hidden by default) -->
+      <div id="noResults" style="display:none;text-align:center;padding:3rem 0;">
+        <div style="font-size:4rem;margin-bottom:1rem;">🔍</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;color:#0d1b2a;margin-bottom:0.5rem;">No products found</h3>
+        <p style="color:#687d94;">Try a different search term or category.</p>
+        <button class="btn btn-primary mt-3" onclick="resetFilters()"><i class="fa-solid fa-rotate-left"></i> Reset Filters</button>
+      </div>
+
+      <!-- Pagination -->
+      <nav class="pagination-wrap" aria-label="Pagination">
+        <a href="store.html" class="pag-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></a>
+        <a href="store.html" class="pag-btn active" aria-current="page">1</a>
+        <a href="store.html" class="pag-btn">2</a>
+        <a href="store.html" class="pag-btn">3</a>
+        <span class="pag-btn" style="cursor:default;pointer-events:none;">…</span>
+        <a href="store.html" class="pag-btn">12</a>
+        <a href="store.html" class="pag-btn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></a>
+      </nav>
+
+    </div><!-- /products col -->
+  </div><!-- /row -->
+</div><!-- /container -->
+</main>
+
+<!-- ════════════════════════════════════════════
+     FOOTER  (reusable component)
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <!-- Brand -->
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="assets/logo.webp" alt="Stackly" loading="lazy" width="110" height="38"/>
+        </a>
+        <p class="footer__desc">Your trusted online pharmacy — delivering genuine medicines, wellness products and expert guidance to your door since 2018.</p>
+        <div class="footer__social">
+          <a href="404.html" class="footer__social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <div class="footer__col-title">Quick Links</div>
+        <ul class="footer__links">
+          <li><a href="index.html"   class="footer__link">Home</a></li>
+          <li><a href="about.html"   class="footer__link">About Us</a></li>
+          <li><a href="store.html"   class="footer__link">Our Store</a></li>
+          <li><a href="blog.html"    class="footer__link">Health Blog</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+          <li><a href="signin.html"  class="footer__link">Sign In</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__links">
+          <li><a href="store.html"   class="footer__link">Prescription Refills</a></li>
+          <li><a href="store.html"   class="footer__link">Home Test Kits</a></li>
+          <li><a href="contact.html" class="footer__link">Doctor Consultation</a></li>
+          <li><a href="store.html"   class="footer__link">Auto Refill Plans</a></li>
+          <li><a href="store.html"   class="footer__link">Wellness Packages</a></li>
+          <li><a href="404.html"     class="footer__link">Bulk Orders</a></li>
+        </ul>
+      </div>
+
+      <!-- Address & Newsletter -->
+      <div>
+        <div class="footer__col-title">Find Us</div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>hello@stackly.in</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-clock"></i>
+          <span>Mon–Sat: 8am–10pm · Sun: 9am–6pm</span>
+        </div>
+
+        <div class="footer__col-title" style="margin-top:1.5rem;">Newsletter</div>
+        <form class="footer__newsletter" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="Your email…" required aria-label="Newsletter email"/>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+
+    </div><!-- /footer__grid -->
+  </div>
+
+  <div class="container">
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        &copy; 2026 <span>Stackly</span>. All rights reserved. Designed with ❤️ in Salem.
+      </div>
+      <div class="footer__legal">
+        <a href="404.html">Privacy Policy</a>
+        <a href="404.html">Terms of Use</a>
+        <a href="404.html">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ════════════════════════════════════════════
+     QUICK VIEW MODAL
+════════════════════════════════════════════ -->
+<div class="qv-modal-backdrop" id="qvBackdrop" role="dialog" aria-modal="true" aria-label="Quick View" onclick="closeQV(event)">
+  <div class="qv-modal" id="qvModal">
+    <button class="qv-close" onclick="closeQV()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="qv-thumb" id="qvThumb"></div>
+    <div class="qv-body">
+      <div class="qv-brand" id="qvBrand"></div>
+      <div class="qv-name" id="qvName"></div>
+      <div class="qv-stars" id="qvStars"></div>
+      <p class="qv-desc" id="qvDesc"></p>
+      <div class="qv-price-row">
+        <div class="qv-price" id="qvPrice"></div>
+        <div class="qv-price-old" id="qvOld"></div>
+        <div class="qv-save" id="qvSave" style="display:none;"></div>
+      </div>
+      <div class="qv-qty">
+        <button class="qv-qty-btn" onclick="changeQty(-1)" aria-label="Decrease"><i class="fa-solid fa-minus"></i></button>
+        <span class="qv-qty-num" id="qvQtyNum">1</span>
+        <button class="qv-qty-btn" onclick="changeQty(1)" aria-label="Increase"><i class="fa-solid fa-plus"></i></button>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <button class="btn btn-primary" style="flex:1;min-width:0;" onclick="addToCartFromQV()" id="qvAddBtn">
+          <i class="fa-solid fa-cart-plus"></i> Add to Cart
+        </button>
+        <button class="btn btn-outline" style="flex-shrink:0;" onclick="addWishlistQV()" aria-label="Add to Wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+
+<script>
+/* ══════════════════════════════════════════════
+   STORE PAGE — JavaScript
+══════════════════════════════════════════════ */
+
+/* ── State ── */
+let cartItems = 0;
+let qvCurrentProduct = null;
+let qvQty = 1;
+let currentView = 'grid';
+let currentCat = 'all';
+
+/* ── DOMContentLoaded ── */
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* AOS */
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 600, once: true, offset: 40, easing: 'ease-out-cubic' });
+  }
+
+  /* Navbar scroll */
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Hamburger */
+  const hamburger = document.getElementById('hamburger');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileOverlay.classList.contains('is-open');
+    if (isOpen) { closeMobileMenu(); }
+    else {
+      mobileOverlay.classList.add('is-open');
+      hamburger.classList.add('is-open');
+      hamburger.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  /* ESC key */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeMobileMenu(); closeSearch(); closeQVModal(); }
+  });
+
+  /* Search overlay */
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchToggle  = document.getElementById('searchToggle');
+  const searchCloseBtn = document.getElementById('searchClose');
+  const searchInputEl = document.getElementById('searchInput');
+
+  searchToggle.addEventListener('click', () => {
+    searchOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => searchInputEl.focus(), 300);
+  });
+  searchCloseBtn.addEventListener('click', closeSearch);
+  searchOverlay.addEventListener('click', e => { if (e.target === searchOverlay) closeSearch(); });
+  searchInputEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { closeSearch(); applySearch(searchInputEl.value); }
+  });
+
+  /* Inline store search */
+  const storeSearchInput = document.getElementById('storeSearchInput');
+  let searchTimeout;
+  storeSearchInput.addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => applySearch(storeSearchInput.value), 300);
+  });
+
+  /* Sort */
+  document.getElementById('sortSelect').addEventListener('change', function() {
+    showToast('Sorting by: ' + this.options[this.selectedIndex].text, 'fa-sort');
+    applySort();
+  });
+
+  /* Price slider update */
+  const slider = document.getElementById('priceSlider');
+  if (slider) updatePriceSliderStyle(slider);
+
+  /* Back to top */
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Navbar active */
+  document.querySelectorAll('.navbar__link').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === 'store.html') link.classList.add('active');
+  });
+
+  /* Update results count */
+  updateResultsCount();
+});
+
+/* ══ HELPERS ══ */
+
+function closeMobileMenu() {
+  document.getElementById('mobileOverlay').classList.remove('is-open');
+  document.getElementById('hamburger').classList.remove('is-open');
+  document.getElementById('hamburger').setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+function showToast(msg, icon = 'fa-circle-check') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="fa-solid ${icon}"></i>${msg}`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(16px)';
+    toast.style.transition = 'all 0.35s';
+    setTimeout(() => toast.remove(), 400);
+  }, 3200);
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  showToast('Subscribed successfully! 🎉','fa-circle-check');
+  e.target.reset();
+}
+
+/* ══ CART ══ */
+
+function addToCart(name, price) {
+  cartItems++;
+  document.getElementById('cartCount').textContent = cartItems;
+  showToast(`${name} added to cart!`, 'fa-cart-plus');
+}
+
+function openCart() {
+  showToast(`Cart (${cartItems} item${cartItems !== 1 ? 's' : ''})`, 'fa-bag-shopping');
+}
+
+/* ══ WISHLIST ══ */
+
+function addWishlist(btn) {
+  const icon = btn.querySelector('i');
+  if (icon.classList.contains('fa-regular')) {
+    icon.classList.remove('fa-regular');
+    icon.classList.add('fa-solid');
+    btn.style.background = '#f05a5a';
+    btn.style.color = '#fff';
+    showToast('Added to Wishlist ❤️', 'fa-heart');
+  } else {
+    icon.classList.remove('fa-solid');
+    icon.classList.add('fa-regular');
+    btn.style.background = '';
+    btn.style.color = '';
+    showToast('Removed from Wishlist', 'fa-heart');
+  }
+}
+
+function addWishlistQV() {
+  showToast('Added to Wishlist ❤️', 'fa-heart');
+}
+
+/* ══ VIEW TOGGLE ══ */
+
+function setView(mode) {
+  currentView = mode;
+  const grid = document.getElementById('productsGrid');
+  const gridBtn = document.getElementById('gridViewBtn');
+  const listBtn = document.getElementById('listViewBtn');
+  if (mode === 'list') {
+    grid.classList.add('list-view');
+    listBtn.classList.add('active');
+    gridBtn.classList.remove('active');
+  } else {
+    grid.classList.remove('list-view');
+    gridBtn.classList.add('active');
+    listBtn.classList.remove('active');
+  }
+}
+
+/* ══ UNIFIED FILTERS ══ */
+let selectedRating = 0;
+
+function filterCat(btn, cat) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  
+  // Also clear sidebar category checkboxes to stay clean
+  document.querySelectorAll('.cat-cb').forEach(cb => cb.checked = false);
+  
+  applyFilters();
+}
+
+function filterCatCheckbox(cb) {
+  // If user uses checkboxes, clear the category pills active state (except set 'all' to active if none checked)
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  
+  const checkedCount = document.querySelectorAll('.cat-cb:checked').length;
+  if (checkedCount === 0) {
+    document.querySelector('.cat-pill[data-cat="all"]').classList.add('active');
+    currentCat = 'all';
+  } else {
+    currentCat = 'all'; // Pills aren't active, checkboxes dictate it
+  }
+  
+  applyFilters();
+}
+
+function applyBrandFilter() {
+  applyFilters();
+}
+
+function filterRating(element, ratingVal) {
+  const items = document.querySelectorAll('.rating-filter-item');
+  const wasActive = element.classList.contains('active');
+  
+  items.forEach(item => item.classList.remove('active'));
+  
+  if (wasActive) {
+    selectedRating = 0;
+  } else {
+    element.classList.add('active');
+    selectedRating = ratingVal;
+    showToast(`Rating filter: ${ratingVal}★ & above`, 'fa-star');
+  }
+  
+  applyFilters();
+}
+
+function applySearch(term) {
+  applyFilters(term);
+}
+
+function applyFilters(searchTerm) {
+  const term = (searchTerm || document.getElementById('storeSearchInput').value || '').toLowerCase().trim();
+  const maxPrice = parseFloat(document.getElementById('priceSlider').value || 5000);
+  
+  // Selected category checkboxes
+  const checkedCats = Array.from(document.querySelectorAll('.cat-cb:checked')).map(cb => cb.value);
+  
+  // Selected brand checkboxes
+  const checkedBrands = Array.from(document.querySelectorAll('.brand-cb:checked')).map(cb => cb.value);
+  
+  const cols = document.querySelectorAll('.prod-col');
+  let shown = 0;
+  
+  cols.forEach(col => {
+    const cat = col.dataset.cat || '';
+    const price = parseFloat(col.dataset.price || 0);
+    const brand = col.dataset.brand || '';
+    const rating = parseFloat(col.dataset.rating || 0);
+    const name = (col.dataset.name || '').toLowerCase();
+    const fullText = col.textContent.toLowerCase();
+    
+    // Category match
+    let catMatch = true;
+    if (currentCat !== 'all') {
+      catMatch = (cat === currentCat);
+    } else if (checkedCats.length > 0) {
+      catMatch = checkedCats.includes(cat);
+    }
+    
+    // Price match
+    const priceMatch = (price <= maxPrice);
+    
+    // Brand match
+    const brandMatch = (checkedBrands.length === 0 || checkedBrands.includes(brand));
+    
+    // Rating match
+    const ratingMatch = (rating >= selectedRating);
+    
+    // Search match
+    const searchMatch = !term || name.includes(term) || fullText.includes(term);
+    
+    if (catMatch && priceMatch && brandMatch && ratingMatch && searchMatch) {
+      col.style.display = '';
+      shown++;
+    } else {
+      col.style.display = 'none';
+    }
+  });
+  
+  document.getElementById('noResults').style.display = shown === 0 ? 'block' : 'none';
+  updateResultsCount(shown);
+  applySort();
+}
+
+function resetFilters() {
+  currentCat = 'all';
+  selectedRating = 0;
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('.cat-pill[data-cat="all"]').classList.add('active');
+  
+  document.querySelectorAll('.cat-cb').forEach(cb => cb.checked = false);
+  document.querySelectorAll('.brand-cb').forEach(cb => cb.checked = false);
+  document.querySelectorAll('.rating-filter-item').forEach(item => item.classList.remove('active'));
+  
+  const slider = document.getElementById('priceSlider');
+  if (slider) {
+    slider.value = 5000;
+    updatePriceSliderStyle(slider);
+    document.getElementById('priceMax').textContent = '₹5,000';
+  }
+  
+  document.getElementById('storeSearchInput').value = '';
+  document.querySelectorAll('.prod-col').forEach(c => c.style.display = '');
+  document.getElementById('noResults').style.display = 'none';
+  
+  updateResultsCount();
+  applySort();
+}
+
+function updateResultsCount(count) {
+  const n = count !== undefined ? count : document.querySelectorAll('.prod-col:not([style*="display: none"])').length;
+  document.getElementById('resultsCount').textContent = `Showing ${n} product${n !== 1 ? 's' : ''}`;
+}
+
+function applySort() {
+  const select = document.getElementById('sortSelect');
+  if (!select) return;
+  const sortBy = select.value;
+  const grid = document.getElementById('productsGrid');
+  const items = Array.from(grid.querySelectorAll('.prod-col'));
+  
+  items.sort((a, b) => {
+    if (sortBy === 'price-asc') {
+      return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
+    } else if (sortBy === 'price-desc') {
+      return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
+    } else if (sortBy === 'rating') {
+      return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+    } else if (sortBy === 'newest') {
+      const aNew = a.dataset.new === 'true' ? 1 : 0;
+      const bNew = b.dataset.new === 'true' ? 1 : 0;
+      if (aNew !== bNew) return bNew - aNew;
+      return parseInt(b.dataset.index) - parseInt(a.dataset.index);
+    } else {
+      return parseInt(a.dataset.index) - parseInt(b.dataset.index);
+    }
+  });
+  
+  items.forEach(item => grid.appendChild(item));
+}
+
+/* ══ PRICE SLIDER ══ */
+
+function updatePrice(input) {
+  const val = parseInt(input.value);
+  document.getElementById('priceMax').textContent = '₹' + val.toLocaleString('en-IN');
+  updatePriceSliderStyle(input);
+  showToast(`Max price: ₹${val.toLocaleString('en-IN')}`, 'fa-indian-rupee-sign');
+}
+
+function updatePriceSliderStyle(input) {
+  const pct = ((input.value - input.min) / (input.max - input.min) * 100) + '%';
+  input.style.setProperty('--val', pct);
+}
+
+/* ══ QUICK VIEW MODAL ══ */
+
+function openQuickView(name, brand, emoji, desc, price, oldPrice, rating, reviewCount, badgeClass, badgeText) {
+  qvCurrentProduct = { name, price };
+  qvQty = 1;
+  document.getElementById('qvQtyNum').textContent = 1;
+
+  const thumbEl = document.getElementById('qvThumb');
+  if (emoji && emoji.includes('assets/')) {
+    thumbEl.innerHTML = `<img src="${emoji}" alt="${name}" style="max-width: 140px; max-height: 140px; object-fit: contain;">`;
+  } else {
+    thumbEl.innerHTML = emoji || '';
+  }
+  document.getElementById('qvBrand').textContent = brand;
+  document.getElementById('qvName').textContent = name;
+  document.getElementById('qvDesc').innerHTML = desc;
+  document.getElementById('qvPrice').textContent = '₹' + price.toLocaleString('en-IN');
+
+  const oldEl = document.getElementById('qvOld');
+  const saveEl = document.getElementById('qvSave');
+  if (oldPrice) {
+    oldEl.textContent = '₹' + oldPrice.toLocaleString('en-IN');
+    const pct = Math.round((1 - price/oldPrice)*100);
+    saveEl.textContent = 'Save ' + pct + '%';
+    saveEl.style.display = '';
+  } else {
+    oldEl.textContent = '';
+    saveEl.style.display = 'none';
+  }
+
+  /* Rating stars */
+  const ratingNum = parseFloat(rating);
+  let stars = '';
+  for (let i = 1; i <= 5; i++) {
+    if (i <= Math.floor(ratingNum)) stars += '<i class="fa-solid fa-star"></i>';
+    else if (i - ratingNum < 1) stars += '<i class="fa-solid fa-star-half-stroke"></i>';
+    else stars += '<i class="fa-regular fa-star"></i>';
+  }
+  document.getElementById('qvStars').innerHTML = stars + ` <span style="color:#687d94;">(${reviewCount} reviews)</span>`;
+
+  document.getElementById('qvBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQVModal() {
+  document.getElementById('qvBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeQV(e) {
+  if (!e || e.target === document.getElementById('qvBackdrop') || e.currentTarget.classList.contains('qv-close')) {
+    closeQVModal();
+  }
+}
+
+function changeQty(delta) {
+  qvQty = Math.max(1, Math.min(99, qvQty + delta));
+  document.getElementById('qvQtyNum').textContent = qvQty;
+}
+
+function addToCartFromQV() {
+  if (!qvCurrentProduct) return;
+  cartItems += qvQty;
+  document.getElementById('cartCount').textContent = cartItems;
+  showToast(`${qvQty}× ${qvCurrentProduct.name} added! 🛒`, 'fa-cart-plus');
+  closeQVModal();
+}
+
+/* ── marquee CSS animation stays running ── */
+const marqueeTrack = document.querySelector('.marquee-track');
+if (marqueeTrack) {
+  marqueeTrack.style.animation = 'marquee 30s linear infinite';
+}
+
+/* ── animate on scroll supplementary ── */
+</script>
+
+<style>
+  /* Reuse marquee animation from index */
+  .marquee-track { display:flex; animation:marquee 30s linear infinite; width:max-content; }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+</style>
+</body>
+</html>

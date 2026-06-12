@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5"/>
+  <meta name="description" content="Stackly Pharmacy — Premium online pharmacy. Medicines, wellness products & healthcare delivered to your door. Salem, Tamil Nadu."/>
+  <title>Stackly — Your Trusted Online Pharmacy</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <style>
+    /* ── Page-specific overrides & enhancements ── */
+
+    /* ══ HERO VIDEO ══ */
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(13,27,42,0.2) 0%, rgba(13,27,42,0.35) 55%, rgba(13,27,42,0.5) 100%);
+      z-index: 1;
+    }
+    .hero__title {
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85), 0 2px 4px rgba(0, 0, 0, 0.9);
+      font-weight: 900;
+    }
+    .hero__desc {
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.8);
+      font-weight: 500;
+    }
+    .hero .container { position: relative; z-index: 2; }
+
+    .cursor {
+      display: inline-block;
+      width: 4px;
+      background-color: var(--clr-accent);
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+
+    /* ══ FEATURES STRIP ══ */
+    .marquee-track {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee {
+      0%  { transform: translateX(0); }
+      100%{ transform: translateX(-50%); }
+    }
+
+    /* ══ CATEGORIES ══ */
+    .cat-card {
+      display: block;
+      background: #fff;
+      border-radius: 1.25rem;
+      border: 1.5px solid rgba(10,124,94,0.08);
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.35s ease,
+                  border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cat-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(10,124,94,0.22);
+      border-color: #0a7c5e;
+    }
+    .cat-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: linear-gradient(135deg, #e8f9f4, #d0f0e8);
+      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .cat-card:hover .cat-bg {
+      transform: scale(1.15);
+    }
+    .cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,27,42,0.9) 0%, rgba(13,27,42,0.3) 60%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 1rem 0.5rem;
+    }
+    .cat-label { 
+      font-size: clamp(0.75rem, 2vw, 0.9rem); 
+      font-weight: 700; 
+      color: #fff; 
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* ══ PRODUCT CARDS ══ */
+    .prod-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.4s ease;
+      position: relative;
+    }
+    .prod-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(10,124,94,0.22);
+    }
+    .prod-thumb {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e8f9f4, #f0faf7);
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+    .prod-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .prod-card:hover .prod-thumb-img { transform: scale(1.1); }
+    .prod-emoji {
+      font-size: 4rem;
+      transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      display: block;
+    }
+    .prod-card:hover .prod-emoji { transform: scale(1.18) rotate(8deg); }
+
+    /* Overlay actions */
+    .prod-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,124,94,0.9) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 1rem;
+      gap: 0.5rem;
+    }
+    .prod-card:hover .prod-overlay { opacity: 1; }
+    .prod-action-btn {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.95);
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      color: #0a7c5e;
+      cursor: pointer;
+      transform: translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1) var(--d,0s),
+                  background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .prod-card:hover .prod-action-btn { transform: translateY(0); }
+    .prod-action-btn:nth-child(1) { --d: 0.05s; }
+    .prod-action-btn:nth-child(2) { --d: 0.10s; }
+    .prod-action-btn:nth-child(3) { --d: 0.15s; }
+    .prod-action-btn:hover { background: #0a7c5e; color: #fff; }
+
+    .prod-badge {
+      position: absolute;
+      top: 0.7rem; left: 0.7rem;
+      background: #0a7c5e;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.22rem 0.55rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 2;
+    }
+    .prod-badge.sale { background: #f05a5a; }
+    .prod-badge.new  { background: #00d4a0; color: #0d1b2a; }
+
+    .prod-body { padding: 1rem 1.1rem 1.2rem; }
+    .prod-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 0.25rem;
+      line-height: 1.4;
+    }
+    .prod-brand { font-size: 0.72rem; color: #687d94; margin-bottom: 0.35rem; }
+    .prod-stars { color: #f7b731; font-size: 0.72rem; }
+    .prod-stars span { color: #687d94; margin-left: 0.25rem; font-size: 0.7rem; }
+    .prod-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 0.55rem; }
+    .prod-price {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0a7c5e;
+    }
+    .prod-price del { font-size: 0.78rem; color: #687d94; margin-left: 0.3rem; font-family: var(--font-body); font-weight: 400; }
+    .prod-cart-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #e8f9f4;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      color: #0a7c5e;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .prod-cart-btn:hover {
+      background: #0a7c5e;
+      color: #fff;
+      transform: scale(1.15) rotate(8deg);
+    }
+
+    /* ══ FLIP SERVICE CARDS ══ */
+    .flip-container {
+      perspective: 900px;
+      height: 260px;
+    }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.34,1.4,0.64,1);
+    }
+    .flip-container:hover .flip-inner { transform: rotateY(180deg); }
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 1.25rem;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .flip-front {
+      background: #fff;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      box-shadow: 0 4px 24px rgba(10,124,94,0.09);
+    }
+    .flip-back {
+      background: linear-gradient(135deg, #0a7c5e, #00d4a0);
+      transform: rotateY(180deg);
+      color: #fff;
+    }
+    .flip-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: #e8f9f4;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      color: #0a7c5e;
+      margin-bottom: 1rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .flip-front-title { font-size: 1rem; font-weight: 700; color: #0d1b2a; margin-bottom: 0.4rem; }
+    .flip-front-desc  { font-size: 0.82rem; color: #687d94; line-height: 1.6; }
+    .flip-back-title  { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 0.65rem; font-family: var(--font-display); }
+    .flip-back-desc   { font-size: 0.83rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1rem; }
+
+    /* ══ WHY CHOOSE — GLASS CARDS ══ */
+    .why-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      border-radius: 1.25rem;
+      padding: 1.75rem 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+                  background 0.3s,
+                  box-shadow 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -40%;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(0,212,160,0.15) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .why-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      background: rgba(255,255,255,0.09);
+      box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+    }
+    .why-card:hover::before { opacity: 1; }
+    .why-icon {
+      width: 56px; height: 56px;
+      border-radius: 0.9rem;
+      background: rgba(0,212,160,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      color: #00d4a0;
+      margin-bottom: 1.1rem;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .why-card:hover .why-icon { transform: rotateY(360deg) scale(1.1); }
+    .why-title { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .why-desc  { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+    /* ══ CTA BANNER OVERRIDE ══ */
+    .cta-section {
+      background: linear-gradient(135deg, #0a7c5e 0%, #065c45 60%, #0d1b2a 100%);
+      border-radius: 2rem;
+      overflow: hidden;
+      position: relative;
+      padding: 4rem 3rem;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300d4a0' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-pill-float {
+      position: absolute;
+      right: -30px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 10rem;
+      opacity: 0.06;
+      line-height: 1;
+    }
+
+    /* ══ TESTIMONIAL CARDS ══ */
+    .testi-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      border: 1.5px solid rgba(10,124,94,0.09);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.4s;
+      height: 100%;
+    }
+    .testi-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 24px 60px rgba(10,124,94,0.18);
+    }
+    .testi-stars { color: #f7b731; font-size: 0.82rem; margin-bottom: 0.85rem; }
+    .testi-text {
+      font-size: 0.9rem;
+      color: #2e4057;
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+    .testi-text::before { content: '\201C'; font-size: 2.5rem; color: #0a7c5e; line-height: 0; vertical-align: -0.7rem; margin-right: 0.2rem; font-family: Georgia, serif; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0a7c5e, #00d4a0);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 0.88rem; font-weight: 700; color: #0d1b2a; }
+    .testi-role { font-size: 0.75rem; color: #687d94; }
+
+    /* ══ BLOG CARDS ══ */
+    .bl-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1.5px solid rgba(10,124,94,0.08);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.4s;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .bl-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 24px 60px rgba(10,124,94,0.18);
+    }
+    .bl-thumb {
+      overflow: hidden;
+      background: linear-gradient(135deg, #e8f9f4, #d0f0e8);
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      position: relative;
+    }
+    .bl-thumb-emoji {
+      transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      display: block;
+    }
+    .bl-card:hover .bl-thumb-emoji { transform: scale(1.2) rotate(-8deg); }
+    .bl-body { padding: 1.25rem; }
+    .bl-cat {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0a7c5e;
+      background: #e8f9f4;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+    .bl-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #0d1b2a;
+      line-height: 1.45;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+    .bl-card:hover .bl-title { color: #0a7c5e; }
+    .bl-meta { font-size: 0.76rem; color: #687d94; display: flex; align-items: center; gap: 0.85rem; }
+    .bl-meta i { color: #0a7c5e; }
+
+    /* ══ STAT COUNTER ══ */
+    .stat-num-big {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #0a7c5e;
+      line-height: 1;
+    }
+
+    /* ══ SCROLL-TRIGGERED BG PARALLAX (light) ══ */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ══ SECTION SEPARATOR WAVE ══ */
+    .wave-sep {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+.wave-sep svg { display: block; width: calc(100% + 2px); }
+
+    /* ══ RESPONSIVE TWEAKS ══ */
+    @media (max-width:991.98px) {
+      .hero-3d-scene { display: none; }
+      .hfb-1,.hfb-2,.hfb-3 { display: none; }
+    }
+    @media (max-width:767.98px) {
+      .hero { min-height: 92vh; }
+      .cta-section { padding: 2.5rem 1.5rem; }
+      .cta-pill-float { display: none; }
+      .flip-container { height: 230px; }
+    }
+  </style>
+  <link rel="shortcut icon" href="assets/top-logo.webp" type="image/webp"/>
+</head>
+
+<body>
+<!-- ════════════════════════════════════════════════
+     SEARCH OVERLAY
+════════════════════════════════════════════════ -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="search-overlay__inner">
+    <div class="search-overlay__input-wrap">
+      <i class="fa-solid fa-magnifying-glass" style="padding-left:1.4rem;color:#687d94;"></i>
+      <input class="search-overlay__input" id="searchInput" type="text" placeholder="Search medicines, vitamins, healthcare…" autocomplete="off"/>
+      <button class="search-overlay__close" id="searchClose" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <p class="search-overlay__hint">Press <kbd style="background:rgba(255,255,255,0.15);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.75rem;">ESC</kbd> to close</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MOBILE FULL-SCREEN OVERLAY MENU
+════════════════════════════════════════════════ -->
+<div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <nav class="mobile-overlay__nav" aria-label="Mobile Navigation">
+    <a href="index.html"    class="mobile-overlay__link active" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html"    class="mobile-overlay__link" onclick="closeMobileMenu()">About</a>
+    <a href="store.html"    class="mobile-overlay__link" onclick="closeMobileMenu()">Store</a>
+    <a href="blog.html"     class="mobile-overlay__link" onclick="closeMobileMenu()">Blog</a>
+    <a href="contact.html"  class="mobile-overlay__link" onclick="closeMobileMenu()">Contact</a>
+  </nav>
+  <div class="mobile-overlay__bottom">
+    <div class="mobile-overlay__divider"></div>
+    <div class="mobile-overlay__btns">
+      <a href="signin.html"      class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="signup.html"      class="btn btn-primary btn-sm">Get Started</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════ -->
+<header class="navbar navbar--hero" id="navbar">
+  <div class="container navbar__inner">
+
+    <!-- Logo -->
+    <a href="index.html" class="navbar__logo" aria-label="Stackly Home">
+      <img src="assets/logo.webp" alt="Stackly" loading="eager"/>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="navbar__nav" aria-label="Main Navigation">
+      <a href="index.html"   class="navbar__link active">Home</a>
+      <a href="about.html"   class="navbar__link">About</a>
+      <a href="store.html"   class="navbar__link">Store</a>
+      <a href="blog.html"    class="navbar__link">Blog</a>
+      <a href="contact.html" class="navbar__link">Contact</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="navbar__actions">
+      <button class="navbar__search-btn" id="searchToggle" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button class="navbar__cart-btn" aria-label="Cart" onclick="location.href='store.html'">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count">3</span>
+      </button>
+      <a href="signin.html"      class="btn btn-outline btn-sm d-none d-lg-inline-flex">Sign In</a>
+      <a href="signup.html"      class="btn btn-primary btn-sm d-none d-lg-inline-flex">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+
+  <!-- Background video -->
+  <video class="hero-video-bg" autoplay muted loop playsinline preload="none">
+    <source src="assets/hero-bg.mp4" type="video/mp4"/>
+  </video>
+
+  <!-- Gradient overlay -->
+  <div class="hero-overlay"></div>
+
+  <div class="container">
+    <div class="row justify-content-center text-center py-5">
+
+      <!-- Centered Copy -->
+      <div class="col-lg-8">
+        <h1 class="hero__title" style="font-size: clamp(1.4rem, 3.5vw, 3.2rem); white-space: nowrap;">
+          BRINGING WELLNESS TO <span class="accent typed-text"></span><span class="cursor">&nbsp;</span>
+        </h1>
+        <div style="color:rgba(255,255,255,0.55);font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 700; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); margin-bottom: 2rem;">
+          Delivered Instantly
+        </div>
+
+        <p class="hero__desc" style="max-width: 600px; margin-inline: auto; margin-bottom: 2rem;">
+          Genuine medicines, wellness supplements, and healthcare essentials — prescribed or over-the-counter — delivered to your doorstep in Salem & beyond.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero__actions justify-content-center">
+          <a href="store.html"      class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-store"></i> Shop Now
+          </a>
+          <a href="signup.html"      class="btn btn-ghost btn-lg">
+            <i class="fa-solid fa-user-plus"></i> Get Started
+          </a>
+        </div>
+      </div><!-- /col -->
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <a href="#categories" class="scroll-indicator" aria-label="Scroll down">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>Scroll</span>
+  </a>
+
+</section>
+
+<!-- ════════════════════════════════════════════════
+     MARQUEE FEATURES STRIP
+════════════════════════════════════════════════ -->
+<div style="background:linear-gradient(135deg,#0a7c5e,#065c45);padding:0.9rem 0;overflow:hidden;" aria-label="Features">
+  <div class="marquee-track" aria-hidden="true">
+    <!-- duplicated for seamless loop -->
+    <div style="display:flex;gap:0;width:max-content;">
+      <span class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Same-Day Delivery</span>
+      <span class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</span>
+      <span class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</span>
+      <span class="features-strip__item"><i class="fa-solid fa-clock-rotate-left"></i> 24/7 Support</span>
+      <span class="features-strip__item"><i class="fa-solid fa-prescription-bottle-medical"></i> Upload Prescription</span>
+      <span class="features-strip__item"><i class="fa-solid fa-percent"></i> Up to 40% Off</span>
+      <span class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurveda & Wellness</span>
+      <span class="features-strip__item"><i class="fa-solid fa-truck-fast"></i> Same-Day Delivery</span>
+      <span class="features-strip__item"><i class="fa-solid fa-shield-halved"></i> 100% Genuine Medicines</span>
+      <span class="features-strip__item"><i class="fa-solid fa-user-doctor"></i> Licensed Pharmacists</span>
+      <span class="features-strip__item"><i class="fa-solid fa-clock-rotate-left"></i> 24/7 Support</span>
+      <span class="features-strip__item"><i class="fa-solid fa-prescription-bottle-medical"></i> Upload Prescription</span>
+      <span class="features-strip__item"><i class="fa-solid fa-percent"></i> Up to 40% Off</span>
+      <span class="features-strip__item"><i class="fa-solid fa-leaf"></i> Ayurveda & Wellness</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SHOP BY CATEGORY
+════════════════════════════════════════════════ -->
+<section class="section bg-light" id="categories">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow">Browse Categories</span>
+      <h2 class="section-title mt-3">Shop by <span class="text-gradient">Health Need</span></h2>
+      <p class="section-subtitle mx-auto mt-2">Find exactly what your body needs — from prescription refills to daily wellness.</p>
+    </div>
+
+    <div class="row g-3 justify-content-center">
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="0">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_medicines.png" class="cat-bg" alt="Medicines">
+          <div class="cat-overlay"><span class="cat-label">Medicines</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="60">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_ayurveda.png" class="cat-bg" alt="Ayurveda">
+          <div class="cat-overlay"><span class="cat-label">Ayurveda</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="120">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_skincare.png" class="cat-bg" alt="Skincare">
+          <div class="cat-overlay"><span class="cat-label">Skincare</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="180">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_nutrition.png" class="cat-bg" alt="Nutrition">
+          <div class="cat-overlay"><span class="cat-label">Nutrition</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="240">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_diagnostics.png" class="cat-bg" alt="Diagnostics">
+          <div class="cat-overlay"><span class="cat-label">Diagnostics</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="300">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_babycare.png" class="cat-bg" alt="Baby Care">
+          <div class="cat-overlay"><span class="cat-label">Baby Care</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="60">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_heart.png" class="cat-bg" alt="Heart Health">
+          <div class="cat-overlay"><span class="cat-label">Heart Health</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="120">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_brain.png" class="cat-bg" alt="Mental Wellness">
+          <div class="cat-overlay"><span class="cat-label">Mental Wellness</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="180">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_dental.png" class="cat-bg" alt="Dental">
+          <div class="cat-overlay"><span class="cat-label">Dental</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="240">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_eyecare.png" class="cat-bg" alt="Eye Care">
+          <div class="cat-overlay"><span class="cat-label">Eye Care</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="300">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_firstaid.png" class="cat-bg" alt="First Aid">
+          <div class="cat-overlay"><span class="cat-label">First Aid</span></div>
+        </a>
+      </div>
+      <div class="col-4 col-sm-3 col-md-2" data-aos="zoom-in" data-aos-delay="360">
+        <a href="store.html" class="cat-card">
+          <img src="assets/cat_vaccine.png" class="cat-bg" alt="Vaccines">
+          <div class="cat-overlay"><span class="cat-label">Vaccines</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FEATURED PRODUCTS
+════════════════════════════════════════════════ -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="d-flex align-items-end justify-content-between flex-wrap gap-3 mb-5" data-aos="fade-up">
+      <div>
+        <span class="eyebrow">Top Picks</span>
+        <h2 class="section-title mt-3">Featured <span class="text-gradient">Products</span></h2>
+      </div>
+      <a href="store.html" class="btn btn-outline">View All <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="d-flex gap-2 flex-wrap mb-4" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="medicines">Medicines</button>
+      <button class="filter-btn" data-filter="vitamins">Vitamins</button>
+      <button class="filter-btn" data-filter="skincare">Skincare</button>
+      <button class="filter-btn" data-filter="ayurveda">Ayurveda</button>
+    </div>
+
+    <div class="row g-4">
+      <!-- Product 1 -->
+      <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="vitamins" data-aos="fade-up" data-aos-delay="0">
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <img src="assets/img_vitamin.png" class="prod-img" alt="Vitamin D3 + K2 Capsules">
+            <div class="prod-overlay">
+              <button class="prod-action-btn" title="Quick View" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+              <button class="prod-action-btn" title="Wishlist" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="prod-action-btn" title="Compare" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+            </div>
+            <span class="prod-badge sale">-20%</span>
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Sun Pharma</div>
+            <div class="prod-name">Vitamin D3 + K2 Capsules</div>
+            <div class="prod-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              <span>(142)</span>
+            </div>
+            <div class="prod-price-row">
+              <span class="prod-price">₹349 <del>₹430</del></span>
+              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="ayurveda" data-aos="fade-up" data-aos-delay="80">
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <img src="assets/img_ashwagandha.png" class="prod-img" alt="Ashwagandha Stress Relief">
+            <div class="prod-overlay">
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+            </div>
+            <span class="prod-badge new">New</span>
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Himalaya</div>
+            <div class="prod-name">Ashwagandha Stress Relief</div>
+            <div class="prod-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span>(98)</span>
+            </div>
+            <div class="prod-price-row">
+              <span class="prod-price">₹279</span>
+              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="skincare" data-aos="fade-up" data-aos-delay="160">
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <img src="assets/img_skincare.png" class="prod-img" alt="Moisturising Cream SPF 50">
+            <div class="prod-overlay">
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+            </div>
+            <span class="prod-badge sale">-15%</span>
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">CeraVe</div>
+            <div class="prod-name">Moisturising Cream SPF 50</div>
+            <div class="prod-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span>(215)</span>
+            </div>
+            <div class="prod-price-row">
+              <span class="prod-price">₹520 <del>₹610</del></span>
+              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="medicines" data-aos="fade-up" data-aos-delay="240">
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <img src="assets/img_paracetamol.png" class="prod-img" alt="Paracetamol 500mg Tablets">
+            <div class="prod-overlay">
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+            </div>
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">GSK</div>
+            <div class="prod-name">Paracetamol 500mg Tablets</div>
+            <div class="prod-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              <span>(308)</span>
+            </div>
+            <div class="prod-price-row">
+              <span class="prod-price">₹45</span>
+              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="vitamins" data-aos="fade-up" data-aos-delay="0">
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <img src="assets/img_omega3.png" class="prod-img" alt="Omega-3 Fish Oil 1000mg">
+            <div class="prod-overlay">
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+            </div>
+            <span class="prod-badge">RX</span>
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Cipla</div>
+            <div class="prod-name">Omega-3 Fish Oil 1000mg</div>
+            <div class="prod-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span>(187)</span>
+            </div>
+            <div class="prod-price-row">
+              <span class="prod-price">₹449</span>
+              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="skincare" data-aos="fade-up" data-aos-delay="80">
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <img src="assets/img_serum.png" class="prod-img" alt="Hydrating Face Serum">
+            <div class="prod-overlay">
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+            </div>
+            <span class="prod-badge new">New</span>
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Olay</div>
+            <div class="prod-name">Hydrating Face Serum</div>
+            <div class="prod-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span>(421)</span>
+            </div>
+            <div class="prod-price-row">
+              <span class="prod-price">₹650</span>
+              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="ayurveda" data-aos="fade-up" data-aos-delay="160">
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <img src="assets/img_brahmi.png" class="prod-img" alt="Brahmi Brain Wellness">
+            <div class="prod-overlay">
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+            </div>
+            <span class="prod-badge sale">-25%</span>
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Patanjali</div>
+            <div class="prod-name">Brahmi Brain Wellness</div>
+            <div class="prod-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              <span>(93)</span>
+            </div>
+            <div class="prod-price-row">
+              <span class="prod-price">₹199 <del>₹250</del></span>
+              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="col-6 col-md-4 col-lg-3 top-pick-item" data-category="medicines" data-aos="fade-up" data-aos-delay="240">
+        <div class="prod-card">
+          <div class="prod-thumb">
+            <img src="assets/img_paracetamol.png" class="prod-img" alt="Allergy Relief Cetirizine">
+            <div class="prod-overlay">
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Quick View"><i class="fa-regular fa-eye"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="prod-action-btn" onclick="location.href='store.html'" aria-label="Compare"><i class="fa-solid fa-right-left"></i></button>
+            </div>
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Cipla</div>
+            <div class="prod-name">Allergy Relief Cetirizine</div>
+            <div class="prod-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span>(76)</span>
+            </div>
+            <div class="prod-price-row">
+              <span class="prod-price">₹85</span>
+              <button class="prod-cart-btn" onclick="location.href='store.html'" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5" data-aos="fade-up">
+      <a href="store.html" class="btn btn-primary btn-lg">
+        Explore Full Store <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     WHY CHOOSE STACKLY — dark bg + glass cards
+════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--clr-dark);position:relative;overflow:hidden;">
+  <!-- Background mesh -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 15% 50%,rgba(10,124,94,0.2) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 85% 30%,rgba(0,212,160,0.1) 0%,transparent 55%);pointer-events:none;"></div>
+
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow" style="background:rgba(0,212,160,0.15);color:#00d4a0;border-color:#00d4a0;">Why Stackly</span>
+      <h2 class="section-title mt-3 text-white">Healthcare You Can <span style="color:#00d4a0;">Trust</span></h2>
+      <p class="section-subtitle mx-auto mt-2" style="color:rgba(255,255,255,0.55);">We go beyond just selling medicines — we care for your complete wellbeing.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="why-title">100% Authentic</div>
+          <div class="why-desc">Every medicine is sourced directly from licensed distributors. Zero counterfeits, guaranteed.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-truck-fast"></i></div>
+          <div class="why-title">2-Hour Delivery</div>
+          <div class="why-desc">Emergency or routine — we deliver across Salem within 2 hours. Same-day nationwide.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-user-doctor"></i></div>
+          <div class="why-title">Expert Guidance</div>
+          <div class="why-desc">Chat with our licensed pharmacists anytime. Get the right medicine for your condition.</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-percent"></i></div>
+          <div class="why-title">Best Prices</div>
+          <div class="why-desc">Up to 40% off on leading brands. Loyalty rewards and exclusive member discounts every day.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top wave -->
+  <div class="wave-sep" aria-hidden="true" style="position:absolute;top:0;left:0;width:100%;">
+    <svg viewBox="0 0 1440 55" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="height:50px;">
+      <path d="M0,20 C480,55 960,-10 1440,20 L1440,0 L0,0 Z" fill="#f0f6f4"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SERVICES — FLIP CARDS
+════════════════════════════════════════════════ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow">What We Offer</span>
+      <h2 class="section-title mt-3">Our <span class="text-gradient">Services</span></h2>
+      <p class="section-subtitle mx-auto mt-2">Hover any card to see the full story behind each service.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="0">
+        <div class="flip-container">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon"><i class="fa-solid fa-prescription"></i></div>
+              <div class="flip-front-title">Prescription Medicines</div>
+              <div class="flip-front-desc">Upload your prescription securely and get all medicines delivered fast.</div>
+            </div>
+            <div class="flip-back">
+              <div class="flip-back-title">Upload & Done</div>
+              <div class="flip-back-desc">Simply snap a photo of your prescription and we'll verify it within minutes with our expert pharmacists. Free delivery on all prescription orders.</div>
+              <a href="store.html" class="btn btn-white btn-sm">Order Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="100">
+        <div class="flip-container">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon"><i class="fa-solid fa-house-medical"></i></div>
+              <div class="flip-front-title">Home Health Tests</div>
+              <div class="flip-front-desc">Lab-quality diagnostic kits delivered home. Test at your convenience.</div>
+            </div>
+            <div class="flip-back">
+              <div class="flip-back-title">Test at Home</div>
+              <div class="flip-back-desc">Over 200 health test kits — blood sugar, thyroid, cholesterol, vitamins, and more. Certified results within 24 hours.</div>
+              <a href="store.html" class="btn btn-white btn-sm">Browse Tests</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="200">
+        <div class="flip-container">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon"><i class="fa-solid fa-user-doctor"></i></div>
+              <div class="flip-front-title">Online Consultation</div>
+              <div class="flip-front-desc">Talk to certified doctors from the comfort of your home, anytime.</div>
+            </div>
+            <div class="flip-back">
+              <div class="flip-back-title">Doctor in Minutes</div>
+              <div class="flip-back-desc">Connect via video or chat with 50+ specialist doctors. Get prescriptions, health advice, and follow-up care — all digital.</div>
+              <a href="contact.html" class="btn btn-white btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3" data-aos="flip-left" data-aos-delay="300">
+        <div class="flip-container">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon"><i class="fa-solid fa-rotate"></i></div>
+              <div class="flip-front-title">Auto Refills</div>
+              <div class="flip-front-desc">Never run out of your regular medicines with our smart subscription.</div>
+            </div>
+            <div class="flip-back">
+              <div class="flip-back-title">Set & Forget</div>
+              <div class="flip-back-desc">Subscribe to monthly, bi-monthly, or weekly refill cycles. We remind you, pack your order, and deliver on schedule every time.</div>
+              <a href="signup.html"      class="btn btn-white btn-sm">Subscribe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     STATS COUNTER STRIP
+════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--grad-primary);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,<svg width=60 height=60 viewBox=0 0 60 60 xmlns=http://www.w3.org/2000/svg><circle cx=30 cy=30 r=2 fill=rgba(255,255,255,0.06)/></svg>');background-size:30px 30px;"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
+        <div class="stat-num-big counter" data-target="50000" style="color:#fff;">0</div>
+        <div style="color:rgba(255,255,255,0.8);font-size:0.85rem;font-weight:600;margin-top:0.3rem;">Happy Customers</div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+        <div class="stat-num-big counter" data-target="8500" style="color:#fff;">0</div>
+        <div style="color:rgba(255,255,255,0.8);font-size:0.85rem;font-weight:600;margin-top:0.3rem;">Products Available</div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stat-num-big counter" data-target="150" style="color:#fff;">0</div>
+        <div style="color:rgba(255,255,255,0.8);font-size:0.85rem;font-weight:600;margin-top:0.3rem;">Expert Pharmacists</div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+        <div class="stat-num-big counter" data-target="98" style="color:#fff;">0</div>
+        <div style="color:rgba(255,255,255,0.8);font-size:0.85rem;font-weight:600;margin-top:0.3rem;">% Satisfaction Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA BANNER
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-section" data-aos="zoom-in">
+      <div style="position:relative;z-index:2;" class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <span class="eyebrow" style="background:rgba(0,212,160,0.18);color:#00d4a0;border-color:#00d4a0;margin-bottom:1rem;display:inline-flex;">
+            Limited Offer
+          </span>
+          <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:0.75rem;">
+            Get <span style="color:#00d4a0;">40% Off</span> Your<br/>First Order
+          </h2>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.95rem;max-width:420px;">Sign up today and use code <strong style="color:#00d4a0;">STACKLY40</strong> at checkout. Valid on all wellness and OTC products.</p>
+        </div>
+        <div class="col-lg-5 d-flex gap-3 flex-wrap justify-content-lg-end">
+          <a href="signup.html"      class="btn btn-white btn-lg">
+            <i class="fa-solid fa-user-plus"></i> Sign Up Free
+          </a>
+          <a href="store.html" class="btn btn-ghost btn-lg">
+            Shop Now <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="cta-pill-float" aria-hidden="true" style="right: 5%; top: 40%; font-size: 0; pointer-events: none;"><img src="assets/capsule.png" alt="" style="width: 140px; height: 140px; opacity: 0.12; transform: rotate(25deg);"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════════ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="eyebrow">Customer Love</span>
+      <h2 class="section-title mt-3">What Our <span class="text-gradient">Customers Say</span></h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="testi-text">Ordered medicines at midnight and they arrived by 7am. Absolutely amazing service — fast, genuine, and great prices.</div>
+          <div class="testi-author">
+            <div class="testi-avatar">RK</div>
+            <div>
+              <div class="testi-name">Ramesh Kumar</div>
+              <div class="testi-role">Salem, Tamil Nadu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="testi-text">As a diabetic patient I need monthly refills without fail. Stackly's auto-refill subscription is a blessing — never missed a dose.</div>
+          <div class="testi-author">
+            <div class="testi-avatar">LP</div>
+            <div>
+              <div class="testi-name">Lakshmi Priya</div>
+              <div class="testi-role">Erode, Tamil Nadu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <div class="testi-text">The pharmacist consultation feature helped me understand my medication schedule. Highly recommend to anyone managing chronic conditions.</div>
+          <div class="testi-author">
+            <div class="testi-avatar">SV</div>
+            <div>
+              <div class="testi-name">Surya Venkat</div>
+              <div class="testi-role">Coimbatore, Tamil Nadu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     BLOG PREVIEW
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="d-flex align-items-end justify-content-between flex-wrap gap-3 mb-5" data-aos="fade-up">
+      <div>
+        <span class="eyebrow">Health Blog</span>
+        <h2 class="section-title mt-3">Health <span class="text-gradient">Insights</span></h2>
+      </div>
+      <a href="blog.html" class="btn btn-outline">All Articles <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <a href="blog.html" class="bl-card">
+          <div class="bl-thumb"><img src="assets/blog_medicines_summer.png" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Medicines"></div>
+          <div class="bl-body">
+            <span class="bl-cat">Medicines</span>
+            <div class="bl-title">How to Store Your Medicines Correctly This Summer</div>
+            <div class="bl-meta">
+              <span><i class="fa-regular fa-calendar"></i> June 5, 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="blog.html" class="bl-card">
+          <div class="bl-thumb"><img src="assets/blog_ayurveda_immunity.png" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Ayurveda"></div>
+          <div class="bl-body">
+            <span class="bl-cat">Ayurveda</span>
+            <div class="bl-title">5 Ayurvedic Herbs That Actually Work for Immunity</div>
+            <div class="bl-meta">
+              <span><i class="fa-regular fa-calendar"></i> May 28, 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="blog.html" class="bl-card">
+          <div class="bl-thumb"><img src="assets/blog_blood_pressure.png" class="bl-card-img" style="width: 100%; height: 100%; object-fit: cover;" alt="Blood Pressure"></div>
+          <div class="bl-body">
+            <span class="bl-cat">Wellness</span>
+            <div class="bl-title">Understanding Blood Pressure: What Your Numbers Mean</div>
+            <div class="bl-meta">
+              <span><i class="fa-regular fa-calendar"></i> May 18, 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     NEWSLETTER
+════════════════════════════════════════════════ -->
+<section class="section bg-accent" style="background:var(--clr-accent2);">
+  <div class="container text-center" data-aos="zoom-in">
+    <span class="eyebrow">Stay Updated</span>
+    <h2 class="section-title mt-3 mb-2">Health Tips in Your <span class="text-gradient">Inbox</span></h2>
+    <p class="section-subtitle mx-auto mb-4">Weekly health articles, exclusive discounts & product launches. No spam, unsubscribe anytime.</p>
+    <form class="d-flex gap-2 justify-content-center flex-wrap" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="Enter your email address" required
+             style="padding:0.8rem 1.5rem;border-radius:9999px;border:1.5px solid rgba(10,124,94,0.2);outline:none;font-size:0.9rem;min-width:280px;background:#fff;color:#0d1b2a;font-family:inherit;"
+             aria-label="Email for newsletter"/>
+      <button type="submit" class="btn btn-primary">
+        Subscribe <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
+    <p style="font-size:0.75rem;color:#687d94;margin-top:0.75rem;">
+      <i class="fa-solid fa-lock" style="font-size:0.7rem;"></i> Your email is safe with us. Read our <a href="404.html" style="color:#0a7c5e;text-decoration:underline;">Privacy Policy</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <!-- Brand -->
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <img src="assets/logo.webp" alt="Stackly"/>
+        </a>
+        <p class="footer__desc">Your trusted online pharmacy — delivering genuine medicines, wellness products and expert guidance to your door since 2018.</p>
+        <div class="footer__social">
+          <a href="404.html" class="footer__social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="404.html" class="footer__social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <div class="footer__col-title">Quick Links</div>
+        <ul class="footer__links">
+          <li><a href="index.html"    class="footer__link">Home</a></li>
+          <li><a href="about.html"    class="footer__link">About Us</a></li>
+          <li><a href="store.html"    class="footer__link">Our Store</a></li>
+          <li><a href="blog.html"     class="footer__link">Health Blog</a></li>
+          <li><a href="contact.html"  class="footer__link">Contact</a></li>
+          <li><a href="signin.html"   class="footer__link">Sign In</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__links">
+          <li><a href="store.html"  class="footer__link">Prescription Refills</a></li>
+          <li><a href="store.html"  class="footer__link">Home Test Kits</a></li>
+          <li><a href="contact.html" class="footer__link">Doctor Consultation</a></li>
+          <li><a href="store.html"  class="footer__link">Auto Refill Plans</a></li>
+          <li><a href="store.html"  class="footer__link">Wellness Packages</a></li>
+          <li><a href="404.html"    class="footer__link">Bulk Orders</a></li>
+        </ul>
+      </div>
+
+      <!-- Address & Newsletter -->
+      <div>
+        <div class="footer__col-title">Find Us</div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>MMR Complex, Chinna Thirupathi, near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="footer__address-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>hello@stackly.in</span>
+        </div>
+        <div class="footer__address-item" style="margin-top:0.25rem;">
+          <i class="fa-solid fa-clock"></i>
+          <span>Mon–Sat: 8am–10pm · Sun: 9am–6pm</span>
+        </div>
+
+        <div class="footer__col-title" style="margin-top:1.5rem;">Newsletter</div>
+        <form class="footer__newsletter" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="Your email…" required aria-label="Newsletter email"/>
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+
+    </div><!-- /footer__grid -->
+  </div>
+
+  <div class="container">
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        &copy; 2026 <span>Stackly</span>. All rights reserved. Designed with ❤️ in Salem.
+      </div>
+      <div class="footer__legal">
+        <a href="404.html">Privacy Policy</a>
+        <a href="404.html">Terms of Use</a>
+        <a href="404.html">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+
+<script>
+/* ── DOMContentLoaded ── */
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── AOS Init ── */
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 700, once: true, offset: 60, easing: 'ease-out-cubic' });
+  }
+
+  /* ── Navbar scroll behaviour ── */
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+      navbar.classList.remove('navbar--hero');
+    } else {
+      navbar.classList.remove('scrolled');
+      navbar.classList.add('navbar--hero');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Hamburger + Full-screen overlay ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileOverlay.classList.contains('is-open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileOverlay.classList.add('is-open');
+      hamburger.classList.add('is-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  /* Close on ESC */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeMobileMenu();
+      closeSearch();
+    }
+  });
+
+  /* ── Search overlay ── */
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchToggle  = document.getElementById('searchToggle');
+  const searchClose   = document.getElementById('searchClose');
+  const searchInput   = document.getElementById('searchInput');
+
+  searchToggle.addEventListener('click', () => {
+    searchOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => searchInput.focus(), 300);
+  });
+  searchClose.addEventListener('click', closeSearch);
+  searchOverlay.addEventListener('click', e => {
+    if (e.target === searchOverlay) closeSearch();
+  });
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      closeSearch();
+      window.location.href = 'store.html';
+    }
+  });
+
+
+
+  /* ── Product filter tabs ── */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filterValue = btn.getAttribute('data-filter');
+      document.querySelectorAll('.top-pick-item').forEach(item => {
+        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  /* ── Counter animation ── */
+  const counters = document.querySelectorAll('.counter');
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.target;
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = target >= 10000
+          ? Math.floor(current).toLocaleString('en-IN')
+          : Math.floor(current) + (el.dataset.suffix || '');
+        if (current >= target) clearInterval(timer);
+      }, 16);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => countObserver.observe(c));
+
+  /* ── Back to top ── */
+  const btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Scroll-triggered animations (supplement AOS) ── */
+  const animEls = document.querySelectorAll('.anim-fade-up,.anim-fade-left,.anim-fade-right,.anim-scale,.anim-flip');
+  if (animEls.length) {
+    const animObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+    }, { threshold: 0.12 });
+    animEls.forEach(el => animObserver.observe(el));
+  }
+
+  /* ── Navbar active link ── */
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.navbar__link').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === currentPage) link.classList.add('active');
+  });
+
+  /* ── Typewriter Effect ── */
+  const words = ["FRIENDS", "FAMILY", "RELATIVES", "EVERYONE"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typedTextSpan = document.querySelector(".typed-text");
+
+  function type() {
+    const currentWord = words[wordIndex];
+    if (isDeleting) {
+      typedTextSpan.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typedTextSpan.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      typeSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      typeSpeed = 500;
+    }
+    setTimeout(type, typeSpeed);
+  }
+  if(typedTextSpan) type();
+
+});
+
+/* ── Global helpers ── */
+function closeMobileMenu() {
+  document.getElementById('mobileOverlay').classList.remove('is-open');
+  document.getElementById('hamburger').classList.remove('is-open');
+  document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+function showToast(msg, icon = 'fa-circle-check') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<i class="fa-solid ${icon}"></i>${msg}`;
+  container.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(16px)'; toast.style.transition = 'all 0.35s'; setTimeout(() => toast.remove(), 400); }, 3500);
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  showToast('Subscribed successfully! 🎉', 'fa-circle-check');
+  e.target.reset();
+}
+</script>
+</body>
+</html>
