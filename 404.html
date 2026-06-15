@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="assets/top-logo.webp">
   </head>
@@ -32,18 +33,18 @@
 
     <div class="page-404">
       <div style="position: relative; z-index: 2; text-align: center">
-        <div class="page-404__num" data-reveal="scale">404</div>
-        <h1 class="page-404__title" data-reveal="fade-up">
+        <div class="page-404__num" data-aos="zoom-in">404</div>
+        <h1 class="page-404__title" data-aos="fade-up">
           Oops! Page Not Found.
         </h1>
-        <p class="page-404__desc" data-reveal="fade-up" data-reveal-delay="100">
+        <p class="page-404__desc" data-aos="fade-up" data-aos-delay="100">
           The page you're looking for has been moved, renamed, or doesn't exist
           yet. But don't worry there's plenty more to explore!
         </p>
         <div
           class="d-flex gap-3 justify-content-center flex-wrap"
-          data-reveal="fade-up"
-          data-reveal-delay="200"
+          data-aos="fade-up"
+          data-aos-delay="200"
         >
           <a href="index.html" class="btn btn-primary btn-lg"
             ><i class="fa-solid fa-home"></i> Back to Home</a
@@ -65,6 +66,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -178,24 +180,6 @@ function handleNewsletter(e) {
 <script>
       
       document.getElementById("navbar").classList.add("scrolled");
-      
-      const revealEls = document.querySelectorAll("[data-reveal]");
-      const observer = new IntersectionObserver(
-        (entries) =>
-          entries.forEach((en) => {
-            if (en.isIntersecting) {
-              en.target.classList.add("revealed");
-              observer.unobserve(en.target);
-            }
-          }),
-        { threshold: 0.1 },
-      );
-      revealEls.forEach((el) => observer.observe(el));
-     
-      setTimeout(
-        () => revealEls.forEach((el) => el.classList.add("revealed")),
-        100,
-      );
     </script>
     </body>
 </html>

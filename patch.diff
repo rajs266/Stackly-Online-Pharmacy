@@ -1,0 +1,32 @@
+--- 404.html
++++ 404.html
+@@ -179,21 +179,5 @@
+ }
+ </script>
+-<script>
+-
+-      document.getElementById("navbar").classList.add("scrolled");
+-
+-      const revealEls = document.querySelectorAll("[data-reveal]");
+-      const observer = new IntersectionObserver(
+-        (entries) =>
+-          entries.forEach((en) => {
+-            if (en.isIntersecting) {
+-              en.target.classList.add("revealed");
+-              observer.unobserve(en.target);
+-            }
+-          }),
+-        { threshold: 0.1 },
+-      );
+-      revealEls.forEach((el) => observer.observe(el));
+-
+-      setTimeout(
+-        () => revealEls.forEach((el) => el.classList.add("revealed")),
+-        100,
+-      );
+-    </script>
++<script>
++      document.getElementById("navbar").classList.add("scrolled");
++</script>
+     </body>
+ </html>
