@@ -1957,16 +1957,16 @@ textarea.form-control { resize: vertical; min-height: 130px; }
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   text-decoration: none;
 }
 .footer__logo img { height: 38px; width: auto; filter: brightness(1.1); }
 
 .footer__desc {
   font-size: 0.88rem;
-  line-height: 1.75;
+  line-height: 1.5;
   color: rgba(255,255,255,0.55);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .footer__social {
